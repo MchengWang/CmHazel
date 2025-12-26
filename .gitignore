@@ -1,0 +1,9 @@
+# files
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+
+# directories
+.vs
+bin\
+bin-int\
