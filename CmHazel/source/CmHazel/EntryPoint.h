@@ -6,7 +6,13 @@ extern CmHazel::Application* CmHazel::CreateApplication();
 
 int main()
 {
-	printf("CmHazel Engine!\n");
+	// 初始化引擎日志
+	CmHazel::Log::Init();
+
+	CM_CORE_WARN("Initialized Log!");
+	int a = 10;
+	CM_INFO("Hello! Var = {0}", a);
+
 	auto app = CmHazel::CreateApplication();
 	app->Run();
 	delete app;

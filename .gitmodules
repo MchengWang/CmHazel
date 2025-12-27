@@ -1,0 +1,3 @@
+[submodule "CmHazel/third_party/spdlog"]
+	path = CmHazel/third_party/spdlog
+	url = https://github.com/gabime/spdlog
