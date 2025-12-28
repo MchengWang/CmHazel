@@ -9,3 +9,5 @@
 #else
 	#error CmHazel only supports Windows!
 #endif // CM_PLATFORM_WINDOWS
+
+#define BIT(x) (1 << x)

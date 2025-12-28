@@ -1,7 +1,8 @@
 <Solution>
   <Configurations>
     <Platform Name="x64" />
+    <Platform Name="x86" />
   </Configurations>
-  <Project Path="CmHazel/CmHazel.vcxproj" Id="e8485b46-4d66-42f0-8a71-57c08b17f347" />
-  <Project Path="Sandbox/Sandbox.vcxproj" Id="3711d055-7dc8-4cdb-b4b1-c41e8a79ed0f" />
+  <Project Path="CmHazel/CmHazel.vcxproj" />
+  <Project Path="Sandbox/Sandbox.vcxproj" />
 </Solution>
