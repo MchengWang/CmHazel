@@ -10,22 +10,50 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\CmHazel\third_party\glfw\include\GLFW\glfw3.h" />
+    <ClInclude Include="..\CmHazel\third_party\glfw\include\GLFW\glfw3native.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\CmHazel\third_party\glfw\src\context.c" />
+    <ClCompile Include="..\CmHazel\third_party\glfw\src\egl_context.c" />
+    <ClCompile Include="..\CmHazel\third_party\glfw\src\init.c" />
+    <ClCompile Include="..\CmHazel\third_party\glfw\src\input.c" />
+    <ClCompile Include="..\CmHazel\third_party\glfw\src\monitor.c" />
+    <ClCompile Include="..\CmHazel\third_party\glfw\src\null_init.c" />
+    <ClCompile Include="..\CmHazel\third_party\glfw\src\null_joystick.c" />
+    <ClCompile Include="..\CmHazel\third_party\glfw\src\null_monitor.c" />
+    <ClCompile Include="..\CmHazel\third_party\glfw\src\null_window.c" />
+    <ClCompile Include="..\CmHazel\third_party\glfw\src\osmesa_context.c" />
+    <ClCompile Include="..\CmHazel\third_party\glfw\src\platform.c" />
+    <ClCompile Include="..\CmHazel\third_party\glfw\src\vulkan.c" />
+    <ClCompile Include="..\CmHazel\third_party\glfw\src\wgl_context.c" />
+    <ClCompile Include="..\CmHazel\third_party\glfw\src\win32_init.c" />
+    <ClCompile Include="..\CmHazel\third_party\glfw\src\win32_joystick.c" />
+    <ClCompile Include="..\CmHazel\third_party\glfw\src\win32_module.c" />
+    <ClCompile Include="..\CmHazel\third_party\glfw\src\win32_monitor.c" />
+    <ClCompile Include="..\CmHazel\third_party\glfw\src\win32_thread.c" />
+    <ClCompile Include="..\CmHazel\third_party\glfw\src\win32_time.c" />
+    <ClCompile Include="..\CmHazel\third_party\glfw\src\win32_window.c" />
+    <ClCompile Include="..\CmHazel\third_party\glfw\src\window.c" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>18.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{6ff23fe2-aaeb-4dbc-8bfa-3f4855b3191e}</ProjectGuid>
-    <RootNamespace>CmHazel</RootNamespace>
+    <ProjectGuid>{d35b7e44-ebaa-4905-ae58-84c904169a58}</ProjectGuid>
+    <RootNamespace>GLFW</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>GLFW</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v145</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v145</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -46,26 +74,24 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)</OutDir>
     <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)</IntDir>
+    <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)</OutDir>
     <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)</IntDir>
+    <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>CM_PLATFORM_WINDOWS;CM_BUILD_DLL;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_GLFW_WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)CmHazel\third_party\glfw\include;$(SolutionDir)CmHazel\third_party\spdlog\include;$(SolutionDir)CmHazel\source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>cmzpch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>opengl32.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -74,49 +100,15 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>CM_PLATFORM_WINDOWS;CM_BUILD_DLL;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_GLFW_WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)CmHazel\third_party\glfw\include;$(SolutionDir)CmHazel\third_party\spdlog\include;$(SolutionDir)CmHazel\source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>cmzpch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>opengl32.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="source\CmHazel\Application.cpp" />
-    <ClCompile Include="source\CmHazel\Log.cpp" />
-    <ClCompile Include="source\cmzpch.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">cmzpch.h</PrecompiledHeaderFile>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">cmzpch.h</PrecompiledHeaderFile>
-    </ClCompile>
-    <ClCompile Include="source\Platform\Windows\WindowsWindow.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="source\CMHAZEL.h" />
-    <ClInclude Include="source\CmHazel\Application.h" />
-    <ClInclude Include="source\CmHazel\Core.h" />
-    <ClInclude Include="source\CmHazel\EntryPoint.h" />
-    <ClInclude Include="source\CmHazel\Events\ApplicationEvent.h" />
-    <ClInclude Include="source\CmHazel\Events\Event.h" />
-    <ClInclude Include="source\CmHazel\Events\KeyEvent.h" />
-    <ClInclude Include="source\CmHazel\Events\MouseEvent.h" />
-    <ClInclude Include="source\CmHazel\Log.h" />
-    <ClInclude Include="source\CmHazel\Window.h" />
-    <ClInclude Include="source\cmzpch.h" />
-    <ClInclude Include="source\Platform\Windows\WindowsWindow.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\GLFW\GLFW.vcxproj">
-      <Project>{d35b7e44-ebaa-4905-ae58-84c904169a58}</Project>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
