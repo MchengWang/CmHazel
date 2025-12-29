@@ -1,3 +1,4 @@
+#include "cmzpch.h"
 #include "Application.h"
 
 #include "CmHazel/Events/ApplicationEvent.h"
@@ -18,11 +19,11 @@ namespace CmHazel
 		WindowResizeEvent e(1280, 720);
 		if (e.IsInCategory(EventCategoryApplication))
 		{
-			CM_TRACE(e);
+			CM_TRACE(e.ToString());
 		}
 		if (e.IsInCategory(EventCategoryInput))
 		{
-			CM_TRACE(e);
+			CM_TRACE(e.ToString());
 		}
 		while (true);
 	}

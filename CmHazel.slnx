@@ -3,6 +3,6 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="CmHazel/CmHazel.vcxproj" />
-  <Project Path="Sandbox/Sandbox.vcxproj" />
+  <Project Path="CmHazel/CmHazel.vcxproj" Id="6ff23fe2-aaeb-4dbc-8bfa-3f4855b3191e" />
+  <Project Path="Sandbox/Sandbox.vcxproj" Id="a9df5641-94ce-4aad-a255-f83718f767ea" />
 </Solution>

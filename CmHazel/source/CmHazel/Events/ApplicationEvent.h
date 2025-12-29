@@ -2,9 +2,8 @@
 
 #include "Event.h"
 
-#include <sstream>
-
-namespace CmHazel {
+namespace CmHazel 
+{
 
 	class CMHAZEL_API WindowResizeEvent : public Event
 	{

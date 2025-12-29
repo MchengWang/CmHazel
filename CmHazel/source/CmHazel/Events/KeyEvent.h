@@ -2,8 +2,6 @@
 
 #include "Event.h"
 
-#include <sstream>
-
 namespace CmHazel {
 
 	class CMHAZEL_API KeyEvent : public Event
