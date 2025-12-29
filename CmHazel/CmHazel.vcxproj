@@ -88,6 +88,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\CmHazel\LayerStack.cpp" />
+    <ClCompile Include="source\CmHazel\Layer.cpp" />
     <ClCompile Include="source\CmHazel\Application.cpp" />
     <ClCompile Include="source\CmHazel\Log.cpp" />
     <ClCompile Include="source\cmzpch.cpp">
@@ -99,6 +101,8 @@
     <ClCompile Include="source\Platform\Windows\WindowsWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\CmHazel\LayerStack.h" />
+    <ClInclude Include="source\CmHazel\Layer.h" />
     <ClInclude Include="source\CMHAZEL.h" />
     <ClInclude Include="source\CmHazel\Application.h" />
     <ClInclude Include="source\CmHazel\Core.h" />
