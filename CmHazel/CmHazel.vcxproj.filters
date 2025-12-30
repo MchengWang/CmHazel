@@ -101,5 +101,11 @@
     <ClInclude Include="source\Platform\Windows\WindowsInput.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="source\CmHazel\KeyCodes.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="source\CmHazel\MouseButtonCodes.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

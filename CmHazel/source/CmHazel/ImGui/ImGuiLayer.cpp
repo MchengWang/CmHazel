@@ -9,6 +9,10 @@
 #include <GLFW/glfw3.h>
 #include <glad/glad.h>
 
+#include "backends/imgui_impl_glfw.cpp"
+
+#include "CmHazel/KeyCodes.h"
+
 namespace CmHazel
 {
 
@@ -108,12 +112,49 @@ namespace CmHazel
 	{
 		ImGuiIO& io = ImGui::GetIO();
 
+		int key = e.GetKeyCode();
+		bool down = true;
+
+		io.AddKeyEvent(ImGui_ImplGlfw_KeyToImGuiKey(key, 0), down);
+
+		switch (key)
+		{
+		case CM_KEY_LEFT_CONTROL:
+			io.AddKeyEvent(ImGuiKey_LeftCtrl, down);
+			break;
+		case CM_KEY_RIGHT_CONTROL:
+			io.AddKeyEvent(ImGuiKey_RightCtrl, down);
+			break;
+
+		case CM_KEY_LEFT_SHIFT:
+			io.AddKeyEvent(ImGuiKey_LeftShift, down);
+			break;
+		case CM_KEY_RIGHT_SHIFT:
+			io.AddKeyEvent(ImGuiKey_RightShift, down);
+			break;
+
+		case CM_KEY_LEFT_ALT:
+			io.AddKeyEvent(ImGuiKey_LeftAlt, down);
+			break;
+		case CM_KEY_RIGHT_ALT:
+			io.AddKeyEvent(ImGuiKey_RightAlt, down);
+			break;
+
+		case CM_KEY_LEFT_SUPER:
+			io.AddKeyEvent(ImGuiKey_LeftSuper, down);
+			break;
+		case CM_KEY_RIGHT_SUPER:
+			io.AddKeyEvent(ImGuiKey_RightSuper, down);
+			break;
+		}
+
 		return false;
 	}
 
 	bool ImGuiLayer::OnKeyReleasedEvent(KeyReleasedEvent& e)
 	{
 		ImGuiIO& io = ImGui::GetIO();
+		io.AddKeyEvent(ImGui_ImplGlfw_KeyToImGuiKey(e.GetKeyCode(), 0), false);
 
 		return false;
 	}
@@ -130,6 +171,11 @@ namespace CmHazel
 		ImGuiIO& io = ImGui::GetIO();
 
 		return false;
+	}
+
+	int GK_To_IK(int code)
+	{
+		return ImGui_ImplGlfw_KeyToImGuiKey(code, 1);
 	}
 
 }

@@ -5,6 +5,10 @@
 #include "CmHazel/Layer.h"
 #include "CmHazel/Log.h"
 
+#include "CmHazel/Input.h"
+#include "CmHazel/KeyCodes.h"
+#include "CmHazel/MouseButtonCodes.h"
+
 #include "CmHazel/ImGui/ImGuiLayer.h"
 
 // --------- Èë¿Úµã -------------
