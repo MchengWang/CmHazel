@@ -10,6 +10,11 @@
 	#error CmHazel only supports Windows!
 #endif // CM_PLATFORM_WINDOWS
 
+#ifdef CM_DEBUG
+	#define CM_ENABLE_ASSERTS
+#endif // CM_DEBUG
+
+
 #ifdef CM_ENABLE_ASSERTS
 	#define CM_ASSERT(x, ...) { if(!(x)) { CM_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); }}
 	#define CM_CORE_ASSERT(x, ...) { if(!(x)) { CM_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); }}

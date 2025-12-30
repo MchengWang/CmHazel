@@ -39,6 +39,9 @@
     <ClCompile Include="source\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="source\Platform\Windows\WindowsInput.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\CmHazel\Application.h">
@@ -90,6 +93,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="source\Platform\OpenGL\ImGuiOpenGLRendererLoader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="source\CmHazel\Input.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Platform\Windows\WindowsInput.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
