@@ -40,7 +40,7 @@ namespace CmHazel
 
 		CM_CORE_INFO("Creating Window {0} ({1}, {2})", props.Title, props.Width, props.Height);
 
-		if (s_GLFWInitialized)
+		if (!s_GLFWInitialized)
 		{
 			// glfwTerminate 在系统关闭时
 			int success = glfwInit();

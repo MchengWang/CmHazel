@@ -4,3 +4,6 @@
 [submodule "CmHazel/third_party/glfw"]
 	path = CmHazel/third_party/glfw
 	url = https://github.com/glfw/glfw
+[submodule "CmHazel/third_party/imgui"]
+	path = CmHazel/third_party/imgui
+	url = https://github.com/ocornut/imgui

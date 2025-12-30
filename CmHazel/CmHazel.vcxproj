@@ -55,17 +55,17 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>CM_PLATFORM_WINDOWS;CM_BUILD_DLL;CM_ENABLE_ASSERTS;GLFW_INCLUDE_NONE;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>CM_PLATFORM_WINDOWS;CM_BUILD_DLL;CM_ENABLE_ASSERTS;GLFW_INCLUDE_NONE;_CRT_SECURE_NO_WARNINGS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)CmHazel\third_party\glad\include;$(SolutionDir)CmHazel\third_party\glfw\include;$(SolutionDir)CmHazel\third_party\spdlog\include;$(SolutionDir)CmHazel\source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)CmHazel\third_party\imgui;$(SolutionDir)CmHazel\third_party\glad\include;$(SolutionDir)CmHazel\third_party\glfw\include;$(SolutionDir)CmHazel\third_party\spdlog\include;$(SolutionDir)CmHazel\source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>cmzpch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>opengl32.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -74,20 +74,21 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>CM_PLATFORM_WINDOWS;CM_BUILD_DLL;CM_ENABLE_ASSERTS;GLFW_INCLUDE_NONE;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>CM_PLATFORM_WINDOWS;CM_BUILD_DLL;CM_ENABLE_ASSERTS;GLFW_INCLUDE_NONE;_CRT_SECURE_NO_WARNINGS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)CmHazel\third_party\glad\include;$(SolutionDir)CmHazel\third_party\glfw\include;$(SolutionDir)CmHazel\third_party\spdlog\include;$(SolutionDir)CmHazel\source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)CmHazel\third_party\imgui;$(SolutionDir)CmHazel\third_party\glad\include;$(SolutionDir)CmHazel\third_party\glfw\include;$(SolutionDir)CmHazel\third_party\spdlog\include;$(SolutionDir)CmHazel\source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>cmzpch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>opengl32.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\CmHazel\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="source\CmHazel\LayerStack.cpp" />
     <ClCompile Include="source\CmHazel\Layer.cpp" />
     <ClCompile Include="source\CmHazel\Application.cpp" />
@@ -98,9 +99,11 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">cmzpch.h</PrecompiledHeaderFile>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">cmzpch.h</PrecompiledHeaderFile>
     </ClCompile>
+    <ClCompile Include="source\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
     <ClCompile Include="source\Platform\Windows\WindowsWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\CmHazel\ImGui\ImGuiLayer.h" />
     <ClInclude Include="source\CmHazel\LayerStack.h" />
     <ClInclude Include="source\CmHazel\Layer.h" />
     <ClInclude Include="source\CMHAZEL.h" />
@@ -114,6 +117,8 @@
     <ClInclude Include="source\CmHazel\Log.h" />
     <ClInclude Include="source\CmHazel\Window.h" />
     <ClInclude Include="source\cmzpch.h" />
+    <ClInclude Include="source\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
+    <ClInclude Include="source\Platform\OpenGL\ImGuiOpenGLRendererLoader.h" />
     <ClInclude Include="source\Platform\Windows\WindowsWindow.h" />
   </ItemGroup>
   <ItemGroup>
@@ -122,6 +127,9 @@
     </ProjectReference>
     <ProjectReference Include="..\GLFW\GLFW.vcxproj">
       <Project>{d35b7e44-ebaa-4905-ae58-84c904169a58}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\ImGui\ImGui.vcxproj">
+      <Project>{e033a4aa-c221-4c4d-92c7-1bc39bbfff46}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

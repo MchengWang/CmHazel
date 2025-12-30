@@ -5,5 +5,6 @@
   <Project Path="CmHazel/CmHazel.vcxproj" Id="6ff23fe2-aaeb-4dbc-8bfa-3f4855b3191e" />
   <Project Path="GLAD/GLAD.vcxproj" Id="b3b0b5f2-a2d8-4db3-9578-c7255f57acc2" />
   <Project Path="GLFW/GLFW.vcxproj" Id="d35b7e44-ebaa-4905-ae58-84c904169a58" />
+  <Project Path="ImGui/ImGui.vcxproj" Id="e033a4aa-c221-4c4d-92c7-1bc39bbfff46" />
   <Project Path="Sandbox/Sandbox.vcxproj" Id="a9df5641-94ce-4aad-a255-f83718f767ea" />
 </Solution>

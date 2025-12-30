@@ -5,6 +5,8 @@
 #include "CmHazel/Layer.h"
 #include "CmHazel/Log.h"
 
+#include "CmHazel/ImGui/ImGuiLayer.h"
+
 // --------- Èë¿Úµã -------------
 #include "CmHazel/EntryPoint.h"
 // ------------------------------

@@ -33,6 +33,12 @@
     <ClCompile Include="source\CmHazel\LayerStack.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="source\CmHazel\ImGui\ImGuiLayer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\CmHazel\Application.h">
@@ -75,6 +81,15 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="source\CmHazel\LayerStack.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="source\CmHazel\ImGui\ImGuiLayer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Platform\OpenGL\ImGuiOpenGLRenderer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Platform\OpenGL\ImGuiOpenGLRendererLoader.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
