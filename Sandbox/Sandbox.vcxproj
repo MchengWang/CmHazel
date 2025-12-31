@@ -88,9 +88,6 @@
     <ProjectReference Include="..\CmHazel\CmHazel.vcxproj">
       <Project>{6ff23fe2-aaeb-4dbc-8bfa-3f4855b3191e}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\ImGui\ImGui.vcxproj">
-      <Project>{e033a4aa-c221-4c4d-92c7-1bc39bbfff46}</Project>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
