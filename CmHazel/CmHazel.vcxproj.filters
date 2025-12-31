@@ -42,6 +42,9 @@
     <ClCompile Include="source\CmHazel\ImGui\ImGuiBuild.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="source\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\CmHazel\Application.h">
@@ -99,6 +102,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="source\CmHazel\MouseButtonCodes.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="source\CmHazel\Renderer\GraphicsContext.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Platform\OpenGL\OpenGLContext.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

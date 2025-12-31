@@ -1,6 +1,7 @@
 #pragma once
 
 #include "CmHazel/Window.h"
+#include "CmHazel/Renderer/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>
 
@@ -31,6 +32,7 @@ namespace CmHazel
 
 	private:
 		GLFWwindow* m_Window;
+		GraphicsContext* m_Context;
 
 		struct WindowData
 		{

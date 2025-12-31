@@ -88,6 +88,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="source\CmHazel\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="source\CmHazel\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="source\CmHazel\LayerStack.cpp" />
@@ -104,6 +105,7 @@
     <ClCompile Include="source\Platform\Windows\WindowsInput.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="source\CmHazel\ImGui\ImGuiLayer.h" />
     <ClInclude Include="source\CmHazel\Input.h" />
     <ClInclude Include="source\CmHazel\LayerStack.h" />
@@ -118,6 +120,7 @@
     <ClInclude Include="source\CmHazel\Events\MouseEvent.h" />
     <ClInclude Include="source\CmHazel\Log.h" />
     <ClInclude Include="source\CmHazel\MouseButtonCodes.h" />
+    <ClInclude Include="source\CmHazel\Renderer\GraphicsContext.h" />
     <ClInclude Include="source\CmHazel\Window.h" />
     <ClInclude Include="source\cmzpch.h" />
     <ClInclude Include="source\CmHazel\KeyCodes.h" />
