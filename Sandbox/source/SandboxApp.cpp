@@ -1,5 +1,7 @@
 #include <CmHazel.h>
 
+#include "imgui/imgui.h"
+
 class ExampleLayer : public CmHazel::Layer
 {
 public:
@@ -11,6 +13,13 @@ public:
 	{
 		if (CmHazel::Input::IsKeyPressed(CM_KEY_TAB))
 			CM_TRACE("Tab key is pressed (poll)£¡");
+	}
+
+	void OnImGuiRender() override
+	{
+		ImGui::Begin("Test");
+		ImGui::Text("Hello World");
+		ImGui::End();
 	}
 
 	void OnEvent(CmHazel::Event& event) override
@@ -31,7 +40,6 @@ public:
 	Sandbox()
 	{
 		PushLayer(new ExampleLayer());
-		PushOverlay(new CmHazel::ImGuiLayer());
 	}
 
 	~Sandbox()

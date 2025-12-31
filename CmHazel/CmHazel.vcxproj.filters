@@ -36,10 +36,10 @@
     <ClCompile Include="source\CmHazel\ImGui\ImGuiLayer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="source\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">
+    <ClCompile Include="source\Platform\Windows\WindowsInput.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="source\Platform\Windows\WindowsInput.cpp">
+    <ClCompile Include="source\CmHazel\ImGui\ImGuiBuild.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -87,12 +87,6 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="source\CmHazel\ImGui\ImGuiLayer.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Platform\OpenGL\ImGuiOpenGLRenderer.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Platform\OpenGL\ImGuiOpenGLRendererLoader.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="source\CmHazel\Input.h">

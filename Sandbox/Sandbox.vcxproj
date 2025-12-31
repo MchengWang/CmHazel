@@ -58,7 +58,7 @@
       <PreprocessorDefinitions>CM_PLATFORM_WINDOWS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)CmHazel\third_party\glm;$(SolutionDir)CmHazel\third_party\spdlog\include;$(SolutionDir)CmHazel\source</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)CmHazel\third_party;$(SolutionDir)CmHazel\third_party\glm;$(SolutionDir)CmHazel\third_party\spdlog\include;$(SolutionDir)CmHazel\source</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -74,7 +74,7 @@
       <PreprocessorDefinitions>CM_PLATFORM_WINDOWS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)CmHazel\third_party\glm;$(SolutionDir)CmHazel\third_party\spdlog\include;$(SolutionDir)CmHazel\source</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)CmHazel\third_party;$(SolutionDir)CmHazel\third_party\glm;$(SolutionDir)CmHazel\third_party\spdlog\include;$(SolutionDir)CmHazel\source</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -87,6 +87,9 @@
   <ItemGroup>
     <ProjectReference Include="..\CmHazel\CmHazel.vcxproj">
       <Project>{6ff23fe2-aaeb-4dbc-8bfa-3f4855b3191e}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\ImGui\ImGui.vcxproj">
+      <Project>{e033a4aa-c221-4c4d-92c7-1bc39bbfff46}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

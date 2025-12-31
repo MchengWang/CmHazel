@@ -7,6 +7,8 @@
 #include "CmHazel/Events/Event.h"
 #include "CmHazel/Events/ApplicationEvent.h"
 
+#include "CmHazel/ImGui/ImGuiLayer.h"
+
 namespace CmHazel
 {
 
@@ -31,6 +33,7 @@ namespace CmHazel
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 
