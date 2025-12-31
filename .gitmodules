@@ -7,3 +7,6 @@
 [submodule "CmHazel/third_party/imgui"]
 	path = CmHazel/third_party/imgui
 	url = https://github.com/ocornut/imgui
+[submodule "CmHazel/third_party/glm"]
+	path = CmHazel/third_party/glm
+	url = https://github.com/g-truc/glm
