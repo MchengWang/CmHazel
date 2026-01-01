@@ -88,6 +88,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\Platform\OpenGL\OpenGLBuffer.cpp" />
+    <ClCompile Include="source\CmHazel\Renderer\Renderer.cpp" />
+    <ClCompile Include="source\CmHazel\Renderer\Buffer.cpp" />
     <ClCompile Include="source\CmHazel\Renderer\Shader.cpp" />
     <ClCompile Include="source\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="source\CmHazel\ImGui\ImGuiBuild.cpp" />
@@ -106,6 +109,9 @@
     <ClCompile Include="source\Platform\Windows\WindowsInput.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\Platform\OpenGL\OpenGLBuffer.h" />
+    <ClInclude Include="source\CmHazel\Renderer\Renderer.h" />
+    <ClInclude Include="source\CmHazel\Renderer\Buffer.h" />
     <ClInclude Include="source\CmHazel\Renderer\Shader.h" />
     <ClInclude Include="source\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="source\CmHazel\ImGui\ImGuiLayer.h" />
