@@ -88,6 +88,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\Platform\OpenGL\OpenGLRendererAPI.cpp" />
+    <ClCompile Include="source\CmHazel\Renderer\RenderCommand.cpp" />
+    <ClCompile Include="source\CmHazel\Renderer\RendererAPI.cpp" />
     <ClCompile Include="source\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="source\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="source\CmHazel\Renderer\Renderer.cpp" />
@@ -111,6 +114,9 @@
     <ClCompile Include="source\CmHazel\Renderer\VertexArray.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\Platform\OpenGL\OpenGLRendererAPI.h" />
+    <ClInclude Include="source\CmHazel\Renderer\RenderCommand.h" />
+    <ClInclude Include="source\CmHazel\Renderer\RendererAPI.h" />
     <ClInclude Include="source\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="source\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="source\CmHazel\Renderer\Renderer.h" />
