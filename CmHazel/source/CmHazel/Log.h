@@ -23,16 +23,16 @@ namespace CmHazel
 }
 
 // 核心日志宏
-#define CM_CORE_TRACE(...)   ::CmHazel::Log::GetCoreLogger()->trace(__VA_ARGS__)
-#define CM_CORE_INFO(...)    ::CmHazel::Log::GetCoreLogger()->info(__VA_ARGS__)
-#define CM_CORE_WARN(...)    ::CmHazel::Log::GetCoreLogger()->warn(__VA_ARGS__)
-#define CM_CORE_ERROR(...)   ::CmHazel::Log::GetCoreLogger()->error(__VA_ARGS__)
-#define CM_CORE_CRITICAL(...)   ::CmHazel::Log::GetCoreLogger()->critical(__VA_ARGS__)
-
-
-// 客户端日志宏
-#define CM_TRACE(...)        ::CmHazel::Log::GetClientLogger()->trace(__VA_ARGS__)
-#define CM_INFO(...)         ::CmHazel::Log::GetClientLogger()->info(__VA_ARGS__)
-#define CM_WARN(...)         ::CmHazel::Log::GetClientLogger()->warn(__VA_ARGS__)
-#define CM_ERROR(...)        ::CmHazel::Log::GetClientLogger()->error(__VA_ARGS__)
-#define CM_CRITICAL(...)        ::CmHazel::Log::GetClientLogger()->critical(__VA_ARGS__)
+#define CM_CORE_TRACE(...)          ::CmHazel::Log::GetCoreLogger()->trace(__VA_ARGS__)
+#define CM_CORE_INFO(...)           ::CmHazel::Log::GetCoreLogger()->info(__VA_ARGS__)
+#define CM_CORE_WARN(...)           ::CmHazel::Log::GetCoreLogger()->warn(__VA_ARGS__)
+#define CM_CORE_ERROR(...)          ::CmHazel::Log::GetCoreLogger()->error(__VA_ARGS__)
+#define CM_CORE_CRITICAL(...)       ::CmHazel::Log::GetCoreLogger()->critical(__VA_ARGS__)
+								    
+								    
+// 客户端日志宏				        
+#define CM_TRACE(...)               ::CmHazel::Log::GetClientLogger()->trace(__VA_ARGS__)
+#define CM_INFO(...)                ::CmHazel::Log::GetClientLogger()->info(__VA_ARGS__)
+#define CM_WARN(...)                ::CmHazel::Log::GetClientLogger()->warn(__VA_ARGS__)
+#define CM_ERROR(...)               ::CmHazel::Log::GetClientLogger()->error(__VA_ARGS__)
+#define CM_CRITICAL(...)            ::CmHazel::Log::GetClientLogger()->critical(__VA_ARGS__)
