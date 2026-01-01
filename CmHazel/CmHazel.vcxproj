@@ -88,6 +88,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="source\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="source\CmHazel\Renderer\Renderer.cpp" />
     <ClCompile Include="source\CmHazel\Renderer\Buffer.cpp" />
@@ -107,8 +108,10 @@
     </ClCompile>
     <ClCompile Include="source\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="source\Platform\Windows\WindowsInput.cpp" />
+    <ClCompile Include="source\CmHazel\Renderer\VertexArray.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="source\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="source\CmHazel\Renderer\Renderer.h" />
     <ClInclude Include="source\CmHazel\Renderer\Buffer.h" />
@@ -134,6 +137,7 @@
     <ClInclude Include="source\CmHazel\KeyCodes.h" />
     <ClInclude Include="source\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="source\Platform\Windows\WindowsInput.h" />
+    <ClInclude Include="source\CmHazel\Renderer\VertexArray.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GLAD\GLAD.vcxproj">
