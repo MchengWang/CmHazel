@@ -8,9 +8,4 @@ namespace CmHazel
 		: m_DebugName(debugName)
 	{ }
 
-	Layer::~Layer()
-	{
-
-	}
-
 }

@@ -27,7 +27,7 @@ namespace CmHazel
 #define CM_CORE_INFO(...)    ::CmHazel::Log::GetCoreLogger()->info(__VA_ARGS__)
 #define CM_CORE_WARN(...)    ::CmHazel::Log::GetCoreLogger()->warn(__VA_ARGS__)
 #define CM_CORE_ERROR(...)   ::CmHazel::Log::GetCoreLogger()->error(__VA_ARGS__)
-#define CM_CORE_FATAL(...)   ::CmHazel::Log::GetCoreLogger()->fatal(__VA_ARGS__)
+#define CM_CORE_CRITICAL(...)   ::CmHazel::Log::GetCoreLogger()->critical(__VA_ARGS__)
 
 
 // 客户端日志宏
@@ -35,4 +35,4 @@ namespace CmHazel
 #define CM_INFO(...)         ::CmHazel::Log::GetClientLogger()->info(__VA_ARGS__)
 #define CM_WARN(...)         ::CmHazel::Log::GetClientLogger()->warn(__VA_ARGS__)
 #define CM_ERROR(...)        ::CmHazel::Log::GetClientLogger()->error(__VA_ARGS__)
-#define CM_FATAL(...)        ::CmHazel::Log::GetClientLogger()->fatal(__VA_ARGS__)
+#define CM_CRITICAL(...)        ::CmHazel::Log::GetClientLogger()->critical(__VA_ARGS__)
