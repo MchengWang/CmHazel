@@ -88,6 +88,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\Platform\OpenGL\OpenGLShader.cpp" />
     <ClCompile Include="source\CmHazel\Renderer\OrthographicCamera.cpp" />
     <ClCompile Include="source\Platform\OpenGL\OpenGLRendererAPI.cpp" />
     <ClCompile Include="source\CmHazel\Renderer\RenderCommand.cpp" />
@@ -115,6 +116,7 @@
     <ClCompile Include="source\CmHazel\Renderer\VertexArray.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\Platform\OpenGL\OpenGLShader.h" />
     <ClInclude Include="source\CmHazel\Core\Timestep.h" />
     <ClInclude Include="source\CmHazel\Renderer\OrthographicCamera.h" />
     <ClInclude Include="source\Platform\OpenGL\OpenGLRendererAPI.h" />

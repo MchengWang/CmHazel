@@ -75,6 +75,9 @@
     <ClCompile Include="source\CmHazel\Renderer\OrthographicCamera.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="source\Platform\OpenGL\OpenGLShader.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\CmHazel\Application.h">
@@ -171,6 +174,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="source\CmHazel\Core\Timestep.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Platform\OpenGL\OpenGLShader.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
