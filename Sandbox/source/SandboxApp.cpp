@@ -21,7 +21,7 @@ public:
 			 0.0f,  0.5f, 0.0f, 0.8f, 0.8f, 0.2f, 1.0f,
 		};
 
-		std::shared_ptr<CmHazel::VertexBuffer> vertexBuffer;
+		CmHazel::Shared<CmHazel::VertexBuffer> vertexBuffer;
 		vertexBuffer.reset(CmHazel::VertexBuffer::Create(vertices, sizeof(vertices)));
 
 		CmHazel::BufferLayout layout = {
@@ -33,30 +33,31 @@ public:
 		m_VertexArray->AddVertexBuffer(vertexBuffer);
 
 		uint32_t indices[3] = { 0, 1, 2 };
-		std::shared_ptr<CmHazel::IndexBuffer> indexBuffer;
+		CmHazel::Shared<CmHazel::IndexBuffer> indexBuffer;
 		indexBuffer.reset(CmHazel::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
 		m_SquareVA.reset(CmHazel::VertexArray::Create());
 
-		float squareVertices[3 * 4] = {
-			-0.5f, -0.5f, 0.0f,
-			 0.5f, -0.5f, 0.0f,
-			 0.5f,  0.5f, 0.0f,
-			-0.5f,  0.5f, 0.0f,
+		float squareVertices[5 * 4] = {
+			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+			 0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
+			 0.5f,  0.5f, 0.0f, 1.0f, 1.0f,
+			-0.5f,  0.5f, 0.0f, 0.0f, 1.0f,
 		};
 
-		std::shared_ptr<CmHazel::VertexBuffer> squareVB;
+		CmHazel::Shared<CmHazel::VertexBuffer> squareVB;
 		squareVB.reset(CmHazel::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 
 		squareVB->SetLayout({
 			{CmHazel::ShaderDataType::Float3, "a_Position"},
+			{CmHazel::ShaderDataType::Float2, "a_TexCoord"},
 		});
 
 		m_SquareVA->AddVertexBuffer(squareVB);
 
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-		std::shared_ptr<CmHazel::IndexBuffer> squareIB;
+		CmHazel::Shared<CmHazel::IndexBuffer> squareIB;
 		squareIB.reset(CmHazel::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
 		m_SquareVA->SetIndexBuffer(squareIB);
 	
@@ -131,6 +132,46 @@ public:
 
 		m_FlatColorShader.reset(CmHazel::Shader::Create(flatColorShaderVertexSrc, flatColorShaderFragmentSrc));
 
+		std::string textureShaderVertexSrc = R"(
+			#version 450 core
+			
+			layout(location = 0) in vec3 a_Position;
+			layout(location = 1) in vec2 a_TexCoord;
+
+			uniform mat4 u_ViewProjection;
+			uniform mat4 u_Transform;
+
+			out vec2 v_TexCoord;
+
+			void main()
+			{
+				v_TexCoord = a_TexCoord;
+				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);	
+			}
+		)";
+
+		std::string textureShaderFragmentSrc = R"(
+			#version 450 core
+			
+			layout(location = 0) out vec4 color;
+
+			in vec2 v_TexCoord;
+			
+			uniform sampler2D u_Texture;
+
+			void main()
+			{
+				color = texture(u_Texture, v_TexCoord);
+			}
+		)";
+
+		m_TextureShader.reset(CmHazel::Shader::Create(textureShaderVertexSrc, textureShaderFragmentSrc));
+
+		m_Texture = CmHazel::Texture2D::Create("assets/textures/Checkerboard.png");
+
+		std::dynamic_pointer_cast<CmHazel::OpenGLShader>(m_TextureShader)->Bind();
+		std::dynamic_pointer_cast<CmHazel::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
+
 	}
 
 	void OnUpdate(CmHazel::Timestep ts) override
@@ -173,7 +214,11 @@ public:
 			}
 		}
 
-		CmHazel::Renderer::Submit(m_Shader, m_VertexArray);
+		m_Texture->Bind();
+		CmHazel::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+
+		// Èý½ÇÐÎ
+		//CmHazel::Renderer::Submit(m_Shader, m_VertexArray);
 
 		CmHazel::Renderer::EndScene();
 	}
@@ -191,11 +236,13 @@ public:
 	}
 
 private:
-	std::shared_ptr<CmHazel::Shader> m_Shader;
-	std::shared_ptr<CmHazel::VertexArray> m_VertexArray;
+	CmHazel::Shared<CmHazel::Shader> m_Shader;
+	CmHazel::Shared<CmHazel::VertexArray> m_VertexArray;
 
-	std::shared_ptr<CmHazel::Shader> m_FlatColorShader;
-	std::shared_ptr<CmHazel::VertexArray> m_SquareVA;
+	CmHazel::Shared<CmHazel::Shader> m_FlatColorShader, m_TextureShader;
+	CmHazel::Shared<CmHazel::VertexArray> m_SquareVA;
+
+	CmHazel::Shared<CmHazel::Texture2D> m_Texture;
 
 	CmHazel::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;

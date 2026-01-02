@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 #ifdef CM_PLATFORM_WINDOWS
 	#if CM_DYNAMIC_LINK
 		#ifdef CM_BUILD_DLL
@@ -31,3 +33,14 @@
 #define BIT(x) (1 << x)
 
 #define CM_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)
+
+namespace CmHazel
+{
+
+	template <typename T>
+	using Unique = std::unique_ptr<T>;
+
+	template <typename T>
+	using Shared = std::shared_ptr<T>;
+
+}
