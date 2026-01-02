@@ -168,6 +168,7 @@ public:
 		m_TextureShader.reset(CmHazel::Shader::Create(textureShaderVertexSrc, textureShaderFragmentSrc));
 
 		m_Texture = CmHazel::Texture2D::Create("assets/textures/Checkerboard.png");
+		m_DogLogoTexture = CmHazel::Texture2D::Create("assets/textures/logo_dog.jpg");
 
 		std::dynamic_pointer_cast<CmHazel::OpenGLShader>(m_TextureShader)->Bind();
 		std::dynamic_pointer_cast<CmHazel::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
@@ -217,6 +218,9 @@ public:
 		m_Texture->Bind();
 		CmHazel::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
+		m_DogLogoTexture->Bind();
+		CmHazel::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+
 		// Èý½ÇÐÎ
 		//CmHazel::Renderer::Submit(m_Shader, m_VertexArray);
 
@@ -242,7 +246,7 @@ private:
 	CmHazel::Shared<CmHazel::Shader> m_FlatColorShader, m_TextureShader;
 	CmHazel::Shared<CmHazel::VertexArray> m_SquareVA;
 
-	CmHazel::Shared<CmHazel::Texture2D> m_Texture;
+	CmHazel::Shared<CmHazel::Texture2D> m_Texture, m_DogLogoTexture;
 
 	CmHazel::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;
