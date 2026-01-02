@@ -13,6 +13,8 @@
 #include "CmHazel/Renderer/Buffer.h"
 #include "CmHazel/Renderer/VertexArray.h"
 
+#include "CmHazel/Renderer/OrthographicCamera.h"
+
 namespace CmHazel
 {
 
@@ -46,6 +48,8 @@ namespace CmHazel
 
 		std::shared_ptr<Shader> m_BlueShader;
 		std::shared_ptr<VertexArray> m_SquareVA;
+
+		OrthographicCamera m_Camera;
 
 	private:
 		static Application* s_Instance;
