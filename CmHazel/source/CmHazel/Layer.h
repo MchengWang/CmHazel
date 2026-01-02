@@ -1,6 +1,7 @@
 #pragma once
 
 #include "CmHazel/Core.h"
+#include "CmHazel/Core/Timestep.h"
 #include "CmHazel/Events/Event.h"
 
 namespace CmHazel
@@ -14,7 +15,7 @@ namespace CmHazel
 
 		virtual void OnAttach() {}
 		virtual void OnDetach() {}
-		virtual void OnUpdate() {}
+		virtual void OnUpdate(Timestep ts) {}
 		virtual void OnImGuiRender() {}
 		virtual void OnEvent(Event& event) {}
 

@@ -7,13 +7,9 @@
 #include "CmHazel/Events/Event.h"
 #include "CmHazel/Events/ApplicationEvent.h"
 
+#include "CmHazel/Core/Timestep.h"
+
 #include "CmHazel/ImGui/ImGuiLayer.h"
-
-#include "CmHazel/Renderer/Shader.h"
-#include "CmHazel/Renderer/Buffer.h"
-#include "CmHazel/Renderer/VertexArray.h"
-
-#include "CmHazel/Renderer/OrthographicCamera.h"
 
 namespace CmHazel
 {
@@ -43,13 +39,7 @@ namespace CmHazel
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 
-		std::shared_ptr<Shader> m_Shader;
-		std::shared_ptr<VertexArray> m_VertexArray;
-
-		std::shared_ptr<Shader> m_BlueShader;
-		std::shared_ptr<VertexArray> m_SquareVA;
-
-		OrthographicCamera m_Camera;
+		float m_LastFrameTime = 0.0f;
 
 	private:
 		static Application* s_Instance;

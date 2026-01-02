@@ -115,6 +115,7 @@
     <ClCompile Include="source\CmHazel\Renderer\VertexArray.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\CmHazel\Core\Timestep.h" />
     <ClInclude Include="source\CmHazel\Renderer\OrthographicCamera.h" />
     <ClInclude Include="source\Platform\OpenGL\OpenGLRendererAPI.h" />
     <ClInclude Include="source\CmHazel\Renderer\RenderCommand.h" />

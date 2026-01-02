@@ -5,11 +5,24 @@
 #include "CmHazel/Layer.h"
 #include "CmHazel/Log.h"
 
+#include "CmHazel/Core/Timestep.h"
+
 #include "CmHazel/Input.h"
 #include "CmHazel/KeyCodes.h"
 #include "CmHazel/MouseButtonCodes.h"
 
 #include "CmHazel/ImGui/ImGuiLayer.h"
+
+//---------- äÖÈ¾ ---------------
+#include "CmHazel/Renderer/Renderer.h"
+#include "CmHazel/Renderer/RenderCommand.h"
+
+#include "CmHazel/Renderer/Buffer.h"
+#include "CmHazel/Renderer/Shader.h"
+#include "CmHazel/Renderer/VertexArray.h"
+
+#include "CmHazel/Renderer/OrthographicCamera.h"
+//-------------------------------
 
 // --------- Èë¿Úµã -------------
 #include "CmHazel/EntryPoint.h"

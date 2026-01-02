@@ -170,5 +170,8 @@
     <ClInclude Include="source\CmHazel\Renderer\OrthographicCamera.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="source\CmHazel\Core\Timestep.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
