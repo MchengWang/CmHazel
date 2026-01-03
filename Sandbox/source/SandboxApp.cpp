@@ -96,7 +96,7 @@ public:
 			}
 		)";
 
-		m_Shader.reset(CmHazel::Shader::Create(vertexSrc, fragmentSrc));
+		m_Shader = CmHazel::Shader::Create("VertexPosColor", vertexSrc, fragmentSrc);
 
 		std::string flatColorShaderVertexSrc = R"(
 			#version 450 core
@@ -130,15 +130,15 @@ public:
 			}
 		)";
 
-		m_FlatColorShader.reset(CmHazel::Shader::Create(flatColorShaderVertexSrc, flatColorShaderFragmentSrc));
+		m_FlatColorShader = CmHazel::Shader::Create("FlatColor", flatColorShaderVertexSrc, flatColorShaderFragmentSrc);
 
-		m_TextureShader.reset(CmHazel::Shader::Create("assets/shaders/Texture.glsl"));
+		auto textureShader = m_ShaderLibrary.Load("assets/shaders/Texture.glsl");
 
 		m_Texture = CmHazel::Texture2D::Create("assets/textures/Checkerboard.png");
 		m_PhtatoLogoTexture = CmHazel::Texture2D::Create("assets/textures/logo-potato.png");
 
-		std::dynamic_pointer_cast<CmHazel::OpenGLShader>(m_TextureShader)->Bind();
-		std::dynamic_pointer_cast<CmHazel::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
+		std::dynamic_pointer_cast<CmHazel::OpenGLShader>(textureShader)->Bind();
+		std::dynamic_pointer_cast<CmHazel::OpenGLShader>(textureShader)->UploadUniformInt("u_Texture", 0);
 
 	}
 
@@ -182,11 +182,13 @@ public:
 			}
 		}
 
+		auto textureShader = m_ShaderLibrary.Get("Texture");
+
 		m_Texture->Bind();
-		CmHazel::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		CmHazel::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
 		m_PhtatoLogoTexture->Bind();
-		CmHazel::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		CmHazel::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
 		 //Èý½ÇÐÎ
 		//CmHazel::Renderer::Submit(m_Shader, m_VertexArray);
@@ -207,10 +209,11 @@ public:
 	}
 
 private:
+	CmHazel::ShaderLibrary m_ShaderLibrary;
 	CmHazel::Shared<CmHazel::Shader> m_Shader;
 	CmHazel::Shared<CmHazel::VertexArray> m_VertexArray;
 
-	CmHazel::Shared<CmHazel::Shader> m_FlatColorShader, m_TextureShader;
+	CmHazel::Shared<CmHazel::Shader> m_FlatColorShader;
 	CmHazel::Shared<CmHazel::VertexArray> m_SquareVA;
 
 	CmHazel::Shared<CmHazel::Texture2D> m_Texture, m_PhtatoLogoTexture;
