@@ -24,8 +24,4 @@
 #include "CmHazel/Renderer/VertexArray.h"
 
 #include "CmHazel/Renderer/OrthographicCamera.h"
-//-------------------------------
-
-// --------- Èë¿Úµã -------------
-#include "CmHazel/Core/EntryPoint.h"
 // ------------------------------
