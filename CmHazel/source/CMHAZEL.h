@@ -10,6 +10,7 @@
 #include "CmHazel/Input.h"
 #include "CmHazel/KeyCodes.h"
 #include "CmHazel/MouseButtonCodes.h"
+#include "CmHazel/OrthographicCameraController.h"
 
 #include "CmHazel/ImGui/ImGuiLayer.h"
 
