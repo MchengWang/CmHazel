@@ -10,7 +10,7 @@
 namespace CmHazel
 {
 
-	static bool s_GLFWInitialized = false;
+	static uint8_t s_GLFWInitialized = 0;
 
 	static void GLFWErrorCallback(int error, const char* description)
 	{
@@ -40,17 +40,18 @@ namespace CmHazel
 
 		CM_CORE_INFO("Creating Window {0} ({1}, {2})", props.Title, props.Width, props.Height);
 
-		if (!s_GLFWInitialized)
+		if (s_GLFWInitialized == 0)
 		{
+			CM_CORE_INFO("Intializing GLFW");
 			// glfwTerminate 在系统关闭时
 			int success = glfwInit();
 			CM_CORE_ASSERT(success, "Could not intialize GLFW");
 
 			glfwSetErrorCallback(GLFWErrorCallback);
-			s_GLFWInitialized = true;
 		}
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
+		++s_GLFWInitialized;
 		
 		m_Context = CreateUnique<OpenGLContext>(m_Window);
 
@@ -154,6 +155,12 @@ namespace CmHazel
 	void WindowsWindow::Shutdown()
 	{
 		glfwDestroyWindow(m_Window);
+
+		if (--s_GLFWInitialized == 0)
+		{
+			CM_CORE_INFO("Terminating GLFW");
+			glfwTerminate();
+		}
 	}
 
 	void WindowsWindow::OnUpdate()
