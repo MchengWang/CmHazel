@@ -16,6 +16,7 @@
 
 //---------- ‰÷»æ ---------------
 #include "CmHazel/Renderer/Renderer.h"
+#include "CmHazel/Renderer/Renderer2D.h"
 #include "CmHazel/Renderer/RenderCommand.h"
 
 #include "CmHazel/Renderer/Buffer.h"

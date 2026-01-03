@@ -90,6 +90,9 @@
     <ClCompile Include="source\CmHazel\Renderer\OrthographicCameraController.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="source\CmHazel\Renderer\Renderer2D.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\CmHazel\Core\Application.h">
@@ -201,6 +204,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="source\CmHazel\Renderer\OrthographicCameraController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="source\CmHazel\Renderer\Renderer2D.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

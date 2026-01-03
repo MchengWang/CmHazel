@@ -88,6 +88,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\CmHazel\Renderer\Renderer2D.cpp" />
     <ClCompile Include="source\CmHazel\Renderer\OrthographicCameraController.cpp" />
     <ClCompile Include="source\Platform\OpenGL\OpenGLTexture.cpp" />
     <ClCompile Include="source\Platform\OpenGL\OpenGLShader.cpp" />
@@ -120,6 +121,7 @@
     <ClCompile Include="third_party\stb_image\stb_image.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\CmHazel\Renderer\Renderer2D.h" />
     <ClInclude Include="source\CmHazel\Renderer\OrthographicCameraController.h" />
     <ClInclude Include="source\Platform\OpenGL\OpenGLTexture.h" />
     <ClInclude Include="source\Platform\OpenGL\OpenGLShader.h" />
