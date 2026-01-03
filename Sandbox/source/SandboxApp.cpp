@@ -132,43 +132,10 @@ public:
 
 		m_FlatColorShader.reset(CmHazel::Shader::Create(flatColorShaderVertexSrc, flatColorShaderFragmentSrc));
 
-		std::string textureShaderVertexSrc = R"(
-			#version 450 core
-			
-			layout(location = 0) in vec3 a_Position;
-			layout(location = 1) in vec2 a_TexCoord;
-
-			uniform mat4 u_ViewProjection;
-			uniform mat4 u_Transform;
-
-			out vec2 v_TexCoord;
-
-			void main()
-			{
-				v_TexCoord = a_TexCoord;
-				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);	
-			}
-		)";
-
-		std::string textureShaderFragmentSrc = R"(
-			#version 450 core
-			
-			layout(location = 0) out vec4 color;
-
-			in vec2 v_TexCoord;
-			
-			uniform sampler2D u_Texture;
-
-			void main()
-			{
-				color = texture(u_Texture, v_TexCoord);
-			}
-		)";
-
-		m_TextureShader.reset(CmHazel::Shader::Create(textureShaderVertexSrc, textureShaderFragmentSrc));
+		m_TextureShader.reset(CmHazel::Shader::Create("assets/shaders/Texture.glsl"));
 
 		m_Texture = CmHazel::Texture2D::Create("assets/textures/Checkerboard.png");
-		m_DogLogoTexture = CmHazel::Texture2D::Create("assets/textures/logo_dog.jpg");
+		m_PhtatoLogoTexture = CmHazel::Texture2D::Create("assets/textures/logo-potato.png");
 
 		std::dynamic_pointer_cast<CmHazel::OpenGLShader>(m_TextureShader)->Bind();
 		std::dynamic_pointer_cast<CmHazel::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
@@ -218,10 +185,10 @@ public:
 		m_Texture->Bind();
 		CmHazel::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
-		m_DogLogoTexture->Bind();
+		m_PhtatoLogoTexture->Bind();
 		CmHazel::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
-		// 三角形
+		 //三角形
 		//CmHazel::Renderer::Submit(m_Shader, m_VertexArray);
 
 		CmHazel::Renderer::EndScene();
@@ -246,7 +213,7 @@ private:
 	CmHazel::Shared<CmHazel::Shader> m_FlatColorShader, m_TextureShader;
 	CmHazel::Shared<CmHazel::VertexArray> m_SquareVA;
 
-	CmHazel::Shared<CmHazel::Texture2D> m_Texture, m_DogLogoTexture;
+	CmHazel::Shared<CmHazel::Texture2D> m_Texture, m_PhtatoLogoTexture;
 
 	CmHazel::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;
