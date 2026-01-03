@@ -55,7 +55,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>CM_PLATFORM_WINDOWS;CM_BUILD_DLL;CM_ENABLE_ASSERTS;GLFW_INCLUDE_NONE;_CRT_SECURE_NO_WARNINGS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>CM_DEBUG;GLFW_INCLUDE_NONE;_CRT_SECURE_NO_WARNINGS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalIncludeDirectories>$(SolutionDir)CmHazel\third_party\stb_image;$(SolutionDir)CmHazel\third_party\glm;$(SolutionDir)CmHazel\third_party\imgui;$(SolutionDir)CmHazel\third_party\glad\include;$(SolutionDir)CmHazel\third_party\glfw\include;$(SolutionDir)CmHazel\third_party\spdlog\include;$(SolutionDir)CmHazel\source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -74,7 +74,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>CM_PLATFORM_WINDOWS;CM_BUILD_DLL;CM_ENABLE_ASSERTS;GLFW_INCLUDE_NONE;_CRT_SECURE_NO_WARNINGS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>CM_DEBUG;GLFW_INCLUDE_NONE;_CRT_SECURE_NO_WARNINGS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalIncludeDirectories>$(SolutionDir)CmHazel\third_party\stb_image;$(SolutionDir)CmHazel\third_party\glm;$(SolutionDir)CmHazel\third_party\imgui;$(SolutionDir)CmHazel\third_party\glad\include;$(SolutionDir)CmHazel\third_party\glfw\include;$(SolutionDir)CmHazel\third_party\spdlog\include;$(SolutionDir)CmHazel\source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>

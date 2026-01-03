@@ -26,7 +26,7 @@ namespace CmHazel
 			glm::mat4 ViewProjectionMatrix;
 		};
 
-		static SceneData* s_SceneData;
+		static Unique<SceneData> s_SceneData;
 	};
 
 }

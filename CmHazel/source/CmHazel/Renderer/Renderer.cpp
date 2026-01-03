@@ -6,7 +6,7 @@
 namespace CmHazel
 {
 	
-	Renderer::SceneData* Renderer::s_SceneData = new Renderer::SceneData;
+	Unique<Renderer::SceneData> Renderer::s_SceneData = CreateUnique<Renderer::SceneData>();
 
 	void Renderer::Init()
 	{

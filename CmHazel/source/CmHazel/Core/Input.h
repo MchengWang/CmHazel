@@ -32,7 +32,7 @@ namespace CmHazel
 		virtual float GetMouseYImpl() = 0;
 
 	private:
-		static Input* s_Instance;
+		static Unique<Input> s_Instance;
 
 	};
 

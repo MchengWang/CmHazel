@@ -43,21 +43,21 @@ namespace CmHazel
 		Add(name, shader);
 	}
 
-	CmHazel::Shared<CmHazel::Shader> ShaderLibrary::Load(const std::string& filepath)
+	Shared<Shader> ShaderLibrary::Load(const std::string& filepath)
 	{
 		auto shader = Shader::Create(filepath);
 		Add(shader);
 		return shader;
 	}
 
-	CmHazel::Shared<CmHazel::Shader> ShaderLibrary::Load(const std::string& name, const std::string& filepath)
+	Shared<Shader> ShaderLibrary::Load(const std::string& name, const std::string& filepath)
 	{
 		auto shader = Shader::Create(filepath);
 		Add(name, shader);
 		return shader;
 	}
 
-	CmHazel::Shared<CmHazel::Shader> ShaderLibrary::Get(const std::string& name)
+	Shared<Shader> ShaderLibrary::Get(const std::string& name)
 	{
 		CM_CORE_ASSERT(Exists(name), "Shader not found!");
 		return m_Shader[name];

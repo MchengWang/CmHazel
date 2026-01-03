@@ -6,6 +6,6 @@
 namespace CmHazel
 {
 
-	RendererAPI* RenderCommand::s_RendererAPI = new OpenGLRendererAPI;
+	Unique<RendererAPI> RenderCommand::s_RendererAPI = CreateUnique<OpenGLRendererAPI>();
 
 }

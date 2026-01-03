@@ -7,7 +7,7 @@
 namespace CmHazel
 {
 
-	Input* Input::s_Instance = new WindowsInput();
+	Unique<Input> Input::s_Instance = CreateUnique<WindowsInput>();
 
 	bool WindowsInput::IsKeyPressedImpl(int keycode)
 	{
