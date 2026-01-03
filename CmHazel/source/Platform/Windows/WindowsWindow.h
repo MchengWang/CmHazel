@@ -1,6 +1,6 @@
 #pragma once
 
-#include "CmHazel/Window.h"
+#include "CmHazel/Core/Window.h"
 #include "CmHazel/Renderer/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>

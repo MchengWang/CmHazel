@@ -1,7 +1,7 @@
 #include "cmzpch.h"
 #include "Application.h"
 
-#include "CmHazel/Log.h"
+#include "CmHazel/Core/Log.h"
 
 #include "CmHazel/Renderer/Renderer.h"
 

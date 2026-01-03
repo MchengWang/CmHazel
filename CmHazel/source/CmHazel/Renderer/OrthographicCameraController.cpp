@@ -1,8 +1,8 @@
 #include "cmzpch.h"
 #include "OrthographicCameraController.h"
 
-#include "CmHazel/Input.h"
-#include "CmHazel/KeyCodes.h"
+#include "CmHazel/Core/Input.h"
+#include "CmHazel/Core/KeyCodes.h"
 
 namespace CmHazel
 {

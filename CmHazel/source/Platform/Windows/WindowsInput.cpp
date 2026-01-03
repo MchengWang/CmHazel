@@ -1,7 +1,7 @@
 #include "cmzpch.h"
 #include "WindowsInput.h"
 
-#include "CmHazel/Application.h"
+#include "CmHazel/Core/Application.h"
 #include <GLFW/glfw3.h>
 
 namespace CmHazel

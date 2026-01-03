@@ -15,10 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\CmHazel\Application.cpp">
+    <ClCompile Include="source\CmHazel\Core\Application.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="source\CmHazel\Log.cpp">
+    <ClCompile Include="source\CmHazel\Core\Log.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="source\cmzpch.cpp">
@@ -27,10 +27,10 @@
     <ClCompile Include="source\Platform\Windows\WindowsWindow.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="source\CmHazel\Layer.cpp">
+    <ClCompile Include="source\CmHazel\Core\Layer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="source\CmHazel\LayerStack.cpp">
+    <ClCompile Include="source\CmHazel\Core\LayerStack.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="source\CmHazel\ImGui\ImGuiLayer.cpp">
@@ -87,21 +87,21 @@
     <ClCompile Include="source\Platform\OpenGL\OpenGLTexture.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="source\CmHazel\OrthographicCameraController.cpp">
+    <ClCompile Include="source\CmHazel\Renderer\OrthographicCameraController.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="source\CmHazel\Application.h">
+    <ClInclude Include="source\CmHazel\Core\Application.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="source\CmHazel\Core.h">
+    <ClInclude Include="source\CmHazel\Core\Core.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="source\CmHazel\EntryPoint.h">
+    <ClInclude Include="source\CmHazel\Core\EntryPoint.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="source\CmHazel\Log.h">
+    <ClInclude Include="source\CmHazel\Core\Log.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="source\CMHAZEL.h">
@@ -122,31 +122,31 @@
     <ClInclude Include="source\cmzpch.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="source\CmHazel\Window.h">
+    <ClInclude Include="source\CmHazel\Core\Window.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="source\Platform\Windows\WindowsWindow.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="source\CmHazel\Layer.h">
+    <ClInclude Include="source\CmHazel\Core\Layer.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="source\CmHazel\LayerStack.h">
+    <ClInclude Include="source\CmHazel\Core\LayerStack.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="source\CmHazel\ImGui\ImGuiLayer.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="source\CmHazel\Input.h">
+    <ClInclude Include="source\CmHazel\Core\Input.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="source\Platform\Windows\WindowsInput.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="source\CmHazel\KeyCodes.h">
+    <ClInclude Include="source\CmHazel\Core\KeyCodes.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="source\CmHazel\MouseButtonCodes.h">
+    <ClInclude Include="source\CmHazel\Core\MouseButtonCodes.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="source\CmHazel\Renderer\GraphicsContext.h">
@@ -200,7 +200,7 @@
     <ClInclude Include="source\Platform\OpenGL\OpenGLTexture.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="source\CmHazel\OrthographicCameraController.h">
+    <ClInclude Include="source\CmHazel\Renderer\OrthographicCameraController.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

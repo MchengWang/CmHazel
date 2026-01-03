@@ -88,7 +88,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="source\CmHazel\OrthographicCameraController.cpp" />
+    <ClCompile Include="source\CmHazel\Renderer\OrthographicCameraController.cpp" />
     <ClCompile Include="source\Platform\OpenGL\OpenGLTexture.cpp" />
     <ClCompile Include="source\Platform\OpenGL\OpenGLShader.cpp" />
     <ClCompile Include="source\CmHazel\Renderer\OrthographicCamera.cpp" />
@@ -103,10 +103,10 @@
     <ClCompile Include="source\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="source\CmHazel\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="source\CmHazel\ImGui\ImGuiLayer.cpp" />
-    <ClCompile Include="source\CmHazel\LayerStack.cpp" />
-    <ClCompile Include="source\CmHazel\Layer.cpp" />
-    <ClCompile Include="source\CmHazel\Application.cpp" />
-    <ClCompile Include="source\CmHazel\Log.cpp" />
+    <ClCompile Include="source\CmHazel\Core\LayerStack.cpp" />
+    <ClCompile Include="source\CmHazel\Core\Layer.cpp" />
+    <ClCompile Include="source\CmHazel\Core\Application.cpp" />
+    <ClCompile Include="source\CmHazel\Core\Log.cpp" />
     <ClCompile Include="source\cmzpch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
@@ -120,7 +120,7 @@
     <ClCompile Include="third_party\stb_image\stb_image.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="source\CmHazel\OrthographicCameraController.h" />
+    <ClInclude Include="source\CmHazel\Renderer\OrthographicCameraController.h" />
     <ClInclude Include="source\Platform\OpenGL\OpenGLTexture.h" />
     <ClInclude Include="source\Platform\OpenGL\OpenGLShader.h" />
     <ClInclude Include="source\CmHazel\Core\Timestep.h" />
@@ -135,23 +135,23 @@
     <ClInclude Include="source\CmHazel\Renderer\Shader.h" />
     <ClInclude Include="source\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="source\CmHazel\ImGui\ImGuiLayer.h" />
-    <ClInclude Include="source\CmHazel\Input.h" />
-    <ClInclude Include="source\CmHazel\LayerStack.h" />
-    <ClInclude Include="source\CmHazel\Layer.h" />
+    <ClInclude Include="source\CmHazel\Core\Input.h" />
+    <ClInclude Include="source\CmHazel\Core\LayerStack.h" />
+    <ClInclude Include="source\CmHazel\Core\Layer.h" />
     <ClInclude Include="source\CMHAZEL.h" />
-    <ClInclude Include="source\CmHazel\Application.h" />
-    <ClInclude Include="source\CmHazel\Core.h" />
-    <ClInclude Include="source\CmHazel\EntryPoint.h" />
+    <ClInclude Include="source\CmHazel\Core\Application.h" />
+    <ClInclude Include="source\CmHazel\Core\Core.h" />
+    <ClInclude Include="source\CmHazel\Core\EntryPoint.h" />
     <ClInclude Include="source\CmHazel\Events\ApplicationEvent.h" />
     <ClInclude Include="source\CmHazel\Events\Event.h" />
     <ClInclude Include="source\CmHazel\Events\KeyEvent.h" />
     <ClInclude Include="source\CmHazel\Events\MouseEvent.h" />
-    <ClInclude Include="source\CmHazel\Log.h" />
-    <ClInclude Include="source\CmHazel\MouseButtonCodes.h" />
+    <ClInclude Include="source\CmHazel\Core\Log.h" />
+    <ClInclude Include="source\CmHazel\Core\MouseButtonCodes.h" />
     <ClInclude Include="source\CmHazel\Renderer\GraphicsContext.h" />
-    <ClInclude Include="source\CmHazel\Window.h" />
+    <ClInclude Include="source\CmHazel\Core\Window.h" />
     <ClInclude Include="source\cmzpch.h" />
-    <ClInclude Include="source\CmHazel\KeyCodes.h" />
+    <ClInclude Include="source\CmHazel\Core\KeyCodes.h" />
     <ClInclude Include="source\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="source\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="source\CmHazel\Renderer\VertexArray.h" />

@@ -14,7 +14,7 @@
 #include <unordered_set>
 #include <utility>
 
-#include "CmHazel/Log.h"
+#include "CmHazel/Core/Log.h"
 
 #ifdef CM_PLATFORM_WINDOWS
 	#include <Windows.h>

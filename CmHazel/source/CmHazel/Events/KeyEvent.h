@@ -2,7 +2,7 @@
 
 #include "Event.h"
 
-#include "CmHazel/KeyCodes.h"
+#include "CmHazel/Core/KeyCodes.h"
 
 namespace CmHazel {
 

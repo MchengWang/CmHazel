@@ -2,7 +2,7 @@
 
 #include <cstring>
 
-#include "CmHazel/Core.h"
+#include "CmHazel/Core/Core.h"
 
 namespace CmHazel
 {

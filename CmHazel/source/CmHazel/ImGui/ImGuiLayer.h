@@ -1,6 +1,6 @@
 #pragma once
 
-#include "CmHazel/Layer.h"
+#include "CmHazel/Core/Layer.h"
 
 #include "CmHazel/Events/ApplicationEvent.h"
 #include "CmHazel/Events/KeyEvent.h"

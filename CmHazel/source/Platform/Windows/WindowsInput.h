@@ -1,6 +1,6 @@
 #pragma once
 
-#include "CmHazel/Input.h"
+#include "CmHazel/Core/Input.h"
 
 namespace CmHazel
 {

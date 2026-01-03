@@ -1,16 +1,16 @@
 #pragma once
 
 // CmHazel 应用使用
-#include "CmHazel/Application.h"
-#include "CmHazel/Layer.h"
-#include "CmHazel/Log.h"
+#include "CmHazel/Core/Application.h"
+#include "CmHazel/Core/Layer.h"
+#include "CmHazel/Core/Log.h"
 
 #include "CmHazel/Core/Timestep.h"
 
-#include "CmHazel/Input.h"
-#include "CmHazel/KeyCodes.h"
-#include "CmHazel/MouseButtonCodes.h"
-#include "CmHazel/OrthographicCameraController.h"
+#include "CmHazel/Core/Input.h"
+#include "CmHazel/Core/KeyCodes.h"
+#include "CmHazel/Core/MouseButtonCodes.h"
+#include "CmHazel/Renderer/OrthographicCameraController.h"
 
 #include "CmHazel/ImGui/ImGuiLayer.h"
 
@@ -27,5 +27,5 @@
 //-------------------------------
 
 // --------- 入口点 -------------
-#include "CmHazel/EntryPoint.h"
+#include "CmHazel/Core/EntryPoint.h"
 // ------------------------------

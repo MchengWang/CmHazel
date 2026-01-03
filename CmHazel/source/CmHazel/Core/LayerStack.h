@@ -1,6 +1,6 @@
 #pragma once
 
-#include "CmHazel/Core.h"
+#include "CmHazel/Core/Core.h"
 #include "Layer.h"
 
 #include <vector>
