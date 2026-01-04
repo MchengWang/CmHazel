@@ -22,5 +22,7 @@ private:
 	CmHazel::Shared<CmHazel::VertexArray> m_SquareVA;
 	CmHazel::Shared<CmHazel::Shader> m_FlatColorShader;
 
+	CmHazel::Shared<CmHazel::Texture2D> m_CheckerboardTexture;
+
 	glm::vec4 m_SquareColor = { 0.2f, 0.3f, 0.8f, 1.0f };
 };
