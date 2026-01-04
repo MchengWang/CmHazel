@@ -88,6 +88,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\CmHazel\Renderer\GraphicsContext.cpp" />
     <ClCompile Include="source\CmHazel\Renderer\Renderer2D.cpp" />
     <ClCompile Include="source\CmHazel\Renderer\OrthographicCameraController.cpp" />
     <ClCompile Include="source\Platform\OpenGL\OpenGLTexture.cpp" />

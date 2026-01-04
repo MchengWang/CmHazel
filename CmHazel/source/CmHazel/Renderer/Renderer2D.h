@@ -1,8 +1,8 @@
 #pragma once
 
-#include "OrthographicCamera.h"
+#include "CmHazel/Renderer/OrthographicCamera.h"
 
-#include "Texture.h"
+#include "CmHazel/Renderer/Texture.h"
 
 namespace CmHazel
 {

@@ -1,12 +1,8 @@
 #include "cmzpch.h"
-#include "LayerStack.h"
+#include "CmHazel/Core/LayerStack.h"
 
 namespace CmHazel
 {
-
-	LayerStack::LayerStack()
-	{
-	}
 
 	LayerStack::~LayerStack()
 	{

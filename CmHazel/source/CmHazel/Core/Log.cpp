@@ -1,13 +1,13 @@
 #include "cmzpch.h"
-#include "Log.h"
+#include "CmHazel/Core/Log.h"
 
-#include "spdlog/sinks/stdout_color_sinks.h"
+#include <spdlog/sinks/stdout_color_sinks.h>
 
 namespace CmHazel
 {
 
-	std::shared_ptr<spdlog::logger> Log::s_CoreLogger;
-	std::shared_ptr<spdlog::logger> Log::s_ClientLogger;
+	Shared<spdlog::logger> Log::s_CoreLogger;
+	Shared<spdlog::logger> Log::s_ClientLogger;
 
 	void Log::Init()
 	{

@@ -1,5 +1,5 @@
 #include "cmzpch.h"
-#include "WindowsWindow.h"
+#include "Platform/Windows/WindowsWindow.h"
 
 #include "CmHazel/Events/ApplicationEvent.h"
 #include "CmHazel/Events/MouseEvent.h"
@@ -17,9 +17,9 @@ namespace CmHazel
 		CM_CORE_ERROR("GLFW Error ({0}: {1})", error, description);
 	}
 
-	Window* Window::Create(const WindowProps& props)
+	Unique<Window> Window::Create(const WindowProps& props)
 	{
-		return new WindowsWindow(props);
+		return CreateUnique<WindowsWindow>(props);
 	}
 
 	WindowsWindow::WindowsWindow(const WindowProps& props)
@@ -42,7 +42,6 @@ namespace CmHazel
 
 		if (s_GLFWInitialized == 0)
 		{
-			CM_CORE_INFO("Intializing GLFW");
 			// glfwTerminate 在系统关闭时
 			int success = glfwInit();
 			CM_CORE_ASSERT(success, "Could not intialize GLFW");
@@ -53,7 +52,7 @@ namespace CmHazel
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
 		++s_GLFWInitialized;
 		
-		m_Context = CreateUnique<OpenGLContext>(m_Window);
+		m_Context = GraphicsContext::Create(m_Window);
 
 		m_Context->Init();
 
@@ -155,10 +154,10 @@ namespace CmHazel
 	void WindowsWindow::Shutdown()
 	{
 		glfwDestroyWindow(m_Window);
+		--s_GLFWInitialized;
 
-		if (--s_GLFWInitialized == 0)
+		if (s_GLFWInitialized == 0)
 		{
-			CM_CORE_INFO("Terminating GLFW");
 			glfwTerminate();
 		}
 	}

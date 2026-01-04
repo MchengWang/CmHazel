@@ -1,11 +1,9 @@
 #include "cmzpch.h"
-#include "RenderCommand.h"
-
-#include "Platform/OpenGL/OpenGLRendererAPI.h"
+#include "CmHazel/Renderer/RenderCommand.h"
 
 namespace CmHazel
 {
 
-	Unique<RendererAPI> RenderCommand::s_RendererAPI = CreateUnique<OpenGLRendererAPI>();
+	Unique<RendererAPI> RenderCommand::s_RendererAPI = RendererAPI::Create();
 
 }

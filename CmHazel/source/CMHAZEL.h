@@ -1,6 +1,8 @@
 #pragma once
 
 // CmHazel 应用使用
+#include "CmHazel/Core/Core.h"
+
 #include "CmHazel/Core/Application.h"
 #include "CmHazel/Core/Layer.h"
 #include "CmHazel/Core/Log.h"

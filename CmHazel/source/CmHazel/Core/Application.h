@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Core.h"
+#include "CmHazel/Core/Core.h"
 
-#include "Window.h"
+#include "CmHazel/Core/Window.h"
 #include "CmHazel/Core/LayerStack.h"
 #include "CmHazel/Events/Event.h"
 #include "CmHazel/Events/ApplicationEvent.h"
@@ -14,11 +14,11 @@
 namespace CmHazel
 {
 
-	class CMHAZEL_API Application
+	class Application
 	{
 	public:
 		Application();
-		virtual ~Application() = default;
+		virtual ~Application();
 
 		void Run();
 

@@ -36,7 +36,7 @@ namespace CmHazel {
 
 #define EVENT_CLASS_CATEGORY(category) virtual int GetCategoryFlags() const override { return category; }
 
-	class CMHAZEL_API Event
+	class Event
 	{
 	public:
 		bool Handled = false;
@@ -54,7 +54,7 @@ namespace CmHazel {
 		
 	};
 
-	class CMHAZEL_API EventDispatcher
+	class EventDispatcher
 	{
 	public:
 		EventDispatcher(Event& event)

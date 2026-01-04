@@ -7,7 +7,7 @@
 namespace CmHazel
 {
 
-	class CMHAZEL_API Input
+	class Input
 	{
 	protected:
 		Input() = default;

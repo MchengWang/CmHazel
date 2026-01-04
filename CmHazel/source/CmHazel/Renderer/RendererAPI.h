@@ -2,7 +2,7 @@
 
 #include <glm/glm.hpp>
 
-#include "VertexArray.h"
+#include "CmHazel/Renderer/VertexArray.h"
 
 namespace CmHazel
 {
@@ -21,9 +21,10 @@ namespace CmHazel
 		virtual void SetClearColor(const glm::vec4& color) = 0;
 		virtual void Clear() = 0;
 
-		virtual void DrawIndexed(const std::shared_ptr<VertexArray>& vertexArray) = 0;
+		virtual void DrawIndexed(const Shared<VertexArray>& vertexArray) = 0;
 
 		inline  static API GetAPI() { return s_API; }
+		static Unique<RendererAPI> Create();
 
 	private:
 		static API s_API;

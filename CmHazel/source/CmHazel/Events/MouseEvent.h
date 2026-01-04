@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Event.h"
+#include "CmHazel/Events/Event.h"
 
 namespace CmHazel
 {
 
-	class CMHAZEL_API MouseMovedEvent : public Event
+	class MouseMovedEvent : public Event
 	{
 	public:
 		MouseMovedEvent(float x, float y)
@@ -28,7 +28,7 @@ namespace CmHazel
 		float m_MouseX, m_MouseY;
 	};
 
-	class CMHAZEL_API MouseScrolledEvent : public Event
+	class MouseScrolledEvent : public Event
 	{
 	public:
 		MouseScrolledEvent(float x, float y)
@@ -52,7 +52,7 @@ namespace CmHazel
 		float m_XOffset, m_YOffset;
 	};
 
-	class CMHAZEL_API MouseButtonEvent : public Event
+	class MouseButtonEvent : public Event
 	{
 	public:
 		inline int GetMouseButton() const { return m_Button; }
@@ -66,7 +66,7 @@ namespace CmHazel
 		int m_Button;
 	};
 
-	class CMHAZEL_API MouseButtonPressedEvent : public MouseButtonEvent
+	class MouseButtonPressedEvent : public MouseButtonEvent
 	{
 	public:
 		MouseButtonPressedEvent(int button)
@@ -83,7 +83,7 @@ namespace CmHazel
 		EVENT_CLASS_TYPE(MouseButtonPressed)
 	};
 
-	class CMHAZEL_API MouseButtonReleasedEvent : public MouseButtonEvent
+	class MouseButtonReleasedEvent : public MouseButtonEvent
 	{
 	public:
 		MouseButtonReleasedEvent(int button)

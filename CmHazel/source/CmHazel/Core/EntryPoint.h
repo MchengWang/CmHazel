@@ -1,4 +1,5 @@
 #pragma once
+#include "CmHazel/Core/Core.h"
 
 #ifdef CM_PLATFORM_WINDOWS
 

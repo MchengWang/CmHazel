@@ -1,9 +1,9 @@
 #include "cmzpch.h"
-#include "Renderer2D.h"
+#include "CmHazel/Renderer/Renderer2D.h"
 
-#include "VertexArray.h"
-#include "Shader.h"
-#include "RenderCommand.h"
+#include "CmHazel/Renderer/VertexArray.h"
+#include "CmHazel/Renderer/Shader.h"
+#include "CmHazel/Renderer/RenderCommand.h"
 
 #include <glm/gtc/matrix_transform.hpp>
 
@@ -31,8 +31,7 @@ namespace CmHazel
 			-0.5f,  0.5f, 0.0f, 0.0f, 1.0f,
 		};
 
-		Shared<VertexBuffer> squareVB;
-		squareVB.reset(VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
+		Shared<VertexBuffer> squareVB = VertexBuffer::Create(squareVertices, sizeof(squareVertices));
 		
 		squareVB->SetLayout({
 			{ ShaderDataType::Float3, "a_Position"},
@@ -41,8 +40,7 @@ namespace CmHazel
 		s_Data->QuadVertexArray->AddVertexBuffer(squareVB);
 
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-		Shared<IndexBuffer> squareIB;
-		squareIB.reset(IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
+		Shared<IndexBuffer> squareIB = IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t));
 
 		s_Data->QuadVertexArray->SetIndexBuffer(squareIB);
 

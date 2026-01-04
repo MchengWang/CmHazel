@@ -1,7 +1,7 @@
 #include "cmzpch.h"
-#include "Texture.h"
+#include "CmHazel/Renderer/Texture.h"
 
-#include "Renderer.h"
+#include "CmHazel/Renderer/Renderer.h"
 #include "Platform/OpenGL/OpenGLTexture.h"
 
 namespace CmHazel

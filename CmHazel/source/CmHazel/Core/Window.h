@@ -20,7 +20,7 @@ namespace CmHazel
 	};
 
 	// 表示基于桌面系统的窗口的接口
-	class CMHAZEL_API Window
+	class Window
 	{
 	public:
 		using EventCallbackFn = std::function<void(Event&)>;
@@ -39,7 +39,7 @@ namespace CmHazel
 
 		virtual void* GetNativeWindow() const = 0;
 
-		static Window* Create(const WindowProps& props = WindowProps());
+		static Unique<Window> Create(const WindowProps& props = WindowProps());
 	};
 
 }

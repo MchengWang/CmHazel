@@ -1,17 +1,17 @@
 #pragma once
 
 #include "CmHazel/Core/Core.h"
-#include "Layer.h"
+#include "CmHazel/Core/Layer.h"
 
 #include <vector>
 
 namespace CmHazel
 {
 
-	class CMHAZEL_API LayerStack
+	class LayerStack
 	{
 	public:
-		LayerStack();
+		LayerStack() = default;
 		~LayerStack();
 
 		void PushLayer(Layer* layer);

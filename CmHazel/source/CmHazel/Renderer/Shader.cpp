@@ -1,7 +1,8 @@
 #include "cmzpch.h"
 #include "Shader.h"
 
-#include "Renderer.h"
+#include "CmHazel/Renderer/Shader.h"
+#include "CmHazel/Renderer/Renderer.h"
 #include "Platform/OpenGL/OpenGLShader.h"
 
 namespace CmHazel
@@ -12,7 +13,7 @@ namespace CmHazel
 		switch (Renderer::GetAPI())
 		{
 		case RendererAPI::API::None:    CM_CORE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
-		case RendererAPI::API::OpenGL:  return std::make_shared<OpenGLShader>(filepath);
+		case RendererAPI::API::OpenGL:  return CreateShared<OpenGLShader>(filepath);
 		}
 
 		CM_CORE_ASSERT(false, "Unknown RendererAPI!");
@@ -24,7 +25,7 @@ namespace CmHazel
 		switch (Renderer::GetAPI())
 		{
 		case RendererAPI::API::None:    CM_CORE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
-		case RendererAPI::API::OpenGL:  return std::make_shared<OpenGLShader>(name, vertexSrc, fragmentSrc);
+		case RendererAPI::API::OpenGL:  return CreateShared<OpenGLShader>(name, vertexSrc, fragmentSrc);
 		}
 
 		CM_CORE_ASSERT(false, "Unknown RendererAPI!");

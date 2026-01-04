@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RendererAPI.h"
+#include "CmHazel/Renderer/RendererAPI.h"
 
 namespace CmHazel
 {
@@ -28,7 +28,7 @@ namespace CmHazel
 			s_RendererAPI->Clear();
 		}
 
-		inline static void DrawIndexed(const std::shared_ptr<VertexArray>& vertexArray)
+		inline static void DrawIndexed(const Shared<VertexArray>& vertexArray)
 		{
 			s_RendererAPI->DrawIndexed(vertexArray);
 		}

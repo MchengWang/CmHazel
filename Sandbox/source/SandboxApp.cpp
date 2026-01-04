@@ -1,9 +1,7 @@
 #include <CmHazel.h>
 #include <CmHazel/Core/EntryPoint.h>
 
-#include "Platform/OpenGL/OpenGLShader.h"
-
-#include "imgui/imgui.h"
+#include <imgui/imgui.h>
 
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
@@ -24,8 +22,7 @@ public:
 			 0.0f,  0.5f, 0.0f, 0.8f, 0.8f, 0.2f, 1.0f,
 		};
 
-		CmHazel::Shared<CmHazel::VertexBuffer> vertexBuffer;
-		vertexBuffer.reset(CmHazel::VertexBuffer::Create(vertices, sizeof(vertices)));
+		CmHazel::Shared<CmHazel::VertexBuffer> vertexBuffer = CmHazel::VertexBuffer::Create(vertices, sizeof(vertices));
 
 		CmHazel::BufferLayout layout = {
 			{CmHazel::ShaderDataType::Float3, "a_Position"},
@@ -36,8 +33,7 @@ public:
 		m_VertexArray->AddVertexBuffer(vertexBuffer);
 
 		uint32_t indices[3] = { 0, 1, 2 };
-		CmHazel::Shared<CmHazel::IndexBuffer> indexBuffer;
-		indexBuffer.reset(CmHazel::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
+		CmHazel::Shared<CmHazel::IndexBuffer> indexBuffer = CmHazel::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
 		m_SquareVA = CmHazel::VertexArray::Create();
@@ -49,8 +45,7 @@ public:
 			-0.5f,  0.5f, 0.0f, 0.0f, 1.0f,
 		};
 
-		CmHazel::Shared<CmHazel::VertexBuffer> squareVB;
-		squareVB.reset(CmHazel::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
+		CmHazel::Shared<CmHazel::VertexBuffer> squareVB = CmHazel::VertexBuffer::Create(squareVertices, sizeof(squareVertices));
 
 		squareVB->SetLayout({
 			{CmHazel::ShaderDataType::Float3, "a_Position"},
@@ -60,8 +55,7 @@ public:
 		m_SquareVA->AddVertexBuffer(squareVB);
 
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-		CmHazel::Shared<CmHazel::IndexBuffer> squareIB;
-		squareIB.reset(CmHazel::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
+		CmHazel::Shared<CmHazel::IndexBuffer> squareIB = CmHazel::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t));
 		m_SquareVA->SetIndexBuffer(squareIB);
 	
 		std::string vertexSrc = R"(
@@ -140,8 +134,8 @@ public:
 		m_Texture = CmHazel::Texture2D::Create("assets/textures/Checkerboard.png");
 		m_PhtatoLogoTexture = CmHazel::Texture2D::Create("assets/textures/logo-potato.png");
 
-		std::dynamic_pointer_cast<CmHazel::OpenGLShader>(textureShader)->Bind();
-		std::dynamic_pointer_cast<CmHazel::OpenGLShader>(textureShader)->UploadUniformInt("u_Texture", 0);
+		textureShader->Bind();
+		textureShader->SetInt("u_Texture", 0);
 
 	}
 
@@ -158,8 +152,8 @@ public:
 
 		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 
-		std::dynamic_pointer_cast<CmHazel::OpenGLShader>(m_FlatColorShader)->Bind();
-		std::dynamic_pointer_cast<CmHazel::OpenGLShader>(m_FlatColorShader)->UploadUniformFloat3("u_Color", m_SquareColor);
+		m_FlatColorShader->Bind();
+		m_FlatColorShader->SetFloat3("u_Color", m_SquareColor);
 		
 		for (int y = 0; y < 20; y++)
 		{

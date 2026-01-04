@@ -42,21 +42,6 @@
 	#error "Unkown platform!"
 #endif // _WIN32
 
-// DLL Ö§³Ö
-#ifdef CM_PLATFORM_WINDOWS
-	#if CM_DYNAMIC_LINK
-		#ifdef CM_BUILD_DLL
-			#define CMHAZEL_API __declspec(dllexport)
-		#else
-			#define CMHAZEL_API __declspec(dllimport)
-		#endif // CM_BUILD_DLL
-	#else
-		#define CMHAZEL_API
-	#endif // CM_DYNAMIC_LINK
-#else
-	#error CmHazel only supports Windows!
-#endif // CM_PLATFORM_WINDOWS
-
 #ifdef CM_DEBUG
 	#define CM_ENABLE_ASSERTS
 #endif // CM_DEBUG
