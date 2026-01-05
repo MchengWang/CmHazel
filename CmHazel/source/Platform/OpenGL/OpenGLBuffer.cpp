@@ -66,6 +66,9 @@ namespace CmHazel
 		CM_PROFILE_FUNCTION();
 
 		glCreateBuffers(1, &m_RendererID);
+
+		// 在没有主动绑定 VAO 的情况下，GL_ELEMENT_ARRAY_BUFFER 无效。
+		// 使用 GL_ARRAY_BUFFER 绑定可以在不管 VAO 状态的情况下加载数据。
 		glBindBuffer(GL_ARRAY_BUFFER, m_RendererID);
 		glBufferData(GL_ARRAY_BUFFER, count * sizeof(uint32_t), indices, GL_STATIC_DRAW);
 	}

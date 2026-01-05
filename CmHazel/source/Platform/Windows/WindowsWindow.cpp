@@ -49,7 +49,7 @@ namespace CmHazel
 		{
 			// glfwTerminate 在系统关闭时
 			int success = glfwInit();
-			CM_CORE_ASSERT(success, "Could not intialize GLFW");
+			CM_CORE_ASSERT(success, "Could not initialize GLFW");
 
 			glfwSetErrorCallback(GLFWErrorCallback);
 		}
