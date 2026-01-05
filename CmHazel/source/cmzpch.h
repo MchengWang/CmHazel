@@ -12,9 +12,10 @@
 #include <vector>
 #include <unordered_map>
 #include <unordered_set>
-#include <utility>
 
 #include "CmHazel/Core/Log.h"
+
+#include "CmHazel/Debug/Instrumentor.h"
 
 #ifdef CM_PLATFORM_WINDOWS
 	#include <Windows.h>

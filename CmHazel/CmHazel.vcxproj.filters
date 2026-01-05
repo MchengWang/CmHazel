@@ -212,5 +212,8 @@
     <ClInclude Include="source\CmHazel\Renderer\Renderer2D.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="source\CmHazel\Debug\Instrumentor.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

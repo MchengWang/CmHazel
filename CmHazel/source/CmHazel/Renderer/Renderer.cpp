@@ -10,6 +10,8 @@ namespace CmHazel
 
 	void Renderer::Init()
 	{
+		CM_PROFILE_FUNCTION();
+
 		RenderCommand::Init();
 		Renderer2D::Init();
 	}

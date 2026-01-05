@@ -10,13 +10,17 @@ int main()
 	// 初始化引擎日志
 	CmHazel::Log::Init();
 
-	CM_CORE_WARN("Initialized Log!");
-	int a = 10;
-	CM_INFO("Hello! Var = {0}", a);
-
+	CM_PROFILE_BEGIN_SESSION("Startup", "CmHazelProfile-Startup.json");
 	auto app = CmHazel::CreateApplication();
+	CM_PROFILE_END_SESSION();
+
+	CM_PROFILE_BEGIN_SESSION("Runtime", "CmHazelProfile-Runtime.json");
 	app->Run();
+	CM_PROFILE_END_SESSION();
+
+	CM_PROFILE_BEGIN_SESSION("Startup", "CmHazelProfile-Shutdown.json");
 	delete app;
+	CM_PROFILE_END_SESSION();
 }
 
 #else

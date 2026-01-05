@@ -16,6 +16,8 @@ namespace CmHazel
 
 	void OpenGLContext::Init()
 	{
+		CM_PROFILE_FUNCTION();
+
 		glfwMakeContextCurrent(m_WindowHandle);
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		CM_CORE_ASSERT(status, "Failed to intialized Glad");
@@ -38,6 +40,8 @@ namespace CmHazel
 
 	void OpenGLContext::SwapBuffers()
 	{
+		CM_PROFILE_FUNCTION();
+
 		glfwSwapBuffers(m_WindowHandle);
 	}
 
