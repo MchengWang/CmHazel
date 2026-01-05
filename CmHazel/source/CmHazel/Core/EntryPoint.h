@@ -1,5 +1,5 @@
 #pragma once
-#include "CmHazel/Core/Core.h"
+#include "CmHazel/Core/Base.h"
 
 #ifdef CM_PLATFORM_WINDOWS
 
