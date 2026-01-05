@@ -23,6 +23,7 @@
 
 #include "CmHazel/Renderer/Buffer.h"
 #include "CmHazel/Renderer/Shader.h"
+#include "CmHazel/Renderer/Framebuffer.h"
 #include "CmHazel/Renderer/Texture.h"
 #include "CmHazel/Renderer/VertexArray.h"
 

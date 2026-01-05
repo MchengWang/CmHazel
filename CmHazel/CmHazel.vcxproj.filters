@@ -102,6 +102,12 @@
     <ClCompile Include="source\CmHazel\Core\Window.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="source\CmHazel\Renderer\Framebuffer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Platform\OpenGL\OpenGLFramebuffer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\CmHazel\Core\Application.h">
@@ -222,6 +228,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="source\CmHazel\Core\MouseCodes.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="source\CmHazel\Renderer\Framebuffer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Platform\OpenGL\OpenGLFramebuffer.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

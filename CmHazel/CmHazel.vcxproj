@@ -88,6 +88,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\Platform\OpenGL\OpenGLFramebuffer.cpp" />
+    <ClCompile Include="source\CmHazel\Renderer\Framebuffer.cpp" />
     <ClCompile Include="source\CmHazel\Core\Input.cpp" />
     <ClCompile Include="source\CmHazel\Core\Window.cpp" />
     <ClCompile Include="source\CmHazel\Renderer\GraphicsContext.cpp" />
@@ -124,6 +126,8 @@
     <ClCompile Include="third_party\stb_image\stb_image.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\Platform\OpenGL\OpenGLFramebuffer.h" />
+    <ClInclude Include="source\CmHazel\Renderer\Framebuffer.h" />
     <ClInclude Include="source\CmHazel\Core\MouseCodes.h" />
     <ClInclude Include="source\CmHazel\Debug\Instrumentor.h" />
     <ClInclude Include="source\CmHazel\Renderer\Renderer2D.h" />
