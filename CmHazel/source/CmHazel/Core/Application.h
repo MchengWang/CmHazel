@@ -19,7 +19,7 @@ namespace CmHazel
 	class Application
 	{
 	public:
-		Application();
+		Application(const std::string& name = "CmHazel App");
 		virtual ~Application();
 
 		void OnEvent(Event& e);

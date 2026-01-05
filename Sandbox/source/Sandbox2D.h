@@ -21,7 +21,6 @@ private:
 	// temp
 	CmHazel::Shared<CmHazel::VertexArray> m_SquareVA;
 	CmHazel::Shared<CmHazel::Shader> m_FlatColorShader;
-	CmHazel::Shared<CmHazel::Framebuffer> m_Framebuffer;
 
 	CmHazel::Shared<CmHazel::Texture2D> m_CheckerboardTexture;
 
