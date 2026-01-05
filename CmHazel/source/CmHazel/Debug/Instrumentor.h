@@ -7,7 +7,8 @@
 #include <string>
 #include <thread>
 
-namespace CmHazel {
+namespace CmHazel 
+{
 
 	using FloatingPointMicroseconds = std::chrono::duration<double, std::micro>;
 

@@ -40,6 +40,7 @@ void Sandbox2D::OnUpdate(CmHazel::Timestep ts)
 		CM_PROFILE_SCOPE("Renderer Draw");
 		CmHazel::Renderer2D::BeginScene(m_CameraController.GetCamera());
 		CmHazel::Renderer2D::DrawQuad({ -1.0f, 0.0f }, { 0.8f, 0.8f }, { 0.8f, 0.2f, 0.3f, 1.0f });
+		// CmHazel::Renderer2D::DrawQuad(m_CameraController.GetCamera().GetPosition(), {0.8f, 0.8f}, {0.8f, 0.2f, 0.3f, 1.0f});
 		CmHazel::Renderer2D::DrawQuad({ 0.5f, -0.5f }, { 0.5f, 0.75f }, { 0.2f, 0.3f, 0.8f, 1.0f });
 		CmHazel::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, { 10.0f, 10.0f }, m_CheckerboardTexture);
 		CmHazel::Renderer2D::EndScene();

@@ -3,7 +3,8 @@
 #include "CmHazel/Events/Event.h"
 #include "CmHazel/Core/Input.h"
 
-namespace CmHazel {
+namespace CmHazel 
+{
 
 	class KeyEvent : public Event
 	{
