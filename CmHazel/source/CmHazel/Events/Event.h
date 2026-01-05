@@ -2,7 +2,7 @@
 
 #include "cmzpch.h"
 
-#include "CmHazel/Core/Core.h"
+#include "CmHazel/Core/Base.h"
 
 namespace CmHazel {
 

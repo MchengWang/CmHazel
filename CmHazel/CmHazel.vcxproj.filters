@@ -107,7 +107,7 @@
     <ClInclude Include="source\CmHazel\Core\Application.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="source\CmHazel\Core\Core.h">
+    <ClInclude Include="source\CmHazel\Core\Base.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="source\CmHazel\Core\EntryPoint.h">

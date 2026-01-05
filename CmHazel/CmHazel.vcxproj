@@ -147,7 +147,7 @@
     <ClInclude Include="source\CmHazel\Core\Layer.h" />
     <ClInclude Include="source\CMHAZEL.h" />
     <ClInclude Include="source\CmHazel\Core\Application.h" />
-    <ClInclude Include="source\CmHazel\Core\Core.h" />
+    <ClInclude Include="source\CmHazel\Core\Base.h" />
     <ClInclude Include="source\CmHazel\Core\EntryPoint.h" />
     <ClInclude Include="source\CmHazel\Events\ApplicationEvent.h" />
     <ClInclude Include="source\CmHazel\Events\Event.h" />
