@@ -28,7 +28,7 @@ namespace CmHazel
 		auto shaderSources = PreProcess(source);
 		Compile(shaderSources);
 
-		// Extract name from filepath
+		// 从文件路径中提取名称
 		auto lastSlash = filepath.find_last_of("/\\");
 		lastSlash = lastSlash == std::string::npos ? 0 : lastSlash + 1;
 		auto lastDot = filepath.rfind('.');

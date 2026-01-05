@@ -6,10 +6,9 @@
 
 namespace CmHazel {
 
-	// Events in Hazel are currently blocking, meaning when an event occurs it
-	// immediately gets dispatched and must be dealt with right then an there.
-	// For the future, a better strategy might be to buffer events in an event
-	// bus and process them during the "event" part of the update stage.
+	// 引擎中的事件目前是阻塞的，这意味着当事件发生时，
+	// 它会立即被分发，并且必须立即处理。未来，一个更好的策略可能是在事件总线上缓冲事件，
+	// 并在更新阶段的“事件”部分处理它们。
 
 	enum class EventType
 	{
