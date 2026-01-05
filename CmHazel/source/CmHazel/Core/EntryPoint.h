@@ -5,7 +5,7 @@
 
 extern CmHazel::Application* CmHazel::CreateApplication();
 
-int main()
+int main(int argc, char** argv)
 {
 	// 初始化引擎日志
 	CmHazel::Log::Init();

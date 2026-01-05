@@ -1,24 +1,23 @@
 #pragma once
 
 #include "CmHazel/Events/Event.h"
-
-#include "CmHazel/Core/KeyCodes.h"
+#include "CmHazel/Core/Input.h"
 
 namespace CmHazel {
 
 	class KeyEvent : public Event
 	{
 	public:
-		inline int GetKeyCode() const { return m_KeyCode; }
+		inline KeyCode GetKeyCode() const { return m_KeyCode; }
         //inline int GetNativeKeyCode() const { return GK_TO_IK(m_KeyCode); }
 
 		EVENT_CLASS_CATEGORY(EventCategoryKeyboard | EventCategoryInput)
 	protected:
-		KeyEvent(int keycode)
+		KeyEvent(KeyCode keycode)
 			: m_KeyCode(keycode) {
 		}
 
-		int m_KeyCode;
+		KeyCode m_KeyCode;
 
 		//protected:
   //          int GK_TO_IK(int keycode) const
@@ -152,7 +151,7 @@ namespace CmHazel {
 	class KeyPressedEvent : public KeyEvent
 	{
 	public:
-		KeyPressedEvent(int keycode, int repeatCount)
+		KeyPressedEvent(KeyCode keycode, int repeatCount)
 			: KeyEvent(keycode), m_RepeatCount(repeatCount) {
 		}
 
@@ -173,7 +172,7 @@ namespace CmHazel {
 	class KeyReleasedEvent : public KeyEvent
 	{
 	public:
-		KeyReleasedEvent(int keycode)
+		KeyReleasedEvent(KeyCode keycode)
 			: KeyEvent(keycode) {
 		}
 
@@ -190,7 +189,7 @@ namespace CmHazel {
 	class KeyTypedEvent : public KeyEvent
 	{
 	public:
-		KeyTypedEvent(int keycode)
+		KeyTypedEvent(KeyCode keycode)
 			: KeyEvent(keycode)
 		{ }
 

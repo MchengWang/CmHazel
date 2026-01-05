@@ -11,6 +11,8 @@
 
 #include "CmHazel/ImGui/ImGuiLayer.h"
 
+int main(int argc, char** argv);
+
 namespace CmHazel
 {
 
@@ -19,8 +21,6 @@ namespace CmHazel
 	public:
 		Application();
 		virtual ~Application();
-
-		void Run();
 
 		void OnEvent(Event& e);
 		
@@ -32,6 +32,8 @@ namespace CmHazel
 		inline static Application& Get() { return *s_Instance; }
 
 	private:
+		void Run();
+
 		bool OnWindowClose(WindowCloseEvent& e);
 		bool OnWindowResize(WindowResizeEvent& e);
 
@@ -45,6 +47,7 @@ namespace CmHazel
 
 	private:
 		static Application* s_Instance;
+		friend int ::main(int argc, char** argv);
 
 	};
 

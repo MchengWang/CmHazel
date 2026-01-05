@@ -11,7 +11,7 @@
 
 #include "CmHazel/Core/Input.h"
 #include "CmHazel/Core/KeyCodes.h"
-#include "CmHazel/Core/MouseButtonCodes.h"
+#include "CmHazel/Core/MouseCodes.h"
 #include "CmHazel/Renderer/OrthographicCameraController.h"
 
 #include "CmHazel/ImGui/ImGuiLayer.h"
