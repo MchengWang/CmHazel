@@ -34,7 +34,8 @@ namespace CmHazel
 		CM_PROFILE_FUNCTION();
 
 		// Update
-		m_CameraController.OnUpdate(ts);
+		if (m_ViewportFocused)
+			m_CameraController.OnUpdate(ts);
 
 		// Render
 		CmHazel::Renderer2D::ResetStats();
@@ -76,14 +77,14 @@ namespace CmHazel
 	{
 		CM_PROFILE_FUNCTION();
 
-		// Note: Switch this to true to enable dockspace
+		//注意：将此切换为真以启用停靠空间
 		static bool dockspaceOpen = true;
 		static bool opt_fullscreen_persistant = true;
 		bool opt_fullscreen = opt_fullscreen_persistant;
 		static ImGuiDockNodeFlags dockspace_flags = ImGuiDockNodeFlags_None;
 
-		// We are using the ImGuiWindowFlags_NoDocking flag to make the parent window not dockable into,
-		// because it would be confusing to have two docking targets within each others.
+		// 我们使用 ImGuiWindowFlags_NoDocking 标志来使父窗口无法停靠，
+		// 因为在彼此之间有两个停靠目标会让人感到困惑。
 		ImGuiWindowFlags window_flags = ImGuiWindowFlags_MenuBar | ImGuiWindowFlags_NoDocking;
 		if (opt_fullscreen)
 		{
@@ -97,15 +98,15 @@ namespace CmHazel
 			window_flags |= ImGuiWindowFlags_NoBringToFrontOnFocus | ImGuiWindowFlags_NoNavFocus;
 		}
 
-		// When using ImGuiDockNodeFlags_PassthruCentralNode, DockSpace() will render our background and handle the pass-thru hole, so we ask Begin() to not render a background.
+		// 在使用 ImGuiDockNodeFlags_PassthruCentralNode 时，
+		// DockSpace() 会渲染我们的背景并处理透传孔，因此我们请求 Begin() 不渲染背景。
 		if (dockspace_flags & ImGuiDockNodeFlags_PassthruCentralNode)
 			window_flags |= ImGuiWindowFlags_NoBackground;
 
-		// Important: note that we proceed even if Begin() returns false (aka window is collapsed).
-		// This is because we want to keep our DockSpace() active. If a DockSpace() is inactive, 
-		// all active windows docked into it will lose their parent and become undocked.
-		// We cannot preserve the docking relationship between an active window and an inactive docking, otherwise 
-		// any change of dockspace/settings would lead to windows being stuck in limbo and never being visible.
+		//重要提示：请注意，即使 Begin() 返回 false（即窗口折叠），我们仍然会继续执行。
+		// 这是因为我们希望保持 DockSpace() 的活跃状态。
+		// 如果 DockSpace() 处于非活跃状态，停靠在其中的所有活跃窗口将失去父窗口并变为未停靠状态。
+		// 我们无法在活跃窗口与非活跃停靠区之间保留停靠关系，否则任何 dockspace/设置的更改都会导致窗口陷入悬空状态，从而无法显示。
 		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
 		ImGui::Begin("DockSpace Demo", &dockspaceOpen, window_flags);
 		ImGui::PopStyleVar();
@@ -113,7 +114,7 @@ namespace CmHazel
 		if (opt_fullscreen)
 			ImGui::PopStyleVar(2);
 
-		// DockSpace
+		// 停靠空间
 		ImGuiIO& io = ImGui::GetIO();
 		if (io.ConfigFlags & ImGuiConfigFlags_DockingEnable)
 		{
@@ -125,9 +126,9 @@ namespace CmHazel
 		{
 			if (ImGui::BeginMenu("File"))
 			{
-				// Disabling fullscreen would allow the window to be moved to the front of other windows, 
-				// which we can't undo at the moment without finer window depth/z control.
-				//ImGui::MenuItem("Fullscreen", NULL, &opt_fullscreen_persistant);
+				// 关闭全屏可以让窗口移动到其他窗口的前面，
+				// 目前如果没有更细的窗口深度 / Z轴控制，我们无法逆转。
+			    // ImGui：：MenuItem（“全屏”，NULL，opt_fullscreen_persistant）;
 
 				if (ImGui::MenuItem("Exit")) CmHazel::Application::Get().Close();
 				ImGui::EndMenu();
@@ -151,6 +152,11 @@ namespace CmHazel
 
 		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2{ 0, 0 });
 		ImGui::Begin("Viewport");
+
+		m_ViewportFocused = ImGui::IsWindowFocused();
+		m_ViewportHovered = ImGui::IsWindowHovered();
+		Application::Get().GetImGuiLayer()->BlockEvents(!m_ViewportFocused || !m_ViewportHovered);
+
 		ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();
 		if (m_ViewportSize != *((glm::vec2*)&viewportPanelSize))
 		{
