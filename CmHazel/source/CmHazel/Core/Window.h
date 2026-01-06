@@ -1,5 +1,7 @@
 #pragma once
 
+#include <sstream>
+
 #include "CmHazel/Core/Base.h"
 #include "CmHazel/Events/Event.h"
 

@@ -6,6 +6,10 @@
 #include <iomanip>
 #include <string>
 #include <thread>
+#include <mutex>
+#include <sstream>
+
+#include "CmHazel/Core/Log.h"
 
 namespace CmHazel 
 {

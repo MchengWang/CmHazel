@@ -1,7 +1,8 @@
 #pragma once
 
-#include "cmzpch.h"
+#include <functional>
 
+#include "CmHazel/Debug/Instrumentor.h"
 #include "CmHazel/Core/Base.h"
 
 namespace CmHazel {

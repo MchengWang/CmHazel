@@ -59,7 +59,7 @@ namespace CmHazel
 		CM_PROFILE_FUNCTION();
 
 		std::string result;
-		std::ifstream in(filepath, std::ios::in | std::ios::binary);
+		std::ifstream in(filepath, std::ios::in | std::ios::binary); // ifstream由于RAII会自动关闭
 		if (in)
 		{
 			in.seekg(0, std::ios::end);

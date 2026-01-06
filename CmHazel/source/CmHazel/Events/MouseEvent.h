@@ -1,7 +1,7 @@
 #pragma once
 
 #include "CmHazel/Events/Event.h"
-#include "CmHazel/Core/Input.h"
+#include "CmHazel/Core/MouseCodes.h"
 
 namespace CmHazel
 {
@@ -9,7 +9,7 @@ namespace CmHazel
 	class MouseMovedEvent : public Event
 	{
 	public:
-		MouseMovedEvent(float x, float y)
+		MouseMovedEvent(const float x, const float y)
 			: m_MouseX(x), m_MouseY(y){ }
 
 		float GetX() const { return m_MouseX; }
@@ -32,7 +32,7 @@ namespace CmHazel
 	class MouseScrolledEvent : public Event
 	{
 	public:
-		MouseScrolledEvent(float x, float y)
+		MouseScrolledEvent(const float x, const float y)
 			: m_XOffset(x), m_YOffset(y) {
 		}
 
@@ -56,12 +56,12 @@ namespace CmHazel
 	class MouseButtonEvent : public Event
 	{
 	public:
-		inline MouseCode GetMouseButton() const { return m_Button; }
+		MouseCode GetMouseButton() const { return m_Button; }
 
 		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 
 	protected:
-		MouseButtonEvent(MouseCode button)
+		MouseButtonEvent(const MouseCode button)
 		: m_Button(button) {}
 
 		MouseCode m_Button;
@@ -70,7 +70,7 @@ namespace CmHazel
 	class MouseButtonPressedEvent : public MouseButtonEvent
 	{
 	public:
-		MouseButtonPressedEvent(MouseCode button)
+		MouseButtonPressedEvent(const MouseCode button)
 			: MouseButtonEvent(button) {
 		}
 
@@ -87,7 +87,7 @@ namespace CmHazel
 	class MouseButtonReleasedEvent : public MouseButtonEvent
 	{
 	public:
-		MouseButtonReleasedEvent(MouseCode button)
+		MouseButtonReleasedEvent(const MouseCode button)
 			: MouseButtonEvent(button) {
 		}
 
