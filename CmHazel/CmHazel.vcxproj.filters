@@ -254,5 +254,8 @@
     <ClInclude Include="source\CmHazel\Scene\SceneCamera.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="source\CmHazel\Scene\ScriptableEntity.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -133,6 +133,7 @@
     <ClInclude Include="source\CmHazel\Scene\Entity.h" />
     <ClInclude Include="source\CmHazel\Scene\Components.h" />
     <ClInclude Include="source\CmHazel\Scene\Scene.h" />
+    <ClInclude Include="source\CmHazel\Scene\ScriptableEntity.h" />
     <ClInclude Include="source\Platform\OpenGL\OpenGLFramebuffer.h" />
     <ClInclude Include="source\CmHazel\Renderer\Framebuffer.h" />
     <ClInclude Include="source\CmHazel\Core\MouseCodes.h" />
