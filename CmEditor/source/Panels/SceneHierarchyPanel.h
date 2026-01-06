@@ -1,0 +1,30 @@
+#pragma once
+
+#include "CmHazel/Core/Base.h"
+#include "CmHazel/Core/Log.h"
+#include "CmHazel/Scene/Scene.h"
+#include "CmHazel/Scene/Entity.h"
+
+namespace CmHazel
+{
+
+	class SceneHierarchyPanel
+	{
+	public:
+		SceneHierarchyPanel() = default;
+		SceneHierarchyPanel(const Shared<Scene>& scene);
+
+		void SetContext(const Shared<Scene>& scene);
+
+		void OnImGuiRender();
+
+	private:
+		void DrawEntityNode(Entity entity);
+
+	private:
+		Shared<Scene> m_Context;
+		Entity m_SelectionContext;
+
+	};
+
+}
