@@ -27,7 +27,7 @@ namespace CmHazel
 		Shared<Framebuffer> m_Framebuffer;
 
 		Shared<Scene> m_ActiveScene;
-		entt::entity m_SquareEntity;
+		Entity m_SquareEntity;
 
 		Shared<Texture2D> m_CheckerboardTexture;
 

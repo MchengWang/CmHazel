@@ -88,6 +88,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\CmHazel\Scene\Entity.cpp" />
     <ClCompile Include="source\CmHazel\Scene\Scene.cpp" />
     <ClCompile Include="source\Platform\OpenGL\OpenGLFramebuffer.cpp" />
     <ClCompile Include="source\CmHazel\Renderer\Framebuffer.cpp" />
@@ -126,6 +127,7 @@
     <ClCompile Include="third_party\stb_image\stb_image.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\CmHazel\Scene\Entity.h" />
     <ClInclude Include="source\CmHazel\Scene\Components.h" />
     <ClInclude Include="source\CmHazel\Scene\Scene.h" />
     <ClInclude Include="source\Platform\OpenGL\OpenGLFramebuffer.h" />
