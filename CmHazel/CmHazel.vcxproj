@@ -90,7 +90,6 @@
   <ItemGroup>
     <ClCompile Include="source\Platform\OpenGL\OpenGLFramebuffer.cpp" />
     <ClCompile Include="source\CmHazel\Renderer\Framebuffer.cpp" />
-    <ClCompile Include="source\CmHazel\Core\Input.cpp" />
     <ClCompile Include="source\CmHazel\Core\Window.cpp" />
     <ClCompile Include="source\CmHazel\Renderer\GraphicsContext.cpp" />
     <ClCompile Include="source\CmHazel\Renderer\Renderer2D.cpp" />
@@ -164,7 +163,6 @@
     <ClInclude Include="source\cmzpch.h" />
     <ClInclude Include="source\CmHazel\Core\KeyCodes.h" />
     <ClInclude Include="source\Platform\Windows\WindowsWindow.h" />
-    <ClInclude Include="source\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="source\CmHazel\Renderer\VertexArray.h" />
     <ClInclude Include="source\CmHazel\Renderer\Texture.h" />
     <ClInclude Include="third_party\stb_image\stb_image.h" />

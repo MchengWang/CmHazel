@@ -96,9 +96,6 @@
     <ClCompile Include="source\CmHazel\Renderer\GraphicsContext.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="source\CmHazel\Core\Input.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="source\CmHazel\Core\Window.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -156,9 +153,6 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="source\CmHazel\Core\Input.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Platform\Windows\WindowsInput.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="source\CmHazel\Core\KeyCodes.h">
