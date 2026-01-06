@@ -111,6 +111,9 @@
     <ClCompile Include="source\CmHazel\Scene\Entity.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="source\CmHazel\Scene\SceneCamera.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\CmHazel\Core\Application.h">
@@ -246,6 +249,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="source\CmHazel\Renderer\Camera.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="source\CmHazel\Scene\SceneCamera.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
