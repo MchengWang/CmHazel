@@ -142,7 +142,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\CmHazelEditorApp.cpp" />
+    <ClCompile Include="source\CmEditorApp.cpp" />
     <ClCompile Include="source\EditorLayer.cpp" />
   </ItemGroup>
   <ItemGroup>

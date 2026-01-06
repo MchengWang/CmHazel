@@ -18,7 +18,7 @@ int main(int argc, char** argv)
 	app->Run();
 	CM_PROFILE_END_SESSION();
 
-	CM_PROFILE_BEGIN_SESSION("Startup", "CmHazelProfile-Shutdown.json");
+	CM_PROFILE_BEGIN_SESSION("Shutdown", "CmHazelProfile-Shutdown.json");
 	delete app;
 	CM_PROFILE_END_SESSION();
 }

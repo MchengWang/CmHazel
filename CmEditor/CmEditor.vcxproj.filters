@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\CmHazelEditorApp.cpp">
+    <ClCompile Include="source\CmEditorApp.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="source\EditorLayer.cpp">

@@ -6,17 +6,17 @@
 namespace CmHazel
 {
 
-	class CmHazelEditor : public Application
+	class CmEditor : public Application
 	{
 	public:
-		CmHazelEditor()
-			: Application("CmHazel Editor")
+		CmEditor()
+			: Application("CmEditor")
 		{
 			//PushLayer(new ExampleLayer());
 			PushLayer(new EditorLayer());
 		}
 
-		~CmHazelEditor()
+		~CmEditor()
 		{
 
 		}
@@ -24,7 +24,7 @@ namespace CmHazel
 
 	Application* CreateApplication()
 	{
-		return new CmHazelEditor();
+		return new CmEditor();
 	}
 
 }
