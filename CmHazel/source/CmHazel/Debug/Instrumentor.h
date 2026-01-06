@@ -28,15 +28,9 @@ namespace CmHazel
 
 	class Instrumentor
 	{
-	private:
-		std::mutex m_Mutex;
-		InstrumentationSession* m_CurrentSession;
-		std::ofstream m_OutputStream;
 	public:
-		Instrumentor()
-			: m_CurrentSession(nullptr)
-		{
-		}
+		Instrumentor(const Instrumentor&) = delete;
+		Instrumentor(Instrumentor&&) = delete;
 
 		void BeginSession(const std::string& name, const std::string& filepath = "results.json")
 		{
@@ -105,6 +99,15 @@ namespace CmHazel
 		}
 
 	private:
+		Instrumentor()
+			: m_CurrentSession(nullptr)
+		{
+		}
+
+		~Instrumentor()
+		{
+			EndSession();
+		}
 
 		void WriteHeader()
 		{
@@ -118,8 +121,8 @@ namespace CmHazel
 			m_OutputStream.flush();
 		}
 
-		// Note: you must already own lock on m_Mutex before
-		// calling InternalEndSession()
+		// 注意：在调用 InternalEndSession() 之前，
+		// 你必须已经拥有 m_Mutex 的锁
 		void InternalEndSession()
 		{
 			if (m_CurrentSession)
@@ -130,6 +133,11 @@ namespace CmHazel
 				m_CurrentSession = nullptr;
 			}
 		}
+
+	private:
+		std::mutex m_Mutex;
+		InstrumentationSession* m_CurrentSession;
+		std::ofstream m_OutputStream;
 
 	};
 
@@ -196,35 +204,37 @@ namespace CmHazel
 
 #define CM_PROFILE 0
 #if CM_PROFILE
-// Resolve which function signature macro will be used. Note that this only
-// is resolved when the (pre)compiler starts, so the syntax highlighting
-// could mark the wrong one in your editor!
-#if defined(__GNUC__) || (defined(__MWERKS__) && (__MWERKS__ >= 0x3000)) || (defined(__ICC) && (__ICC >= 600)) || defined(__ghs__)
-#define CM_FUNC_SIG __PRETTY_FUNCTION__
-#elif defined(__DMC__) && (__DMC__ >= 0x810)
-#define CM_FUNC_SIG __PRETTY_FUNCTION__
-#elif (defined(__FUNCSIG__) || (_MSC_VER))
-#define CM_FUNC_SIG __FUNCSIG__
-#elif (defined(__INTEL_COMPILER) && (__INTEL_COMPILER >= 600)) || (defined(__IBMCPP__) && (__IBMCPP__ >= 500))
-#define CM_FUNC_SIG __FUNCTION__
-#elif defined(__BORLANDC__) && (__BORLANDC__ >= 0x550)
-#define CM_FUNC_SIG __FUNC__
-#elif defined(__STDC_VERSION__) && (__STDC_VERSION__ >= 199901)
-#define CM_FUNC_SIG __func__
-#elif defined(__cplusplus) && (__cplusplus >= 201103)
-#define CM_FUNC_SIG __func__
-#else
-#define CM_FUNC_SIG "CM_FUNC_SIG unknown!"
-#endif
+	// Resolve which function signature macro will be used. Note that this only
+	// is resolved when the (pre)compiler starts, so the syntax highlighting
+	// could mark the wrong one in your editor!
+	#if defined(__GNUC__) || (defined(__MWERKS__) && (__MWERKS__ >= 0x3000)) || (defined(__ICC) && (__ICC >= 600)) || defined(__ghs__)
+		#define CM_FUNC_SIG __PRETTY_FUNCTION__
+	#elif defined(__DMC__) && (__DMC__ >= 0x810)
+		#define CM_FUNC_SIG __PRETTY_FUNCTION__
+	#elif (defined(__FUNCSIG__) || (_MSC_VER))
+		#define CM_FUNC_SIG __FUNCSIG__
+	#elif (defined(__INTEL_COMPILER) && (__INTEL_COMPILER >= 600)) || (defined(__IBMCPP__) && (__IBMCPP__ >= 500))
+		#define CM_FUNC_SIG __FUNCTION__
+	#elif defined(__BORLANDC__) && (__BORLANDC__ >= 0x550)
+		#define CM_FUNC_SIG __FUNC__
+	#elif defined(__STDC_VERSION__) && (__STDC_VERSION__ >= 199901)
+		#define CM_FUNC_SIG __func__
+	#elif defined(__cplusplus) && (__cplusplus >= 201103)
+		#define CM_FUNC_SIG __func__
+	#else
+		#define CM_FUNC_SIG "CM_FUNC_SIG unknown!"
+	#endif
 
-#define CM_PROFILE_BEGIN_SESSION(name, filepath) ::CmHazel::Instrumentor::Get().BeginSession(name, filepath)
-#define CM_PROFILE_END_SESSION() ::CmHazel::Instrumentor::Get().EndSession()
-#define CM_PROFILE_SCOPE(name) constexpr auto fixedName = ::CmHazel::InstrumentorUtils::CleanupOutputString(name, "__cdecl ");\
-									::CmHazel::InstrumentationTimer timer##__LINE__(fixedName.Data)
-#define CM_PROFILE_FUNCTION() CM_PROFILE_SCOPE(CM_FUNC_SIG)
+	#define CM_PROFILE_BEGIN_SESSION(name, filepath) ::CmHazel::Instrumentor::Get().BeginSession(name, filepath)
+	#define CM_PROFILE_END_SESSION() ::CmHazel::Instrumentor::Get().EndSession()
+	#define CM_PROFILE_SCOPE_LINE2(name, line) constexpr auto fixedName##line = ::CmHazel::InstrumentorUtils::CleanupOutputString(name, "__cdecl ");\
+												   ::CmHazel::InstrumentationTimer timer##line(fixedName##line.Data)
+	#define CM_PROFILE_SCOPE_LINE(name, line) CM_PROFILE_SCOPE_LINE2(name, line)
+	#define CM_PROFILE_SCOPE(name) CM_PROFILE_SCOPE_LINE(name, __LINE__)
+	#define CM_PROFILE_FUNCTION() CM_PROFILE_SCOPE(CM_FUNC_SIG)
 #else
-#define CM_PROFILE_BEGIN_SESSION(name, filepath)
-#define CM_PROFILE_END_SESSION()
-#define CM_PROFILE_SCOPE(name)
-#define CM_PROFILE_FUNCTION()
+	#define CM_PROFILE_BEGIN_SESSION(name, filepath)
+	#define CM_PROFILE_END_SESSION()
+	#define CM_PROFILE_SCOPE(name)
+	#define CM_PROFILE_FUNCTION()
 #endif
