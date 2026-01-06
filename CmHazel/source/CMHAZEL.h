@@ -16,6 +16,9 @@
 
 #include "CmHazel/ImGui/ImGuiLayer.h"
 
+#include "CmHazel/Scene/Scene.h"
+#include "CmHazel/Scene/Components.h"
+
 //---------- ‰÷»æ ---------------
 #include "CmHazel/Renderer/Renderer.h"
 #include "CmHazel/Renderer/Renderer2D.h"

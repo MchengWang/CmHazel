@@ -46,7 +46,7 @@
 	#define CM_ENABLE_ASSERTS
 #endif // CM_DEBUG
 
-
+// 让这个宏除了条件之外不接受任何参数
 #ifdef CM_ENABLE_ASSERTS
 	#define CM_ASSERT(x, ...) { if(!(x)) { CM_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); }}
 	#define CM_CORE_ASSERT(x, ...) { if(!(x)) { CM_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); }}

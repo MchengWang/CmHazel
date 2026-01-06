@@ -26,6 +26,9 @@ namespace CmHazel
 		Shared<Shader> m_FlatColorShader;
 		Shared<Framebuffer> m_Framebuffer;
 
+		Shared<Scene> m_ActiveScene;
+		entt::entity m_SquareEntity;
+
 		Shared<Texture2D> m_CheckerboardTexture;
 
 		bool m_ViewportFocused = false, m_ViewportHovered = false;
