@@ -2,6 +2,8 @@
 
 #include <glm/glm.hpp>
 
+#include "CmHazel/Renderer/Camera.h"
+
 namespace CmHazel
 {
 
@@ -39,6 +41,18 @@ namespace CmHazel
 		SpriteRendererComponent(const glm::vec4& color)
 			: Color(color)
 		{}
+	};
+
+	struct CameraComponent
+	{
+		CmHazel::Camera Camera;
+		bool Primary = true; // ³¡¾°ÒÆ¶¯
+
+		CameraComponent() = default;
+		CameraComponent(const CameraComponent&) = default;
+		CameraComponent(const glm::mat4& projection)
+			: Camera(projection)
+		{ }
 	};
 
 }

@@ -64,12 +64,36 @@ namespace CmHazel
 
 	void Scene::OnUpdate(Timestep ts)
 	{
-		auto group = m_Registry.group<TransformComponent>(entt::get<SpriteRendererComponent>);
-		for (auto entity : group)
-		{
-			auto&& [transform, sprite] = group.get<TransformComponent, SpriteRendererComponent>(entity);
+		// Render 2D
+		Camera* mainCamera = nullptr;
+		glm::mat4* cameraTransform = nullptr;
 
-			Renderer2D::DrawQuad(transform, sprite.Color);
+		{
+
+			m_Registry.view<TransformComponent, CameraComponent>()
+				.each([&](TransformComponent& transform, CameraComponent& camera)
+					{
+						if (camera.Primary)
+						{
+							mainCamera = &camera.Camera;
+							cameraTransform = &transform.Transform;
+						}
+					});
+		}
+
+		if (mainCamera)
+		{
+			Renderer2D::BeginScene(mainCamera->GetProjection(), *cameraTransform);
+
+			auto group = m_Registry.group<TransformComponent>(entt::get<SpriteRendererComponent>);
+			for (auto entity : group)
+			{
+				auto&& [transform, sprite] = group.get<TransformComponent, SpriteRendererComponent>(entity);
+
+				Renderer2D::DrawQuad(transform, sprite.Color);
+			}
+
+			Renderer2D::EndScene();
 		}
 	}
 
