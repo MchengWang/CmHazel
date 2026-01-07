@@ -1,5 +1,5 @@
 #include "cmzpch.h"
-#include "Framebuffer.h"
+#include "CmHazel/Renderer/Framebuffer.h"
 
 #include "CmHazel/Renderer/Renderer.h"
 

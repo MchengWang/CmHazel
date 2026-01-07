@@ -1,7 +1,6 @@
 #pragma once
 
 #include "CmHazel/Core/Base.h"
-#include "CmHazel/Core/Log.h"
 #include "CmHazel/Scene/Scene.h"
 #include "CmHazel/Scene/Entity.h"
 

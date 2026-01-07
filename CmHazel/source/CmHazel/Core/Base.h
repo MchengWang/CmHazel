@@ -5,17 +5,21 @@
 #include "CmHazel/Core/PlatformDetection.h"
 
 #ifdef CM_DEBUG
+	#if defined(CM_PLATFORM_WINDOWS)
+		#define CM_DEBUGBREAK() __debugbreak()
+	#elif defined(CM_PLATFORM_LINUX)
+		#include <signal.h>
+		#define CM_DEBUGBREAK() raise(SIGTRAP)
+	#else
+		#error "Platform doesn't support debugbreak yet!"
+	#endif // defined(CM_PLATFORM_WINDOWS)
 	#define CM_ENABLE_ASSERTS
+#else
+	#define CM_DEBUGBREAK()
 #endif // CM_DEBUG
 
-// 让这个宏除了条件之外不接受任何参数
-#ifdef CM_ENABLE_ASSERTS
-	#define CM_ASSERT(x, ...) { if(!(x)) { CM_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); }}
-	#define CM_CORE_ASSERT(x, ...) { if(!(x)) { CM_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); }}
-#else
-	#define CM_ASSERT(x, ...)
-	#define CM_CORE_ASSERT(x, ...)
-#endif // CM_ENABLE_ASSERTS
+#define CM_EXPAND_MACRO(x) x
+#define CM_STRINGIFY_MACRO(x) #x
 
 
 #define BIT(x) (1 << x)
@@ -44,3 +48,6 @@ namespace CmHazel
 	}
 
 }
+
+#include "CmHazel/Core/Log.h"
+#include "CmHazel/Core/Assert.h"

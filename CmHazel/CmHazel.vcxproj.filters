@@ -260,5 +260,8 @@
     <ClInclude Include="source\CmHazel\Core\PlatformDetection.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="source\CmHazel\Core\Assert.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

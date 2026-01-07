@@ -1,8 +1,11 @@
 #pragma once
 
 #include "CmHazel/Core/Base.h"
+
+#pragma warning(push, 0)
 #include <spdlog/spdlog.h>
 #include <spdlog/fmt/ostr.h>
+#pragma warning(pop)
 
 namespace CmHazel
 {

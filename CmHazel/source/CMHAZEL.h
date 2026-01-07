@@ -6,6 +6,7 @@
 #include "CmHazel/Core/Application.h"
 #include "CmHazel/Core/Layer.h"
 #include "CmHazel/Core/Log.h"
+#include "CmHazel/Core/Assert.h"
 
 #include "CmHazel/Core/Timestep.h"
 
