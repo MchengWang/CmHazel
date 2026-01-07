@@ -28,6 +28,11 @@ namespace CmHazel
 		return entity;
 	}
 
+	void Scene::DestroyEntity(Entity entity)
+	{
+		m_Registry.destroy(entity);
+	}
+
 	void Scene::OnUpdate(Timestep ts)
 	{
 		// Update scripts
@@ -92,6 +97,38 @@ namespace CmHazel
 			if (!cameraComponent.FixedAspectRatio)
 				cameraComponent.Camera.SetViewportSize(width, height);
 		}
+	}
+
+	template<typename T>
+	void Scene::OnComponentAdded(Entity, T&)
+	{
+		static_assert(false);
+	}
+
+	template<>
+	void Scene::OnComponentAdded<TransformComponent>(Entity entity, TransformComponent& component)
+	{
+	}
+
+	template<>
+	void Scene::OnComponentAdded<CameraComponent>(Entity entity, CameraComponent& component)
+	{
+		component.Camera.SetViewportSize(m_ViewportWidth, m_ViewportHeight);
+	}
+
+	template<>
+	void Scene::OnComponentAdded<SpriteRendererComponent>(Entity, SpriteRendererComponent&)
+	{
+	}
+
+	template<>
+	void Scene::OnComponentAdded<TagComponent>(Entity, TagComponent&)
+	{
+	}
+
+	template<>
+	void Scene::OnComponentAdded<NativeScriptComponent>(Entity, NativeScriptComponent&)
+	{
 	}
 
 }
