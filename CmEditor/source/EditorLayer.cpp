@@ -4,6 +4,10 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+#include "CmHazel/Scene/SceneSerializer.h"
+
+#include "CmHazel/Utils/PlatformUtils.h"
+
 namespace CmHazel
 {
 
@@ -25,6 +29,7 @@ namespace CmHazel
 
 		m_ActiveScene = CreateShared<Scene>();
 
+#if 0
 		// Entity
 		auto square = m_ActiveScene->CreateEntity("Green Square"); 
 		square.AddComponent<SpriteRendererComponent>(glm::vec4{ 0.0f, 1.0f, 0.0f, 1.0f });
@@ -74,6 +79,7 @@ namespace CmHazel
 		m_CameraEntity.AddComponent<NativeScriptComponent>().Bind<CameraController>();
 
 		m_SecondCamera.AddComponent<NativeScriptComponent>().Bind<CameraController>();
+#endif
 
 		m_SceneHierarchyPanel.SetContext(m_ActiveScene);
 	}
@@ -174,7 +180,16 @@ namespace CmHazel
 			{
 				// 关闭全屏可以让窗口移动到其他窗口的前面，
 				// 目前如果没有更细的窗口深度 / Z轴控制，我们无法逆转。
-			    // ImGui：：MenuItem（“全屏”，NULL，opt_fullscreen_persistant）;
+			    // ImGui：：MenuItem（“Fullscreen”，NULL，opt_fullscreen_persistant）;
+
+				if (ImGui::MenuItem("New", "Ctrl + N"))
+					NewScene();
+
+				if (ImGui::MenuItem("Open...", "Ctrl + O"))
+					OpenScene();
+
+				if (ImGui::MenuItem("Save As ...", "Ctrl + Shift + S"))
+					SaveSceneAs();
 
 				if (ImGui::MenuItem("Exit")) Application::Get().Close();
 				ImGui::EndMenu();
@@ -218,6 +233,75 @@ namespace CmHazel
 	void EditorLayer::OnEvent(Event& e)
 	{
 		m_CameraController.OnEvent(e);
+
+		EventDispatcher dispatcher(e);
+		dispatcher.Dispatch<KeyPressedEvent>(CM_BIND_EVENT_FN(EditorLayer::OnKeyPressed));
+	}
+
+	bool EditorLayer::OnKeyPressed(KeyPressedEvent& e)
+	{
+		// 快捷键
+		if (e.GetRepeatCount() > 0)
+			return false;
+
+		bool control = Input::IsKeyPressed(Key::LeftControl) || Input::IsKeyPressed(Key::RightControl);
+		bool shift = Input::IsKeyPressed(Key::LeftShift) || Input::IsKeyPressed(Key::RightShift);
+
+		switch (e.GetKeyCode())
+		{
+		case Key::N:
+		{
+			if (control)
+				NewScene();
+
+			break;
+		}
+		case Key::O:
+		{
+			if (control)
+				OpenScene();
+
+			break;
+		}
+		case Key::S:
+		{
+			if (control && shift)
+				SaveSceneAs();
+
+			break;
+		}
+		}
+	}
+
+	void EditorLayer::NewScene()
+	{
+		m_ActiveScene = CreateShared<Scene>();
+		m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
+		m_SceneHierarchyPanel.SetContext(m_ActiveScene);
+	}
+
+	void EditorLayer::OpenScene()
+	{
+		std::string filepath = FileDialogs::OpenFile("cml Scene (*.cml)\0*.cml\0");
+		if (!filepath.empty())
+		{
+			m_ActiveScene = CreateShared<Scene>();
+			m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
+			m_SceneHierarchyPanel.SetContext(m_ActiveScene);
+
+			SceneSerializer serializer(m_ActiveScene);
+			serializer.Deserialize(filepath);
+		}
+	}
+
+	void EditorLayer::SaveSceneAs()
+	{
+		std::string filepath = FileDialogs::SaveFile("cml Scene (*.cml)\0*.cml\0");
+		if (!filepath.empty())
+		{
+			SceneSerializer serializer(m_ActiveScene);
+			serializer.Serialize(filepath);
+		}
 	}
 
 }

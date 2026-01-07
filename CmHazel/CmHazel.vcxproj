@@ -55,10 +55,10 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>CM_DEBUG;GLFW_INCLUDE_NONE;_CRT_SECURE_NO_WARNINGS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>CM_DEBUG;GLFW_INCLUDE_NONE;_CRT_SECURE_NO_WARNINGS;YAML_CPP_STATIC_DEFINE;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)CmHazel\third_party\entt\include;$(SolutionDir)CmHazel\third_party\stb_image;$(SolutionDir)CmHazel\third_party\glm;$(SolutionDir)CmHazel\third_party\imgui;$(SolutionDir)CmHazel\third_party\glad\include;$(SolutionDir)CmHazel\third_party\glfw\include;$(SolutionDir)CmHazel\third_party\spdlog\include;$(SolutionDir)CmHazel\source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)CmHazel\third_party\yaml-cpp\include;$(SolutionDir)CmHazel\third_party\entt\include;$(SolutionDir)CmHazel\third_party\stb_image;$(SolutionDir)CmHazel\third_party\glm;$(SolutionDir)CmHazel\third_party\imgui;$(SolutionDir)CmHazel\third_party\glad\include;$(SolutionDir)CmHazel\third_party\glfw\include;$(SolutionDir)CmHazel\third_party\spdlog\include;$(SolutionDir)CmHazel\source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>cmzpch.h</PrecompiledHeaderFile>
     </ClCompile>
@@ -74,10 +74,10 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>CM_DEBUG;GLFW_INCLUDE_NONE;_CRT_SECURE_NO_WARNINGS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>CM_DEBUG;GLFW_INCLUDE_NONE;_CRT_SECURE_NO_WARNINGS;YAML_CPP_STATIC_DEFINE;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)CmHazel\third_party\entt\include;$(SolutionDir)CmHazel\third_party\stb_image;$(SolutionDir)CmHazel\third_party\glm;$(SolutionDir)CmHazel\third_party\imgui;$(SolutionDir)CmHazel\third_party\glad\include;$(SolutionDir)CmHazel\third_party\glfw\include;$(SolutionDir)CmHazel\third_party\spdlog\include;$(SolutionDir)CmHazel\source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)CmHazel\third_party\yaml-cpp\include;$(SolutionDir)CmHazel\third_party\entt\include;$(SolutionDir)CmHazel\third_party\stb_image;$(SolutionDir)CmHazel\third_party\glm;$(SolutionDir)CmHazel\third_party\imgui;$(SolutionDir)CmHazel\third_party\glad\include;$(SolutionDir)CmHazel\third_party\glfw\include;$(SolutionDir)CmHazel\third_party\spdlog\include;$(SolutionDir)CmHazel\source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>cmzpch.h</PrecompiledHeaderFile>
     </ClCompile>
@@ -88,6 +88,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\CmHazel\Scene\SceneSerializer.cpp" />
     <ClCompile Include="source\CmHazel\Scene\SceneCamera.cpp" />
     <ClCompile Include="source\CmHazel\Scene\Entity.cpp" />
     <ClCompile Include="source\CmHazel\Scene\Scene.cpp" />
@@ -121,6 +122,7 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">cmzpch.h</PrecompiledHeaderFile>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">cmzpch.h</PrecompiledHeaderFile>
     </ClCompile>
+    <ClCompile Include="source\Platform\Windows\WindowsPlatformUtils.cpp" />
     <ClCompile Include="source\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="source\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="source\CmHazel\Renderer\VertexArray.cpp" />
@@ -128,6 +130,7 @@
     <ClCompile Include="third_party\stb_image\stb_image.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\CmHazel\Scene\SceneSerializer.h" />
     <ClInclude Include="source\CmHazel\Core\Assert.h" />
     <ClInclude Include="source\CmHazel\Core\PlatformDetection.h" />
     <ClInclude Include="source\CmHazel\Scene\SceneCamera.h" />
@@ -136,6 +139,7 @@
     <ClInclude Include="source\CmHazel\Scene\Components.h" />
     <ClInclude Include="source\CmHazel\Scene\Scene.h" />
     <ClInclude Include="source\CmHazel\Scene\ScriptableEntity.h" />
+    <ClInclude Include="source\CmHazel\Utils\PlatformUtils.h" />
     <ClInclude Include="source\Platform\OpenGL\OpenGLFramebuffer.h" />
     <ClInclude Include="source\CmHazel\Renderer\Framebuffer.h" />
     <ClInclude Include="source\CmHazel\Core\MouseCodes.h" />
@@ -187,6 +191,9 @@
     </ProjectReference>
     <ProjectReference Include="..\ImGui\ImGui.vcxproj">
       <Project>{e033a4aa-c221-4c4d-92c7-1bc39bbfff46}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\yaml-cpp\yaml-cpp.vcxproj">
+      <Project>{b5e933d5-11d6-48e2-94d2-8f2c2809feb8}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
