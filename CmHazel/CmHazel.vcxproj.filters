@@ -120,6 +120,12 @@
     <ClCompile Include="source\Platform\Windows\WindowsPlatformUtils.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="third_party\ImGuizmo\ImGuizmo.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CmHazel\Math\Math.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\CmHazel\Core\Application.h">
@@ -273,6 +279,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="source\CmHazel\Utils\PlatformUtils.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\ImGuizmo\ImGuizmo.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="source\CmHazel\Math\Math.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

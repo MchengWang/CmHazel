@@ -13,3 +13,6 @@
 [submodule "CmHazel/third_party/yaml-cpp"]
 	path = CmHazel/third_party/yaml-cpp
 	url = https://github.com/jbeder/yaml-cpp
+[submodule "CmHazel/third_party/ImGuizmo"]
+	path = CmHazel/third_party/ImGuizmo
+	url = https://github.com/CedricGuillemet/ImGuizmo
