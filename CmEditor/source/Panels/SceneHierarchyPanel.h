@@ -20,6 +20,7 @@ namespace CmHazel
 
 	private:
 		void DrawEntityNode(Entity entity);
+		void DrawComponents(Entity entity);
 
 	private:
 		Shared<Scene> m_Context;
