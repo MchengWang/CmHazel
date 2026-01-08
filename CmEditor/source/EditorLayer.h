@@ -3,6 +3,8 @@
 #include "CMHAZEL.h"
 #include "Panels/SceneHierarchyPanel.h"
 
+#include "CmHazel/Renderer/EditorCamera.h"
+
 namespace CmHazel
 {
 
@@ -40,6 +42,8 @@ namespace CmHazel
 		Entity m_SecondCamera;
 
 		bool m_PrimaryCamera = true;
+
+		EditorCamera m_EditorCamera;
 
 		Shared<Texture2D> m_CheckerboardTexture;
 
