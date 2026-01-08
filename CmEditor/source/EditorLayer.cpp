@@ -124,6 +124,9 @@ namespace CmHazel
 		RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 		RenderCommand::Clear();
 
+		// 将实体 ID 附件清除为 -1
+		m_Framebuffer->ClearAttachment(1, -1);
+
 		// 更新场景
 		m_ActiveScene->OnUpdateEditor(ts, m_EditorCamera);
 
