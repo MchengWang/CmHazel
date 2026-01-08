@@ -1,9 +1,10 @@
 #pragma once
 #include "CmHazel/Core/Base.h"
+#include "CmHazel/Core/Application.h"
 
 #ifdef CM_PLATFORM_WINDOWS
 
-extern CmHazel::Application* CmHazel::CreateApplication();
+extern CmHazel::Application* CmHazel::CreateApplication(ApplicationCommandLineArgs args);
 
 int main(int argc, char** argv)
 {
@@ -11,7 +12,7 @@ int main(int argc, char** argv)
 	CmHazel::Log::Init();
 
 	CM_PROFILE_BEGIN_SESSION("Startup", "CmHazelProfile-Startup.json");
-	auto app = CmHazel::CreateApplication();
+	auto app = CmHazel::CreateApplication({ argc, argv });
 	CM_PROFILE_END_SESSION();
 
 	CM_PROFILE_BEGIN_SESSION("Runtime", "CmHazelProfile-Runtime.json");

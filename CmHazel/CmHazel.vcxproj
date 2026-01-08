@@ -58,7 +58,7 @@
       <PreprocessorDefinitions>CM_DEBUG;GLFW_INCLUDE_NONE;_CRT_SECURE_NO_WARNINGS;YAML_CPP_STATIC_DEFINE;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)CmHazel\third_party\ImGuizmo;$(SolutionDir)CmHazel\third_party\yaml-cpp\include;$(SolutionDir)CmHazel\third_party\entt\include;$(SolutionDir)CmHazel\third_party\stb_image;$(SolutionDir)CmHazel\third_party\glm;$(SolutionDir)CmHazel\third_party\imgui;$(SolutionDir)CmHazel\third_party\glad\include;$(SolutionDir)CmHazel\third_party\glfw\include;$(SolutionDir)CmHazel\third_party\spdlog\include;$(SolutionDir)CmHazel\source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)CmHazel\third_party\ImGuizmo;$(SolutionDir)CmHazel\third_party\yaml-cpp\include;$(SolutionDir)CmHazel\third_party\entt\include;$(SolutionDir)CmHazel\third_party\stb_image;$(SolutionDir)CmHazel\third_party\glm;$(SolutionDir)CmHazel\third_party\imgui;$(SolutionDir)CmHazel\third_party\glad\include;$(SolutionDir)CmHazel\third_party\glfw\include;$(SolutionDir)CmHazel\third_party\spdlog\include;$(SolutionDir)CmHazel\source;C:\Program Files %28x86%29\VulkanSDK\1.4.335.0\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>cmzpch.h</PrecompiledHeaderFile>
     </ClCompile>
@@ -77,7 +77,7 @@
       <PreprocessorDefinitions>CM_DEBUG;GLFW_INCLUDE_NONE;_CRT_SECURE_NO_WARNINGS;YAML_CPP_STATIC_DEFINE;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)CmHazel\third_party\ImGuizmo;$(SolutionDir)CmHazel\third_party\yaml-cpp\include;$(SolutionDir)CmHazel\third_party\entt\include;$(SolutionDir)CmHazel\third_party\stb_image;$(SolutionDir)CmHazel\third_party\glm;$(SolutionDir)CmHazel\third_party\imgui;$(SolutionDir)CmHazel\third_party\glad\include;$(SolutionDir)CmHazel\third_party\glfw\include;$(SolutionDir)CmHazel\third_party\spdlog\include;$(SolutionDir)CmHazel\source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)CmHazel\third_party\ImGuizmo;$(SolutionDir)CmHazel\third_party\yaml-cpp\include;$(SolutionDir)CmHazel\third_party\entt\include;$(SolutionDir)CmHazel\third_party\stb_image;$(SolutionDir)CmHazel\third_party\glm;$(SolutionDir)CmHazel\third_party\imgui;$(SolutionDir)CmHazel\third_party\glad\include;$(SolutionDir)CmHazel\third_party\glfw\include;$(SolutionDir)CmHazel\third_party\spdlog\include;$(SolutionDir)CmHazel\source;C:\Program Files %28x86%29\VulkanSDK\1.4.335.0\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>cmzpch.h</PrecompiledHeaderFile>
     </ClCompile>
@@ -88,6 +88,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\Platform\OpenGL\OpenGLUniformBuffer.cpp" />
     <ClCompile Include="source\CmHazel\Renderer\EditorCamera.cpp" />
     <ClCompile Include="source\CmHazel\Math\Math.cpp" />
     <ClCompile Include="source\CmHazel\Scene\SceneSerializer.cpp" />
@@ -134,8 +135,11 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="third_party\stb_image\stb_image.cpp" />
+    <ClCompile Include="source\CmHazel\Renderer\UniformBuffer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\Platform\OpenGL\OpenGLUniformBuffer.h" />
+    <ClInclude Include="source\CmHazel\Core\Timer.h" />
     <ClInclude Include="source\CmHazel\Renderer\EditorCamera.h" />
     <ClInclude Include="source\CmHazel\Math\Math.h" />
     <ClInclude Include="source\CmHazel\Scene\SceneSerializer.h" />
@@ -190,6 +194,7 @@
     <ClInclude Include="source\CmHazel\Renderer\Texture.h" />
     <ClInclude Include="third_party\ImGuizmo\ImGuizmo.h" />
     <ClInclude Include="third_party\stb_image\stb_image.h" />
+    <ClInclude Include="source\CmHazel\Renderer\UniformBuffer.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GLAD\GLAD.vcxproj">
