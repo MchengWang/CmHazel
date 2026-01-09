@@ -2,6 +2,7 @@
 
 #include "CMHAZEL.h"
 #include "Panels/SceneHierarchyPanel.h"
+#include "Panels/ContentBrowserPanel.h"
 
 #include "CmHazel/Renderer/EditorCamera.h"
 
@@ -60,6 +61,7 @@ namespace CmHazel
 
 		// Panels
 		SceneHierarchyPanel m_SceneHierarchyPanel;
+		ContentBrowserPanel m_ContentBrowserPanel;
 	};
 
 }

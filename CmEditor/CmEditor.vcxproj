@@ -146,11 +146,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\Panels\ContentBrowserPanel.cpp" />
     <ClCompile Include="source\Panels\SceneHierarchyPanel.cpp" />
     <ClCompile Include="source\CmEditorApp.cpp" />
     <ClCompile Include="source\EditorLayer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\Panels\ContentBrowserPanel.h" />
     <ClInclude Include="source\Panels\SceneHierarchyPanel.h" />
     <ClInclude Include="source\EditorLayer.h" />
   </ItemGroup>
