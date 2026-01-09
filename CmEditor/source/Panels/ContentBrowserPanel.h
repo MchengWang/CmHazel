@@ -2,6 +2,8 @@
 
 #include <filesystem>
 
+#include "CmHazel/Renderer/Texture.h"
+
 
 namespace CmHazel
 {
@@ -15,6 +17,9 @@ namespace CmHazel
 
 	private:
 		std::filesystem::path m_CurrentDirectory;
+
+		Shared<Texture2D> m_DirectoryIcon;
+		Shared<Texture2D> m_FileIcon;
 
 	};
 

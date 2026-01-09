@@ -12,7 +12,8 @@ namespace CmHazel
 	ContentBrowserPanel::ContentBrowserPanel()
 		: m_CurrentDirectory(s_AssetPath)
 	{
-
+		m_DirectoryIcon = Texture2D::Create("resources/icons/ContentBrowser/DirectoryIcon.png");
+		m_FileIcon = Texture2D::Create("resources/icons/ContentBrowser/FileIcon.png");
 	}
 
 	void ContentBrowserPanel::OnImGuiRender()
@@ -28,26 +29,40 @@ namespace CmHazel
 			}
 		}
 
+		static float padding = 16.0f;
+		static float thumbnailSize = 128.0f;
+		float cellSize = thumbnailSize + padding;
+
+		float panelWidth = ImGui::GetContentRegionAvail().x;
+		int columnCount = (int)(panelWidth / cellSize);
+		if (columnCount < 1) 
+			columnCount = 1;
+
+		ImGui::Columns(columnCount, 0, false);
+
 		for (auto& directoryEntity : std::filesystem::directory_iterator(m_CurrentDirectory))
 		{
 			const auto& path = directoryEntity.path();
 			auto relativePath = std::filesystem::relative(path, s_AssetPath);
 			std::string filenameString = relativePath.filename().string();
-			if (directoryEntity.is_directory())
-			{
-				if (ImGui::Button(filenameString.c_str()))
-				{
-					m_CurrentDirectory /= path.filename();
-				}
-			}
-			else
-			{
-				if (ImGui::Button(filenameString.c_str()))
-				{
 
-				}
+			Shared<Texture2D> icon = directoryEntity.is_directory() ? m_DirectoryIcon : m_FileIcon;
+			ImGui::ImageButton(filenameString.c_str(), (ImTextureID)icon->GetRendererID(), {thumbnailSize, thumbnailSize}, {0, 1}, {1, 0});
+
+			if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
+			{
+				if (directoryEntity.is_directory())
+					m_CurrentDirectory /= path.filename();
 			}
+			ImGui::TextWrapped(filenameString.c_str());
+
+			ImGui::NextColumn();
+		
 		}
+		ImGui::Columns(1);
+
+		ImGui::SliderFloat("Thumbnail Size", &thumbnailSize, 16, 512);
+		ImGui::SliderFloat("Paddiing", &padding, 0, 32);
 
 		ImGui::End();
 
