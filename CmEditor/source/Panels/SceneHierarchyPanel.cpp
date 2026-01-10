@@ -34,28 +34,31 @@ namespace CmHazel
 	void SceneHierarchyPanel::OnImGuiRender()
 	{
 		ImGui::Begin("Scene Hierarchy");
-
-		auto view = m_Context->m_Registry.view<entt::entity>();
-		for (auto entityID : view)
+		
+		if (m_Context)
 		{
-			Entity entity{ entityID, m_Context.get() };
-			DrawEntityNode(entity);
-		}
+			auto view = m_Context->m_Registry.view<entt::entity>();
+			for (auto entityID : view)
+			{
+				Entity entity{ entityID, m_Context.get() };
+				DrawEntityNode(entity);
+			}
 
-		if (ImGui::IsMouseDown(0) && ImGui::IsWindowHovered())
-			m_SelectionContext = {};
+			if (ImGui::IsMouseDown(0) && ImGui::IsWindowHovered())
+				m_SelectionContext = {};
 
-		//	ÔÚ¿Õ°×´¦ÓÒ¼üµã»÷ ImGui::BeginPopupContextWindow(0, 1, false);
-		// 0 ¡ú nullptr
-		// 1 ¡ú ImGuiPopupFlags_MouseButtonRight
-		//false ¡ú ImGuiPopupFlags_NoOpenOverItems
+			//	ÔÚ¿Õ°×´¦ÓÒ¼üµã»÷ ImGui::BeginPopupContextWindow(0, 1, false);
+			// 0 ¡ú nullptr
+			// 1 ¡ú ImGuiPopupFlags_MouseButtonRight
+			//false ¡ú ImGuiPopupFlags_NoOpenOverItems
 
-		if (ImGui::BeginPopupContextWindow(nullptr, ImGuiPopupFlags_MouseButtonRight | ImGuiPopupFlags_NoOpenOverItems))
-		{
-			if (ImGui::MenuItem("Create Empty Entity"))
-				m_Context->CreateEntity("Empty Entity");
+			if (ImGui::BeginPopupContextWindow(nullptr, ImGuiPopupFlags_MouseButtonRight | ImGuiPopupFlags_NoOpenOverItems))
+			{
+				if (ImGui::MenuItem("Create Empty Entity"))
+					m_Context->CreateEntity("Empty Entity");
 
-			ImGui::EndPopup();
+				ImGui::EndPopup();
+			}
 		}
 
 		ImGui::End();
@@ -407,7 +410,7 @@ namespace CmHazel
 		DrawComponent<BoxCollider2DComponent>("Box Collider 2D", entity, [](auto& component)
 			{
 				ImGui::DragFloat2("Offset", glm::value_ptr(component.Offset));
-				ImGui::DragFloat2("Size", glm::value_ptr(component.Offset));
+				ImGui::DragFloat2("Size", glm::value_ptr(component.Size));
 				ImGui::DragFloat("Density", &component.Density, 0.01f, 0.0f, 1.0f);
 				ImGui::DragFloat("Friction", &component.Friction, 0.01f, 0.0f, 1.0f);
 				ImGui::DragFloat("Restitution", &component.Restitution, 0.01f, 0.0f, 1.0f);
