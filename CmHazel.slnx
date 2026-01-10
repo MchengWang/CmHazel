@@ -3,6 +3,7 @@
     <Platform Name="x64" />
   </Configurations>
   <Folder Name="/deps/">
+    <Project Path="Box2D/Box2D.vcxproj" Id="d5992161-945b-404a-85af-ae38864f016b" />
     <Project Path="GLAD/GLAD.vcxproj" Id="b3b0b5f2-a2d8-4db3-9578-c7255f57acc2" />
     <Project Path="GLFW/GLFW.vcxproj" Id="d35b7e44-ebaa-4905-ae58-84c904169a58" />
     <Project Path="ImGui/ImGui.vcxproj" Id="e033a4aa-c221-4c4d-92c7-1bc39bbfff46" />

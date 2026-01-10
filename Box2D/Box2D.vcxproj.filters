@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\CmHazel\third_party\Box2D\src\aabb.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\Box2D\src\arena_allocator.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\Box2D\src\array.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\Box2D\src\bitset.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\Box2D\src\body.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\Box2D\src\broad_phase.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\Box2D\src\constraint_graph.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\Box2D\src\contact.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\Box2D\src\contact_solver.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\Box2D\src\core.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\Box2D\src\distance.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\Box2D\src\distance_joint.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\Box2D\src\dynamic_tree.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\Box2D\src\geometry.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\Box2D\src\hull.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\Box2D\src\id_pool.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\Box2D\src\island.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\Box2D\src\joint.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\Box2D\src\manifold.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\Box2D\src\math_functions.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\Box2D\src\motor_joint.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\Box2D\src\mover.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\Box2D\src\physics_world.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\Box2D\src\prismatic_joint.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\Box2D\src\revolute_joint.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\Box2D\src\sensor.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\Box2D\src\shape.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\Box2D\src\solver.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\Box2D\src\solver_set.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\Box2D\src\table.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\Box2D\src\timer.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\Box2D\src\types.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\Box2D\src\weld_joint.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\Box2D\src\wheel_joint.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\CmHazel\third_party\Box2D\src\aabb.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\Box2D\src\arena_allocator.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\Box2D\src\array.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\Box2D\src\atomic.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\Box2D\src\bitset.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\Box2D\src\body.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\Box2D\src\broad_phase.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\Box2D\src\constants.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\Box2D\src\constraint_graph.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\Box2D\src\contact.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\Box2D\src\contact_solver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\Box2D\src\core.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\Box2D\src\ctz.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\Box2D\src\id_pool.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\Box2D\src\island.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\Box2D\src\joint.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\Box2D\src\physics_world.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\Box2D\src\sensor.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\Box2D\src\shape.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\Box2D\src\solver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\Box2D\src\solver_set.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\Box2D\src\table.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\Box2D\include\box2d\base.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\Box2D\include\box2d\box2d.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\Box2D\include\box2d\collision.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\Box2D\include\box2d\id.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\Box2D\include\box2d\math_functions.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\Box2D\include\box2d\types.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="..\CmHazel\third_party\Box2D\src\box2d.natvis" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\CmHazel\third_party\Box2D\src\CMakeLists.txt" />
+  </ItemGroup>
+</Project>

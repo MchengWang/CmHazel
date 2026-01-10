@@ -16,3 +16,6 @@
 [submodule "CmHazel/third_party/ImGuizmo"]
 	path = CmHazel/third_party/ImGuizmo
 	url = https://github.com/CedricGuillemet/ImGuizmo
+[submodule "CmHazel/third_party/Box2D"]
+	path = CmHazel/third_party/Box2D
+	url = https://github.com/erincatto/box2d

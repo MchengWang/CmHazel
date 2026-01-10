@@ -10,6 +10,8 @@
 #include "ScriptableEntity.h"
 #include "CmHazel/Renderer/Texture.h"
 
+#include "box2d/id.h"
+
 namespace CmHazel
 {
 
@@ -83,6 +85,40 @@ namespace CmHazel
 			InstantiateScript = []() { return static_cast<ScriptableEntity*>(new T()); };
 			DestroyScript = [](NativeScriptComponent* nsc) { delete nsc->Instance; nsc->Instance = nullptr; };
 		}
+	};
+
+	// 物理
+	struct Rigidbody2DComponent
+	{
+		enum class BodyType
+		{
+			Static = 0, Dynamic, Kinematic
+		};
+		BodyType Type = BodyType::Static;
+		bool FixedRotation = false;
+
+		// 在运行时存储
+		b2BodyId RuntimeBody = b2_nullBodyId;
+
+		Rigidbody2DComponent() = default;
+		Rigidbody2DComponent(const Rigidbody2DComponent&) = default;
+	};
+
+	struct BoxCollider2DComponent
+	{
+		glm::vec2 Offset = { 0.0f, 0.0f };
+		glm::vec2 Size = { 0.5f, 0.5f };
+
+		float Density = 1.0f;
+		float Friction = 0.5f;
+		float Restitution = 0.0f;
+		float RestitutionThreshold = 0.5f;
+
+		// 在运行时存储
+		b2BodyId RuntimeBody = b2_nullBodyId;
+
+		BoxCollider2DComponent() = default;
+		BoxCollider2DComponent(const BoxCollider2DComponent&) = default;
 	};
 
 }
