@@ -141,8 +141,10 @@ namespace CmHazel
 
 	static void SerializeEntity(YAML::Emitter& out, Entity entity)
 	{
+		CM_CORE_ASSERT(entity.HasComponent<IDComponent>());
+
 		out << YAML::BeginMap; // Entity
-		out << YAML::Key << "Entity" << YAML::Value << "12837192831273"; // 实体ID
+		out << YAML::Key << "Entity" << YAML::Value << entity.GetUUID(); // 实体ID
 
 		if (entity.HasComponent<TagComponent>())
 		{
@@ -286,7 +288,7 @@ namespace CmHazel
 		{
 			for (auto entity : entities)
 			{
-				uint64_t uuid = entity["Entity"].as<uint64_t>(); // TODO
+				uint64_t uuid = entity["Entity"].as<uint64_t>(); 
 
 				std::string name;
 				auto tagComponent = entity["TagComponent"];
@@ -295,7 +297,7 @@ namespace CmHazel
 
 				CM_CORE_TRACE("Deserialized entity with ID = {0}, name = {1}", uuid, name);
 
-				Entity deserializedEntity = m_Scene->CreateEntity(name);
+				Entity deserializedEntity = m_Scene->CreateEntityWithUUID(uuid, name);
 
 				auto transformComponent = entity["TransformComponent"];
 				if (transformComponent)

@@ -1,19 +1,30 @@
 #pragma once
 
+#include "SceneCamera.h"
+#include "CmHazel/Core/UUID.h"
+#include "CmHazel/Renderer/Texture.h"
+
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
 #define	GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtx/quaternion.hpp>
 
-#include "SceneCamera.h"
-#include "ScriptableEntity.h"
-#include "CmHazel/Renderer/Texture.h"
-
 #include "box2d/id.h"
 
 namespace CmHazel
 {
+
+	struct IDComponent
+	{
+		UUID ID;
+
+		IDComponent() = default;
+		IDComponent(const IDComponent&) = default;
+		IDComponent(UUID id)
+			: ID(id)
+		{ }
+	};
 
 	struct TagComponent
 	{
@@ -71,6 +82,9 @@ namespace CmHazel
 		CameraComponent() = default;
 		CameraComponent(const CameraComponent&) = default;
 	};
+
+	// Ç°ÏòÉùÃ÷
+	class ScriptableEntity;
 
 	struct NativeScriptComponent
 	{

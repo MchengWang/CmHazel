@@ -1,6 +1,7 @@
 #pragma once
 
 #include "CmHazel/Core/Timestep.h"
+#include "CmHazel/Core/UUID.h"
 #include "CmHazel/Renderer/EditorCamera.h"
 
 #include "entt.hpp"
@@ -19,6 +20,7 @@ namespace CmHazel
 		~Scene();
 
 		Entity CreateEntity(const std::string& name = std::string());
+		Entity CreateEntityWithUUID(UUID uuid, const std::string& name = std::string());
 		void DestroyEntity(Entity entity);
 
 		void OnRuntimeStart();

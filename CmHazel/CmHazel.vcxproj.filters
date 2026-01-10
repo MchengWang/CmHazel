@@ -135,6 +135,9 @@
     <ClCompile Include="source\Platform\OpenGL\OpenGLUniformBuffer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="source\CmHazel\Core\UUID.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\CmHazel\Core\Application.h">
@@ -306,6 +309,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="source\Platform\OpenGL\OpenGLUniformBuffer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="source\CmHazel\Core\UUID.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
