@@ -1,3 +1,5 @@
+// Basic Texture Shader
+
 #type vertex
 #version 450 core
 
@@ -28,7 +30,6 @@ void main()
 {
 	Output.Color = a_Color;
 	Output.TexCoord = a_TexCoord;
-	Output.TexIndex = a_TexIndex;
 	Output.TilingFactor = a_TilingFactor;
 	v_TexIndex = a_TexIndex;
 	v_EntityID = a_EntityID;
