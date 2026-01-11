@@ -15,6 +15,9 @@ namespace CmHazel
 		virtual void Clear() override;
 
 		virtual void DrawIndexed(const Shared<VertexArray>& vertexArray, uint32_t indexCount = 0) override;
+		virtual void DrawLines(const Shared<VertexArray>& vertexArray, uint32_t vertexCount) override;
+
+		virtual void SetLineWidth(float width) override;
 	};
 
 }
