@@ -45,6 +45,7 @@ namespace CmHazel
 
 	Scene::~Scene()
 	{
+		OnPhysics2DStop();
 	}
 
 	template <typename Component>
@@ -125,80 +126,22 @@ namespace CmHazel
 
 	void Scene::OnRuntimeStart()
 	{
-		b2WorldDef worldDef = b2DefaultWorldDef();
-		worldDef.gravity = { 0.0f, -9.8f };
-		m_PhysicsWorld = b2CreateWorld(&worldDef);
-
-		auto view = m_Registry.view<Rigidbody2DComponent>();
-		for (auto e : view)
-		{
-			Entity entity = { e, this };
-			auto& transform = entity.GetComponent<TransformComponent>();
-			auto& rb2d = entity.GetComponent<Rigidbody2DComponent>();
-
-			b2BodyDef bodyDef = b2DefaultBodyDef();
-			bodyDef.type = Rigidbody2DTypeToBox2DBody(rb2d.Type);
-			bodyDef.position = { transform.Translation.x, transform.Translation.y };
-			bodyDef.rotation = b2MakeRot(transform.Rotation.z);
-			
-			b2BodyId bodyId = b2CreateBody(m_PhysicsWorld, &bodyDef);
-
-			rb2d.RuntimeBody = bodyId;
-
-			// 固定旋转则使用每一帧都回正来固定旋转
-			if (rb2d.FixedRotation)
-				SyncFixedRotation(bodyId, 0.0f);
-			rb2d.RuntimeBody = bodyId;
-
-			if (entity.HasComponent<BoxCollider2DComponent>())
-			{
-				auto& bc2d = entity.GetComponent<BoxCollider2DComponent>();
-
-				b2Polygon box = b2MakeBox(
-					bc2d.Size.x * transform.Scale.x,
-					bc2d.Size.y * transform.Scale.y
-				);
-
-				worldDef.restitutionThreshold = bc2d.RestitutionThreshold;
-
-				b2ShapeDef shapeDef = b2DefaultShapeDef();
-				shapeDef.density = bc2d.Density;
-				shapeDef.material.friction = bc2d.Friction;
-				shapeDef.material.restitution = bc2d.Restitution;
-
-				b2ShapeId ss =  b2CreatePolygonShape(
-					bodyId, // BodyId
-					&shapeDef,
-					&box
-				);
-
-			}
-
-			if (entity.HasComponent<CircleCollider2DComponent>())
-			{
-				auto& cc2d = entity.GetComponent<CircleCollider2DComponent>();
-
-				b2Circle circleShape;
-				circleShape.center = { cc2d.Offset.x, cc2d.Offset.y };
-				circleShape.radius = transform.Scale.x * cc2d.Radius;
-
-				worldDef.restitutionThreshold = cc2d.RestitutionThreshold;
-
-				b2ShapeDef shapeDef = b2DefaultShapeDef();
-				shapeDef.density = cc2d.Density;
-				shapeDef.material.friction = cc2d.Friction;
-				shapeDef.material.restitution = cc2d.Restitution;
-
-				b2CreateCircleShape(bodyId, &shapeDef, &circleShape);
-
-			}
-			
-		}
+		OnPhysics2DStart();
 	}
 
 	void Scene::OnRuntimeStop()
 	{
-		b2DestroyWorld(m_PhysicsWorld);
+		OnPhysics2DStop();
+	}
+
+	void Scene::OnSimulationStart()
+	{
+		OnPhysics2DStart();
+	}
+
+	void Scene::OnSimulationStop()
+	{
+		OnPhysics2DStop();
 	}
 
 	void Scene::OnUpdateRuntime(Timestep ts)
@@ -207,25 +150,24 @@ namespace CmHazel
 		{
 			m_Registry.view<NativeScriptComponent>().each([=](auto entity, auto& nsc)
 				{
+					// TODO: Move to Scene::OnScenePlay
 					if (!nsc.Instance)
 					{
 						nsc.Instance = nsc.InstantiateScript();
 						nsc.Instance->m_Entity = Entity{ entity, this };
-
 						nsc.Instance->OnCreate();
 					}
-					
+
 					nsc.Instance->OnUpdate(ts);
 				});
 		}
 
-		// Physics	
+		// Physics
 		{
-			const float timeStep = ts;
-			const int32_t subStepCount = 1; // 3.x 用 substeps，不再分 velocity / position
-			b2World_Step(m_PhysicsWorld, timeStep, subStepCount);
+			constexpr int subStepCount = 4;
+			b2World_Step(m_PhysicsWorld, ts, subStepCount);
 
-			// 从 Box2D 获取变换
+			// Retrieve transform from Box2D
 			auto view = m_Registry.view<Rigidbody2DComponent>();
 			for (auto e : view)
 			{
@@ -234,37 +176,33 @@ namespace CmHazel
 				auto& rb2d = entity.GetComponent<Rigidbody2DComponent>();
 
 				b2BodyId body = rb2d.RuntimeBody;
-				b2Vec2 position = b2Body_GetPosition(body);
-				b2Transform xf = b2Body_GetTransform(body);
-				float angle = b2Rot_GetAngle(xf.q);
-
-				transform.Translation.x = position.x;
-				transform.Translation.y = position.y;
-				transform.Rotation.z = angle;
+				const auto& tf = b2Body_GetTransform(body);
+				transform.Translation.x = tf.p.x;
+				transform.Translation.y = tf.p.y;
+				transform.Rotation.z = b2Rot_GetAngle(tf.q);
 			}
 		}
 
 		// Render 2D
 		Camera* mainCamera = nullptr;
 		glm::mat4 cameraTransform;
-
 		{
-
 			m_Registry.view<TransformComponent, CameraComponent>()
-				.each([&](TransformComponent& transform, CameraComponent& camera)
+				.each([&mainCamera, &cameraTransform](TransformComponent transform, CameraComponent camera) 
 					{
-						if (camera.Primary)
-						{
-							mainCamera = &camera.Camera;
-							cameraTransform = transform.GetTransform();
-						}
-					});
+					if (camera.Primary)
+					{
+						*mainCamera = camera.Camera;
+						cameraTransform = transform.GetTransform();
+					}
+				});
 		}
 
 		if (mainCamera)
 		{
 			Renderer2D::BeginScene(*mainCamera, cameraTransform);
 
+			// Draw sprites
 			{
 				auto group = m_Registry.group<TransformComponent>(entt::get<SpriteRendererComponent>);
 				for (auto entity : group)
@@ -277,9 +215,8 @@ namespace CmHazel
 
 			// Draw circles
 			{
-				auto view = m_Registry.view<TransformComponent, CircleRendererComponent>();
-
-				view.each([&](entt::entity entity, TransformComponent& transform, CircleRendererComponent& circle)
+				m_Registry.view<TransformComponent, CircleRendererComponent>()
+					.each([](entt::entity entity, TransformComponent transform, CircleRendererComponent circle)
 					{
 						Renderer2D::DrawCircle(transform.GetTransform(), circle.Color, circle.Thickness, circle.Fade, (int)entity);
 					});
@@ -287,34 +224,42 @@ namespace CmHazel
 
 			Renderer2D::EndScene();
 		}
+
+	}
+
+	void Scene::OnUpdateSimulation(Timestep ts, EditorCamera& camera)
+	{
+		// Physics
+		{
+			constexpr int subStepCount = 4;
+			b2World_Step(m_PhysicsWorld, ts, subStepCount);
+
+			// Retrieve transform from Box2D
+			auto view = m_Registry.view<Rigidbody2DComponent>();
+			for (auto e : view)
+			{
+				Entity entity = { e, this };
+				auto& transform = entity.GetComponent<TransformComponent>();
+				auto& rb2d = entity.GetComponent<Rigidbody2DComponent>();
+
+				b2BodyId body = rb2d.RuntimeBody;
+				const auto& position = b2Body_GetTransform(body);
+				transform.Translation.x = position.p.x;
+				transform.Translation.y = position.p.y;
+				transform.Rotation.z = b2Rot_GetAngle(position.q);
+			}
+		}
+
+		// Render
+		RenderScene(camera);
 	}
 
 	void Scene::OnUpdateEditor(Timestep ts, EditorCamera& camera)
 	{
-		Renderer2D::BeginScene(camera);
-
-		{
-			auto group = m_Registry.group<TransformComponent>(entt::get<SpriteRendererComponent>);
-			for (auto entity : group)
-			{
-				auto [transform, sprite] = group.get<TransformComponent, SpriteRendererComponent>(entity);
-
-				Renderer2D::DrawSprite(transform.GetTransform(), sprite, (int)entity);
-			}
-		}
-
-		// Draw circles
-		{
-			auto view = m_Registry.view<TransformComponent, CircleRendererComponent>();
-
-			view.each([&](entt::entity entity, TransformComponent& transform, CircleRendererComponent& circle)
-				{
-					Renderer2D::DrawCircle(transform.GetTransform(), circle.Color, circle.Thickness, circle.Fade, (int)entity);
-				});
-		}
-
-		Renderer2D::EndScene();
+		// Render
+		RenderScene(camera);
 	}
+
 
 	void Scene::OnViewportResize(uint32_t width, uint32_t height)
 	{	
@@ -363,6 +308,107 @@ namespace CmHazel
 	void Scene::OnComponentAdded(Entity, T&)
 	{
 		//static_assert(false);
+	}
+
+	void Scene::OnPhysics2DStart()
+	{
+		b2WorldDef worldDef = b2DefaultWorldDef();
+		worldDef.gravity = { 0.0f, -9.8f };
+		m_PhysicsWorld = b2CreateWorld(&worldDef);
+
+		auto view = m_Registry.view<Rigidbody2DComponent>();
+		for (auto e : view)
+		{
+			Entity entity = { e, this };
+			auto& transform = entity.GetComponent<TransformComponent>();
+			auto& rb2d = entity.GetComponent<Rigidbody2DComponent>();
+
+			b2BodyDef bodyDef;
+			bodyDef.type = Rigidbody2DTypeToBox2DBody(rb2d.Type);
+			bodyDef.position = { transform.Translation.x, transform.Translation.y };
+			bodyDef.rotation = b2MakeRot(transform.Rotation.z);
+
+			b2BodyId bodyId = b2CreateBody(m_PhysicsWorld, &bodyDef);
+
+			// 固定旋转则使用每一帧都回正来固定旋转
+			if (rb2d.FixedRotation)
+				SyncFixedRotation(bodyId, 0.0f);
+			rb2d.RuntimeBody = bodyId;
+
+			if (entity.HasComponent<BoxCollider2DComponent>())
+			{
+				auto& bc2d = entity.GetComponent<BoxCollider2DComponent>();
+
+				b2Polygon box = b2MakeBox(
+					bc2d.Size.x * transform.Scale.x,
+					bc2d.Size.y * transform.Scale.y
+				);
+
+				worldDef.restitutionThreshold = bc2d.RestitutionThreshold;
+
+				b2ShapeDef shapeDef = b2DefaultShapeDef();
+				shapeDef.density = bc2d.Density;
+				shapeDef.material.friction = bc2d.Friction;
+				shapeDef.material.restitution = bc2d.Restitution;
+
+				b2ShapeId ss = b2CreatePolygonShape(
+					bodyId, // BodyId
+					&shapeDef,
+					&box
+				);
+			}
+
+			if (entity.HasComponent<CircleCollider2DComponent>())
+			{
+				auto& cc2d = entity.GetComponent<CircleCollider2DComponent>();
+
+				b2Circle circleShape;
+				circleShape.center = { cc2d.Offset.x, cc2d.Offset.y };
+				circleShape.radius = transform.Scale.x * cc2d.Radius;
+
+				worldDef.restitutionThreshold = cc2d.RestitutionThreshold;
+
+				b2ShapeDef shapeDef = b2DefaultShapeDef();
+				shapeDef.density = cc2d.Density;
+				shapeDef.material.friction = cc2d.Friction;
+				shapeDef.material.restitution = cc2d.Restitution;
+
+				b2CreateCircleShape(bodyId, &shapeDef, &circleShape);
+			}
+		}
+	}
+
+	void Scene::OnPhysics2DStop()
+	{
+		b2DestroyWorld(m_PhysicsWorld);
+		m_PhysicsWorld = b2_nullWorldId;
+	}
+
+	void Scene::RenderScene(EditorCamera& camera)
+	{
+		Renderer2D::BeginScene(camera);
+
+		// Draw sprites
+		{
+			auto group = m_Registry.group<TransformComponent>(entt::get<SpriteRendererComponent>);
+			for (auto entity : group)
+			{
+				auto [transform, sprite] = group.get<TransformComponent, SpriteRendererComponent>(entity);
+
+				Renderer2D::DrawSprite(transform.GetTransform(), sprite, (int)entity);
+			}
+		}
+
+		// Draw circles
+		{
+			m_Registry.view<TransformComponent, CircleRendererComponent>()
+				.each([&](entt::entity entity, TransformComponent transform, CircleRendererComponent circle)
+				{
+					Renderer2D::DrawCircle(transform.GetTransform(), circle.Color, circle.Thickness, circle.Fade, (int)entity);
+				});
+		}
+
+		Renderer2D::EndScene();
 	}
 
 	template <>
