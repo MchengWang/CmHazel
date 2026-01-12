@@ -16,6 +16,12 @@
 #include "box2d/math_functions.h"
 #include "box2d/types.h"
 
+/*
+*  bug
+* 在拖拽文件到视口时，容易造成上下文不一致
+* 从而中断
+*/
+
 namespace CmHazel
 {
 
@@ -45,7 +51,8 @@ namespace CmHazel
 
 	Scene::~Scene()
 	{
-		OnPhysics2DStop();
+		b2DestroyWorld(m_PhysicsWorld);
+		m_PhysicsWorld = b2_nullWorldId;
 	}
 
 	template<typename... Component>

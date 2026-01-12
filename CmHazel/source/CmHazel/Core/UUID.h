@@ -1,6 +1,5 @@
 #pragma once
 
-#include <xhash>
 
 namespace CmHazel
 {
@@ -23,13 +22,14 @@ namespace CmHazel
 
 namespace std
 {
+	template <typename T> struct hash;
 
 	template <>
 	struct hash<CmHazel::UUID>
 	{
 		std::size_t operator()(const CmHazel::UUID& uuid) const
 		{
-			return hash<uint64_t>()((uint64_t)uuid);
+			return (uint64_t)uuid;
 		}
 	};
 

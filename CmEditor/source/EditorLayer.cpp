@@ -197,6 +197,9 @@ namespace CmHazel
 				if (ImGui::MenuItem("Open...", "Ctrl + O"))
 					OpenScene();
 
+				if (ImGui::MenuItem("Save", "Ctrl + S"))
+					SaveScene();
+
 				if (ImGui::MenuItem("Save As ...", "Ctrl + Shift + S"))
 					SaveSceneAs();
 

@@ -15,11 +15,6 @@ namespace CmHazel
 			//PushLayer(new ExampleLayer());
 			PushLayer(new EditorLayer());
 		}
-
-		~CmEditor()
-		{
-
-		}
 	};
 
 	Application* CreateApplication(ApplicationCommandLineArgs args)
