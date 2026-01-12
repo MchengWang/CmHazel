@@ -303,6 +303,7 @@ namespace CmHazel
 		}
 		catch (YAML::ParserException e)
 		{
+			CM_CORE_ERROR("Failed to load .cml file '{0}'\n  {1}", filepath, e.what());
 			return false;
 		}
 

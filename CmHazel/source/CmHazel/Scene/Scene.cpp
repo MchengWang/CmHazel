@@ -304,12 +304,6 @@ namespace CmHazel
 		return {};
 	}
 
-	template <typename T>
-	void Scene::OnComponentAdded(Entity, T&)
-	{
-		//static_assert(false);
-	}
-
 	void Scene::OnPhysics2DStart()
 	{
 		b2WorldDef worldDef = b2DefaultWorldDef();
@@ -409,6 +403,12 @@ namespace CmHazel
 		}
 
 		Renderer2D::EndScene();
+	}
+
+	template <typename T>
+	void Scene::OnComponentAdded(Entity, T&)
+	{
+		static_assert(sizeof(T) == 0);
 	}
 
 	template <>

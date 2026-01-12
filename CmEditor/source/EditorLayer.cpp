@@ -419,7 +419,10 @@ namespace CmHazel
 	void EditorLayer::OnEvent(Event& e)
 	{
 		m_CameraController.OnEvent(e);
-		m_EditorCamera.OnEvent(e);
+		if (m_SceneState == SceneState::Edit)
+		{
+			m_EditorCamera.OnEvent(e);
+		}
 
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<KeyPressedEvent>(CM_BIND_EVENT_FN(EditorLayer::OnKeyPressed));
@@ -440,7 +443,7 @@ namespace CmHazel
 	bool EditorLayer::OnKeyPressed(KeyPressedEvent& e)
 	{
 		// ¿ì½Ý¼ü
-		if (e.GetRepeatCount() > 0)
+		if (e.IsRepeat())
 			return false;
 
 		bool control = Input::IsKeyPressed(Key::LeftControl) || Input::IsKeyPressed(Key::RightControl);
@@ -547,6 +550,15 @@ namespace CmHazel
 						Renderer2D::DrawCircle(transform, glm::vec4(0, 1, 0, 1), 0.01f);
 					});
 			}
+		}
+
+		// Draw selected entity outline 
+		if (Entity selectedEntity = m_SceneHierarchyPanel.GetSelectedEntity())
+		{
+			TransformComponent transform = selectedEntity.GetComponent<TransformComponent>();
+
+			//Red
+			Renderer2D::DrawRect(transform.GetTransform(), glm::vec4(1, 0, 0, 1));
 		}
 
 		Renderer2D::EndScene();
