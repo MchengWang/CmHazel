@@ -180,7 +180,7 @@ namespace CmHazel
 
 				b2Circle circleShape;
 				circleShape.center = { cc2d.Offset.x, cc2d.Offset.y };
-				circleShape.radius = cc2d.Radius;
+				circleShape.radius = transform.Scale.x * cc2d.Radius;
 
 				worldDef.restitutionThreshold = cc2d.RestitutionThreshold;
 
