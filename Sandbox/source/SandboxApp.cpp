@@ -13,7 +13,8 @@
 class Sandbox : public CmHazel::Application
 {
 public:
-	Sandbox()
+	Sandbox(const CmHazel::ApplicationSpecification& specification)
+		: CmHazel::Application(specification)
 	{
 		//PushLayer(new ExampleLayer());
 		PushLayer(new Sandbox2D());
@@ -25,7 +26,13 @@ public:
 	}
 };
 
-CmHazel::Application* CmHazel::CreateApplication()
+CmHazel::Application* CmHazel::CreateApplication(CmHazel::ApplicationCommandLineArgs args)
 {
-	return new Sandbox();
+
+	CmHazel::ApplicationSpecification spec;
+	spec.Name = "Sandbox";
+	spec.WorkingDirectory = "../Hazelnut";
+	spec.CommandLineArgs = args;
+
+	return new Sandbox(spec);
 }

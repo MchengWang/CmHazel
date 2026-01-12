@@ -9,8 +9,8 @@ namespace CmHazel
 	class CmEditor : public Application
 	{
 	public:
-		CmEditor(ApplicationCommandLineArgs args)
-			: Application("CmEditor", args)
+		CmEditor(const ApplicationSpecification& spec)
+			: Application(spec)
 		{
 			//PushLayer(new ExampleLayer());
 			PushLayer(new EditorLayer());
@@ -24,7 +24,11 @@ namespace CmHazel
 
 	Application* CreateApplication(ApplicationCommandLineArgs args)
 	{
-		return new CmEditor(args);
+		ApplicationSpecification spec;
+		spec.Name = "CmEditor";
+		spec.CommandLineArgs = args;
+
+		return new CmEditor(spec);
 	}
 
 }

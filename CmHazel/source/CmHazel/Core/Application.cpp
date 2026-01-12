@@ -13,15 +13,19 @@ namespace CmHazel
 {
 	Application* Application::s_Instance = nullptr;
 
-	Application::Application(const std::string& name, ApplicationCommandLineArgs args)
-		: m_CommandLineArgs(args)
+	Application::Application(const ApplicationSpecification& specification)
+		: m_Specification(specification)
 	{
 		CM_PROFILE_FUNCTION();
 
 		CM_CORE_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
 
-		m_Window = Window::Create(WindowProps(name));
+		// 设置工作路径
+		if (!m_Specification.WorkingDirectory.empty())
+			std::filesystem::current_path(m_Specification.WorkingDirectory);
+
+		m_Window = Window::Create(WindowProps(m_Specification.Name));
 		m_Window->SetEventCallback(CM_BIND_EVENT_FN(Application::OnEvent));
 
 		Renderer::Init();
@@ -104,7 +108,9 @@ namespace CmHazel
 				}
 				m_ImGuiLayer->End();
 
-			}			
+			}
+
+			
 
 			m_Window->OnUpdate();
 		}

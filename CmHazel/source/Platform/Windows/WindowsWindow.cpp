@@ -178,12 +178,16 @@ namespace CmHazel
 
 	void WindowsWindow::OnUpdate()
 	{
+		CM_PROFILE_FUNCTION();
+
 		glfwPollEvents();
 		m_Context->SwapBuffers();
 	}
 
 	void WindowsWindow::SetVSync(bool enabled)
 	{
+		CM_PROFILE_FUNCTION();
+
 		if (enabled)
 			glfwSwapInterval(1);
 		else
