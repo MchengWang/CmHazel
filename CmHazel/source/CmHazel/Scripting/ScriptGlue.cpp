@@ -1,10 +1,23 @@
 #include "cmzpch.h"
 #include "ScriptGlue.h"
+#include "ScriptEngine.h"
+
+#include "CmHazel/Core/UUID.h"
+#include "CmHazel/Core/KeyCodes.h"
+#include "CmHazel/Core/Input.h"
+
+#include "CmHazel/Scene/Scene.h"
+#include "CmHazel/Scene/Entity.h"
 
 #include "mono/metadata/object.h"
+#include "mono/metadata/reflection.h"
+
+#include "box2d/box2d.h"
 
 namespace CmHazel
 {
+
+	static std::unordered_map<MonoType*, std::function<bool(Entity)>> s_EntityHasComponentFuncs;
 
 #define CM_ADD_INTERNAL_CALL(Name) mono_add_internal_call("CmHazel.InternalCalls::" #Name, Name);
 
@@ -26,6 +39,98 @@ namespace CmHazel
 	{
 		CM_CORE_WARN("Value: {0}, {1}, {2}", parameter->x, parameter->y, parameter->z);
 		return glm::dot(*parameter, *parameter);
+	}
+
+	static bool Entity_HasComponent(UUID entityID, MonoReflectionType* componentType)
+	{
+		Scene* scene = ScriptEngine::GetSceneContext();
+		CM_CORE_ASSERT(scene);
+		Entity entity = scene->GetEntityByUUID(entityID);
+		CM_CORE_ASSERT(entity);
+
+		MonoType* managedType = mono_reflection_type_get_type(componentType);
+		CM_CORE_ASSERT(s_EntityHasComponentFuncs.find(managedType) != s_EntityHasComponentFuncs.end());
+		return s_EntityHasComponentFuncs.at(managedType)(entity);
+	}
+
+	static void TransformComponent_GetTranslation(UUID entityID, glm::vec3* outTranslation)
+	{
+		Scene* scene = ScriptEngine::GetSceneContext();
+		CM_CORE_ASSERT(scene);
+		Entity entity = scene->GetEntityByUUID(entityID);
+		CM_CORE_ASSERT(entity);
+
+		*outTranslation = entity.GetComponent<TransformComponent>().Translation;
+	}
+
+	static void TransformComponent_SetTranslation(UUID entityID, glm::vec3* translation)
+	{
+		Scene* scene = ScriptEngine::GetSceneContext();
+		CM_CORE_ASSERT(scene);
+		Entity entity = scene->GetEntityByUUID(entityID);
+		CM_CORE_ASSERT(entity);
+
+		entity.GetComponent<TransformComponent>().Translation = *translation;
+	}
+
+	static void Rigidbody2DComponent_ApplyLinearImpulse(UUID entityID, glm::vec2* impulse, glm::vec2* point, bool wake)
+	{
+		Scene* scene = ScriptEngine::GetSceneContext();
+		CM_CORE_ASSERT(scene);
+		Entity entity = scene->GetEntityByUUID(entityID);
+		CM_CORE_ASSERT(entity);
+
+		auto& rb2d = entity.GetComponent<Rigidbody2DComponent>();
+		b2BodyId body = rb2d.RuntimeBody;
+		b2Body_ApplyLinearImpulse(body, b2Vec2(impulse->x, impulse->y), b2Vec2(point->x, point->y), wake);
+	}
+
+	static void Rigidbody2DComponent_ApplyLinearImpulseToCenter(UUID entityID, glm::vec2* impulse, bool wake)
+	{
+		Scene* scene = ScriptEngine::GetSceneContext();
+		CM_CORE_ASSERT(scene);
+		Entity entity = scene->GetEntityByUUID(entityID);
+		CM_CORE_ASSERT(entity);
+
+		auto& rb2d = entity.GetComponent<Rigidbody2DComponent>();
+		b2BodyId body = rb2d.RuntimeBody;
+		b2Body_ApplyLinearImpulseToCenter(body, b2Vec2(impulse->x, impulse->y), wake);
+	}
+
+	static bool Input_IsKeyDown(int keyCode)
+	{
+		return Input::IsKeyPressed((KeyCode)keyCode);
+	}
+
+	template <typename... Component>
+	static void RegisterComponent()
+	{
+		([]()
+			{
+				std::string_view typeName = typeid(Component).name();
+				size_t pos = typeName.find_last_of(':');
+				std::string_view structName = typeName.substr(pos + 1);
+				std::string managedTypename = fmt::format("CmHazel.{}", structName);
+
+				MonoType* managedType = mono_reflection_type_from_name(managedTypename.data(), ScriptEngine::GetCoreAssemblyImage());
+				if (!managedType)
+				{
+					CM_CORE_ERROR("Could not find component type {}", managedTypename);
+					return;
+				}
+				s_EntityHasComponentFuncs[managedType] = [](Entity entity) { return entity.HasComponent<Component>(); };
+			}(), ...);
+	}
+
+	template <typename... Component>
+	static void RegisterComponent(ComponentGroup<Component...>)
+	{
+		RegisterComponent<Component...>();
+	}
+
+	void ScriptGlue::RegisterComponents()
+	{
+		RegisterComponent(AllComponents{});
 	}
 
 	void ScriptGlue::RegisterFunctions()

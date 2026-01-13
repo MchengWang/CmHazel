@@ -3,6 +3,7 @@
 
 #include "Components.h"
 #include "ScriptableEntity.h"
+#include "CmHazel/Scripting/ScriptEngine.h"
 #include "CmHazel/Renderer/Renderer2D.h"
 
 #include <glm/glm.hpp>
@@ -130,22 +131,42 @@ namespace CmHazel
 		entity.AddComponent<TransformComponent>();
 		auto& tag = entity.AddComponent<TagComponent>();
 		tag.Tag = name.empty() ? "Entity" : name;
+
+		m_EntityMap[uuid] = entity;
+
 		return entity;
 	}
 
 	void Scene::DestroyEntity(Entity entity)
 	{
 		m_Registry.destroy(entity);
+		m_EntityMap.erase(entity.GetUUID());
 	}
 
 	void Scene::OnRuntimeStart()
 	{
 		OnPhysics2DStart();
+
+		// Scripting
+		{
+			ScriptEngine::OnRuntimeStart(this);
+
+			// Instantiate all script entities;
+
+			auto view = m_Registry.view<ScriptComponent>();
+			for (auto e : view)
+			{
+				Entity entity = { e, this };
+				ScriptEngine::OnCreateEntity(entity);
+			}
+		}
 	}
 
 	void Scene::OnRuntimeStop()
 	{
 		OnPhysics2DStop();
+
+		ScriptEngine::OnRuntimeStop();
 	}
 
 	void Scene::OnSimulationStart()
@@ -162,6 +183,14 @@ namespace CmHazel
 	{
 		// Update scripts
 		{
+			// c# 实体更新
+			auto view = m_Registry.view<ScriptComponent>();
+			for (auto e : view)
+			{
+				Entity entity = { e, this };
+				ScriptEngine::OnUpdateEntity(entity, ts);
+			}
+
 			m_Registry.view<NativeScriptComponent>().each([=](auto entity, auto& nsc)
 				{
 					// TODO: Move to Scene::OnScenePlay
@@ -309,6 +338,15 @@ namespace CmHazel
 		return {};
 	}
 
+	Entity Scene::GetEntityByUUID(UUID uuid)
+	{
+		// 也许应该使用 assert
+		if (m_EntityMap.find(uuid) != m_EntityMap.end())
+			return { m_EntityMap.at(uuid), this };
+
+		return {};
+	}
+
 	void Scene::OnPhysics2DStart()
 	{
 		b2WorldDef worldDef = b2DefaultWorldDef();
@@ -432,6 +470,12 @@ namespace CmHazel
 	{
 		if (m_ViewportWidth > 0 && m_ViewportHeight > 0)
 			component.Camera.SetViewportSize(m_ViewportWidth, m_ViewportHeight);
+	}
+
+	template <>
+	void Scene::OnComponentAdded<ScriptComponent>(Entity, ScriptComponent&)
+	{
+
 	}
 
 	template <>

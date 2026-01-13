@@ -39,7 +39,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="properties\test.cs" />
-    <Compile Include="source\Main.cs" />
+    <Compile Include="source\Camera.cs" />
+    <Compile Include="source\CmHazel\Input.cs" />
+    <Compile Include="source\CmHazel\InternalCalls.cs" />
+    <Compile Include="source\CmHazel\KeyCode.cs" />
+    <Compile Include="source\CmHazel\Scene\Components.cs" />
+    <Compile Include="source\CmHazel\Scene\Entity.cs" />
+    <Compile Include="source\CmHazel\Vector3.cs" />
+    <Compile Include="source\CmHazel\Vector2.cs" />
+    <Compile Include="source\Player.cs" />
     <None Include="App.config" />
     <Compile Include="source/**.cs" />
     <Compile Include="properties/**.cs" />

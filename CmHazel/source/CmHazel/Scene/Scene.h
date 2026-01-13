@@ -38,6 +38,8 @@ namespace CmHazel
 
 		void DuplicateEntity(Entity entity);
 
+		Entity GetEntityByUUID(UUID uuid);
+
 		Entity GetPrimaryCameraEntity();
 
 		template <typename... Components>
@@ -60,6 +62,8 @@ namespace CmHazel
 		uint32_t m_ViewportWidth = 0, m_ViewportHeight = 0;
 
 		b2WorldId m_PhysicsWorld = b2_nullWorldId;
+
+		std::unordered_map<UUID, entt::entity> m_EntityMap;
 
 		friend class Entity;
 		friend class SceneSerializer;
