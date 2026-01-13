@@ -1,6 +1,8 @@
 #include "cmzpch.h"
 #include "ScriptEngine.h"
 
+#include "ScriptGlue.h"
+
 #include "mono/jit/jit.h"
 #include "mono/metadata/assembly.h"
 #include "mono/metadata/object.h"
@@ -8,12 +10,92 @@
 namespace CmHazel
 {
 
+	namespace Utils
+	{
+
+		// 移动到文件系统
+		char* ReadBytes(const std::filesystem::path& filepath, uint32_t* outSize)
+		{
+			std::ifstream stream(filepath, std::ios::binary | std::ios::ate);
+
+			if (!stream)
+			{
+				// 无法打开文件
+				return nullptr;
+			}
+
+			std::streampos end = stream.tellg();
+			stream.seekg(0, std::ios::beg);
+			uint32_t size = end - stream.tellg();
+
+			if (size == 0)
+			{
+				// 文件为空
+				return nullptr;
+			}
+
+			char* buffer = new char[size];
+			stream.read((char*)buffer, size);
+			stream.close();
+
+			*outSize = size;
+			return buffer;
+		}
+
+		MonoAssembly* LoadMonoAssembly(const std::filesystem::path& assemblyPath)
+		{
+			uint32_t fileSize = 0;
+			char* fileData = ReadBytes(assemblyPath, &fileSize);
+
+			// 注意：我们不能将此图像用于除加载程序集之外的任何用途，因为此图像没有对程序集的引用
+			MonoImageOpenStatus status;
+			MonoImage* image = mono_image_open_from_data_full(fileData, fileSize, 1, &status, 0);
+
+			if (status != MONO_IMAGE_OK)
+			{
+				const char* errorMessage = mono_image_strerror(status);
+				// 使用 errorMessage 数据记录一些错误信息
+				return nullptr;
+			}
+
+			std::string pathString = assemblyPath.string();
+			MonoAssembly* assembly = mono_assembly_load_from_full(image, pathString.c_str(), &status, 0);
+			mono_image_close(image);
+
+			// 不要忘记释放文件数据
+			delete[] fileData;
+
+			return assembly;
+		}
+
+		void PrintAssemblyTypes(MonoAssembly* assembly)
+		{
+			MonoImage* image = mono_assembly_get_image(assembly);
+			const MonoTableInfo* typeDefinitionsTable = mono_image_get_table_info(image, MONO_TABLE_TYPEDEF);
+			int32_t numType = mono_table_info_get_rows(typeDefinitionsTable);
+
+			for (int32_t i = 0; i < numType; i++)
+			{
+				uint32_t cols[MONO_TYPEDEF_SIZE];
+				mono_metadata_decode_row(typeDefinitionsTable, i, cols, MONO_TYPEDEF_SIZE);
+
+				const char* nameSpace = mono_metadata_string_heap(image, cols[MONO_TYPEDEF_NAMESPACE]);
+				const char* name = mono_metadata_string_heap(image, cols[MONO_TYPEDEF_NAME]);
+
+				CM_CORE_TRACE("{}. {}", nameSpace, name);
+			}
+		}
+	}
+
 	struct ScriptEngineData
 	{
 		MonoDomain* RootDomain = nullptr;
 		MonoDomain* AppDomain = nullptr;
 
 		MonoAssembly* CoreAssembly = nullptr;
+		MonoImage* CoreAssemblyImage = nullptr;
+
+		ScriptClass EntityClass;
 	};
 
 	static ScriptEngineData* s_Data = nullptr;
@@ -23,6 +105,38 @@ namespace CmHazel
 		s_Data = new ScriptEngineData();
 
 		InitMono();
+		LoadAssembly("resources/Scripts/CmHazel-ScriptCore.dll");
+
+		ScriptGlue::RegisterFunctions();
+
+		// 检索并实例化类（带构造函数）
+		s_Data->EntityClass = ScriptClass("CmHazel", "Entity");
+
+		MonoObject* instance = s_Data->EntityClass.Instantiate();
+
+		// 调用方法
+		MonoMethod* printMessageFunc = s_Data->EntityClass.GetMethod("PrintMessage", 0);
+		s_Data->EntityClass.InvokeMethod(instance, printMessageFunc);
+
+		// 调用有参数的方法
+		MonoMethod* printIntFunc = s_Data->EntityClass.GetMethod("PrintInt", 1);
+
+		int value = 5;
+		void* param = &value;
+
+		s_Data->EntityClass.InvokeMethod(instance, printIntFunc, &param);
+
+		MonoMethod* printIntsFunc = s_Data->EntityClass.GetMethod("PrintInts", 2);
+		int value2 = 508;
+		void* params[2] = { &value, &value2 };
+		s_Data->EntityClass.InvokeMethod(instance, printIntsFunc, params);
+
+		MonoString* monoString = mono_string_new(s_Data->AppDomain, "Hello World from C++!");
+		MonoMethod* printCustomMessageFunc = s_Data->EntityClass.GetMethod("PrintCustomMessage", 1);
+		void* stringParam = monoString;
+		s_Data->EntityClass.InvokeMethod(instance, printCustomMessageFunc, &stringParam);
+
+		CM_CORE_ASSERT(false);
 	}
 
 	void ScriptEngine::Shutdown()
@@ -31,76 +145,7 @@ namespace CmHazel
 		delete s_Data;
 	}
 
-	char* ReadBytes(const std::string& filepath, uint32_t* outSize)
-	{
-		std::ifstream stream(filepath, std::ios::binary | std::ios::ate);
-
-		if (!stream)
-		{
-			// 无法打开文件
-			return nullptr;
-		}
-
-		std::streampos end = stream.tellg();
-		stream.seekg(0, std::ios::beg);
-		uint32_t size = end - stream.tellg();
-
-		if (size == 0)
-		{
-			// 文件为空
-			return nullptr;
-		}
-
-		char* buffer = new char[size];
-		stream.read((char*)buffer, size);
-		stream.close();
-
-		*outSize = size;
-		return buffer;
-	}
-
-	MonoAssembly* LoadCSharpAssembly(const std::string& assemblyPath)
-	{
-		uint32_t fileSize = 0;
-		char* fileData = ReadBytes(assemblyPath, &fileSize);
-
-		// 注意：我们不能将此图像用于除加载程序集之外的任何用途，因为此图像没有对程序集的引用
-		MonoImageOpenStatus status;
-		MonoImage* image = mono_image_open_from_data_full(fileData, fileSize, 1, &status, 0);
-
-		if (status != MONO_IMAGE_OK)
-		{
-			const char* errorMessage = mono_image_strerror(status);
-			// 使用 errorMessage 数据记录一些错误信息
-			return nullptr;
-		}
-
-		MonoAssembly* assembly = mono_assembly_load_from_full(image, assemblyPath.c_str(), &status, 0);
-		mono_image_close(image);
-
-		// 不要忘记释放文件数据
-		delete[] fileData;
-
-		return assembly;
-	}
-
-	void PrintAssemblyTypes(MonoAssembly* assembly)
-	{
-		MonoImage* image = mono_assembly_get_image(assembly);
-		const MonoTableInfo* typeDefinitionsTable = mono_image_get_table_info(image, MONO_TABLE_TYPEDEF);
-		int32_t numType = mono_table_info_get_rows(typeDefinitionsTable);
-
-		for (int32_t i = 0; i < numType; i++)
-		{
-			uint32_t cols[MONO_TYPEDEF_SIZE];
-			mono_metadata_decode_row(typeDefinitionsTable, i, cols, MONO_TYPEDEF_SIZE);
-
-			const char* nameSpace = mono_metadata_string_heap(image, cols[MONO_TYPEDEF_NAMESPACE]);
-			const char* name = mono_metadata_string_heap(image, cols[MONO_TYPEDEF_NAME]);
-
-			CM_CORE_TRACE("{}. {}", nameSpace, name);
-		}
-	}
+	
 
 	void ScriptEngine::InitMono()
 	{
@@ -111,43 +156,6 @@ namespace CmHazel
 
 		// 存储根域指针
 		s_Data->RootDomain = rootDomain;
-
-		// 创建应用域
-		s_Data->AppDomain = mono_domain_create_appdomain((char*)"CmScriptRuntime", nullptr);
-		mono_domain_set(s_Data->AppDomain, true);
-
-		// 可能会移动这个
-		s_Data->CoreAssembly = LoadCSharpAssembly("resources/Scripts/CmHazel-ScriptCore.dll");
-		PrintAssemblyTypes(s_Data->CoreAssembly);
-
-		MonoImage* assemblyImage = mono_assembly_get_image(s_Data->CoreAssembly);
-		MonoClass* monoClass = mono_class_from_name(assemblyImage, "CmHazel", "Main");
-
-		// 1. 创建一个对象（并调用构造函数）
-		MonoObject* instance = mono_object_new(s_Data->AppDomain, monoClass);
-		mono_runtime_object_init(instance);
-
-		// 2. 调用方法
-		MonoMethod* printMessageFunc = mono_class_get_method_from_name(monoClass, "PrintMessage", 0);
-		mono_runtime_invoke(printMessageFunc, instance, nullptr, nullptr);
-
-		// 3. 调用带有参数的方法
-		MonoMethod* printIntFunc = mono_class_get_method_from_name(monoClass, "PrintInt", 1);
-
-		int value = 5;
-		void* param = &value;
-
-		mono_runtime_invoke(printIntFunc, instance, &param, nullptr);
-
-		MonoMethod* printIntsFunc = mono_class_get_method_from_name(monoClass, "PrintInts", 2);
-		int value2 = 508;
-		void* params[2] = { &value, &value2 };
-		mono_runtime_invoke(printIntsFunc, instance, params, nullptr);
-
-		MonoString* monoString = mono_string_new(s_Data->AppDomain, "Hello world from C++!");
-		MonoMethod* printCustomMessageFunc = mono_class_get_method_from_name(monoClass, "PrintCustomMessage", 1);
-		void* stringParam = monoString;
-		mono_runtime_invoke(printCustomMessageFunc, instance, &stringParam, nullptr);
 	}
 
 	void ScriptEngine::ShutdownMono()
@@ -159,6 +167,46 @@ namespace CmHazel
 
 		//mono_jit_cleanup(s_Data->RootDomain);
 		s_Data->RootDomain = nullptr;
+	}
+
+	void ScriptEngine::LoadAssembly(const std::filesystem::path& filepath)
+	{
+		// 创建一个应用域
+		s_Data->AppDomain = mono_domain_create_appdomain((char*)"CmScriptRuntime", nullptr);
+		mono_domain_set(s_Data->AppDomain, true);
+
+		// 可能会移动
+		s_Data->CoreAssembly = Utils::LoadMonoAssembly(filepath);
+		s_Data->CoreAssemblyImage = mono_assembly_get_image(s_Data->CoreAssembly);
+		// Utils::PrintAssemblyTypes(s_Data->CoreAssembly);
+	}
+
+	MonoObject* ScriptEngine::InstantiateClass(MonoClass* monoClass)
+	{
+		MonoObject* instance = mono_object_new(s_Data->AppDomain, monoClass);
+		mono_runtime_object_init(instance);
+		return instance;
+	}
+
+	ScriptClass::ScriptClass(const std::string& classNamespace, const std::string& className)
+		: m_ClassNamespace(classNamespace), m_ClassName(className)
+	{
+		m_MonoClass = mono_class_from_name(s_Data->CoreAssemblyImage, classNamespace.c_str(), className.c_str());
+	}
+
+	MonoObject* ScriptClass::Instantiate()
+	{
+		return ScriptEngine::InstantiateClass(m_MonoClass);
+	}
+
+	MonoMethod* ScriptClass::GetMethod(const std::string& name, int parameterCount)
+	{
+		return mono_class_get_method_from_name(m_MonoClass, name.c_str(), parameterCount);
+	}
+
+	MonoObject* ScriptClass::InvokeMethod(MonoObject* instance, MonoMethod* method, void** params)
+	{
+		return mono_runtime_invoke(method, instance, params, nullptr);
 	}
 
 }
