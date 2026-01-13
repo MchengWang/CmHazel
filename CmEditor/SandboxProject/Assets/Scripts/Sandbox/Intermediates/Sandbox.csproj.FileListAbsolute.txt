@@ -1,0 +1,11 @@
+C:\source\C++\CmHazel\CmEditor\SandboxProject\Assets\Scripts\Sandbox\Intermediates\Sandbox.csproj.AssemblyReference.cache
+C:\source\C++\CmHazel\CmEditor\SandboxProject\Assets\Scripts\Sandbox\Intermediates\Sandbox.csproj.CoreCompileInputs.cache
+C:\source\C++\CmHazel\CmEditor\SandboxProject\Assets\Scripts\Sandbox\Binaries\Sandbox.dll.config
+C:\source\C++\CmHazel\CmEditor\SandboxProject\Assets\Scripts\Sandbox\Binaries\Sandbox.dll
+C:\source\C++\CmHazel\CmEditor\SandboxProject\Assets\Scripts\Sandbox\Binaries\Sandbox.pdb
+C:\source\C++\CmHazel\CmEditor\SandboxProject\Assets\Scripts\Sandbox\Binaries\CmHazel-ScriptCore.dll
+C:\source\C++\CmHazel\CmEditor\SandboxProject\Assets\Scripts\Sandbox\Binaries\CmHazel-ScriptCore.pdb
+C:\source\C++\CmHazel\CmEditor\SandboxProject\Assets\Scripts\Sandbox\Binaries\CmHazel-ScriptCore.dll.config
+C:\source\C++\CmHazel\CmEditor\SandboxProject\Assets\Scripts\Sandbox\Intermediates\Sandbox.csproj.Up2Date
+C:\source\C++\CmHazel\CmEditor\SandboxProject\Assets\Scripts\Sandbox\Intermediates\Sandbox.dll
+C:\source\C++\CmHazel\CmEditor\SandboxProject\Assets\Scripts\Sandbox\Intermediates\Sandbox.pdb

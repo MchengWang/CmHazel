@@ -20,4 +20,5 @@
   <Folder Name="/tools/">
     <Project Path="CmEditor/CmEditor.vcxproj" Id="7dfafbf1-2f0f-49b9-8d44-b085321c57d3" />
   </Folder>
+  <Project Path="CmEditor/SandboxProject/Assets/Scripts/Sandbox/Sandbox.csproj" Id="1ce0ccab-be12-4eed-9e54-1e6b978b87f8" />
 </Solution>
