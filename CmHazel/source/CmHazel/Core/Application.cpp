@@ -4,6 +4,7 @@
 #include "CmHazel/Core/Log.h"
 
 #include "CmHazel/Renderer/Renderer.h"
+#include "CmHazel/Scripting/ScriptEngine.h"
 
 #include "CmHazel/Core/Input.h"
 
@@ -29,6 +30,7 @@ namespace CmHazel
 		m_Window->SetEventCallback(CM_BIND_EVENT_FN(Application::OnEvent));
 
 		Renderer::Init();
+		ScriptEngine::Init();
 
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);
@@ -38,6 +40,7 @@ namespace CmHazel
 	{
 		CM_PROFILE_FUNCTION();
 
+		ScriptEngine::Shutdown();
 		Renderer::Shutdown();
 	}
 

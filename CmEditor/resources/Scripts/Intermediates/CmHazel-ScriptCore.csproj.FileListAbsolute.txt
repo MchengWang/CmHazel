@@ -1,0 +1,7 @@
+C:\source\C++\CmHazel\CmEditor\resources\Scripts\Intermediates\CmHazel-ScriptCore.csproj.AssemblyReference.cache
+C:\source\C++\CmHazel\CmEditor\resources\Scripts\Intermediates\CmHazel-ScriptCore.csproj.CoreCompileInputs.cache
+C:\source\C++\CmHazel\CmEditor\resources\Scripts\CmHazel-ScriptCore.dll.config
+C:\source\C++\CmHazel\CmEditor\resources\Scripts\Intermediates\CmHazel-ScriptCore.dll
+C:\source\C++\CmHazel\CmEditor\resources\Scripts\Intermediates\CmHazel-ScriptCore.pdb
+C:\source\C++\CmHazel\CmEditor\resources\Scripts\CmHazel-ScriptCore.dll
+C:\source\C++\CmHazel\CmEditor\resources\Scripts\CmHazel-ScriptCore.pdb
