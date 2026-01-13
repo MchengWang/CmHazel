@@ -51,8 +51,6 @@ namespace CmHazel
 
 	Scene::~Scene()
 	{
-		b2DestroyWorld(m_PhysicsWorld);
-		m_PhysicsWorld = b2_nullWorldId;
 	}
 
 	template<typename... Component>
@@ -204,11 +202,11 @@ namespace CmHazel
 		glm::mat4 cameraTransform;
 		{
 			m_Registry.view<TransformComponent, CameraComponent>()
-				.each([&mainCamera, &cameraTransform](TransformComponent transform, CameraComponent camera) 
+				.each([&mainCamera, &cameraTransform](TransformComponent& transform, CameraComponent& camera) 
 					{
 					if (camera.Primary)
 					{
-						*mainCamera = camera.Camera;
+						mainCamera = &camera.Camera;
 						cameraTransform = transform.GetTransform();
 					}
 				});
@@ -324,7 +322,7 @@ namespace CmHazel
 			auto& transform = entity.GetComponent<TransformComponent>();
 			auto& rb2d = entity.GetComponent<Rigidbody2DComponent>();
 
-			b2BodyDef bodyDef;
+			b2BodyDef bodyDef = b2DefaultBodyDef();
 			bodyDef.type = Rigidbody2DTypeToBox2DBody(rb2d.Type);
 			bodyDef.position = { transform.Translation.x, transform.Translation.y };
 			bodyDef.rotation = b2MakeRot(transform.Rotation.z);

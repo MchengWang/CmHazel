@@ -118,7 +118,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>Gdi32.lib;Comdlg32.lib;vulkan-1.lib;shaderc_shared.lib;spirv-cross-core.lib;spirv-cross-glsl.lib</AdditionalDependencies>
+      <AdditionalDependencies>vulkan-1.lib;shaderc_sharedd.lib;spirv-cross-cored.lib;spirv-cross-glsld.lib;SPIRV-Toolsd.lib;shaderc_utild.lib;Gdi32.lib;Comdlg32.lib;</AdditionalDependencies>
       <AdditionalLibraryDirectories>C:\Program Files (x86)\VulkanSDK\1.4.335.0\Lib;</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
