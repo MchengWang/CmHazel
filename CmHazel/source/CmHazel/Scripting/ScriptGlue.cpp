@@ -97,9 +97,9 @@ namespace CmHazel
 		b2Body_ApplyLinearImpulseToCenter(body, b2Vec2(impulse->x, impulse->y), wake);
 	}
 
-	static bool Input_IsKeyDown(int keyCode)
+	static bool Input_IsKeyDown(KeyCode keyCode)
 	{
-		return Input::IsKeyPressed((KeyCode)keyCode);
+		return Input::IsKeyPressed(keyCode);
 	}
 
 	template <typename... Component>
@@ -138,6 +138,15 @@ namespace CmHazel
 		CM_ADD_INTERNAL_CALL(NativeLog);
 		CM_ADD_INTERNAL_CALL(NativeLog_Vector);
 		CM_ADD_INTERNAL_CALL(NativeLog_VectorDot);
+
+		CM_ADD_INTERNAL_CALL(Entity_HasComponent);
+		CM_ADD_INTERNAL_CALL(TransformComponent_GetTranslation);
+		CM_ADD_INTERNAL_CALL(TransformComponent_SetTranslation);
+		
+		CM_ADD_INTERNAL_CALL(Rigidbody2DComponent_ApplyLinearImpulse);
+		CM_ADD_INTERNAL_CALL(Rigidbody2DComponent_ApplyLinearImpulseToCenter);
+
+		CM_ADD_INTERNAL_CALL(Input_IsKeyDown);
 	}
 
 }

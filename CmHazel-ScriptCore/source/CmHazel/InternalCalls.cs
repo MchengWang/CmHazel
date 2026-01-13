@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 namespace CmHazel
 {
 	public static class InternalCalls
-	{
+    {
 		[MethodImplAttribute(MethodImplOptions.InternalCall)]
 		internal extern static bool Entity_HasComponent(ulong entityID, Type componentType);
 

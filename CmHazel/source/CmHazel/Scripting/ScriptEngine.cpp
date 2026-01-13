@@ -305,14 +305,13 @@ namespace CmHazel
 	{
 		return mono_runtime_invoke(method, instance, params, nullptr);
 	}
-
 	ScriptInstance::ScriptInstance(Shared<ScriptClass> scriptClass, Entity entity)
 		: m_ScriptClass(scriptClass)
 	{
 		m_Instance = scriptClass->Instantiate();
 
 		m_Constructor = s_Data->EntityClass.GetMethod(".ctor", 1);
-		m_OnCreateMethod = scriptClass->GetMethod("OnCreate", 1);
+		m_OnCreateMethod = scriptClass->GetMethod("OnCreate", 0);
 		m_OnUpdateMethod = scriptClass->GetMethod("OnUpdate", 1);
 
 		// 调用实体构造方法
