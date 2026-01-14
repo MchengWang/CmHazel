@@ -42,6 +42,8 @@ namespace CmHazel
 
 		Entity GetPrimaryCameraEntity();
 
+		bool IsRunning() const { return m_IsRunning; }
+
 		template <typename... Components>
 		auto GetAllEntitiesWith()
 		{
@@ -60,6 +62,7 @@ namespace CmHazel
 	private:
 		entt::registry m_Registry;
 		uint32_t m_ViewportWidth = 0, m_ViewportHeight = 0;
+		bool m_IsRunning = false;
 
 		b2WorldId m_PhysicsWorld = b2_nullWorldId;
 

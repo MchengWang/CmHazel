@@ -94,7 +94,7 @@ namespace CmHazel
 
 		auto& rb2d = entity.GetComponent<Rigidbody2DComponent>();
 		b2BodyId body = rb2d.RuntimeBody;
-		b2Body_ApplyLinearImpulseToCenter(body, b2Vec2(impulse->x, impulse->y), wake);
+		b2Body_ApplyLinearImpulseToCenter(body, b2Vec2(impulse->x, impulse->x), wake);
 	}
 
 	static bool Input_IsKeyDown(KeyCode keyCode)

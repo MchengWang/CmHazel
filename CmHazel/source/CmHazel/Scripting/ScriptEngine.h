@@ -38,6 +38,40 @@ namespace CmHazel
 		MonoClassField* ClassField;
 	};
 
+	struct ScriptFieldInstance
+	{
+		ScriptField Field;
+
+		ScriptFieldInstance()
+		{
+			memset(m_Buffer, 0, sizeof(m_Buffer));
+		}
+
+		template <typename T>
+		T GetValue()
+		{
+			static_assert(sizeof(T) <= 8, "Type too large!");
+			return *(T*)m_Buffer;
+		}
+
+		template <typename T>
+		void SetValue(T value)
+		{
+			static_assert(sizeof(T) <= 8, "Type too large!");
+			memcpy(m_Buffer, &value, sizeof(T));
+		}
+
+	private:
+
+		uint8_t m_Buffer[8];
+
+		friend class ScriptEngine;
+		friend class ScriptInstance;
+
+	};
+
+	using ScriptFieldMap = std::unordered_map<std::string, ScriptFieldInstance>;
+
 	class ScriptClass
 	{
 	public:
@@ -75,6 +109,8 @@ namespace CmHazel
 		template <typename T>
 		T GetFieldValue(const std::string& name)
 		{
+			static_assert(sizeof(T) <= 8, "Type too large!");
+
 			bool success = GetFieldValueInternal(name, s_FieldValueBuffer);
 			if (success)
 				return T();
@@ -83,8 +119,10 @@ namespace CmHazel
 		}
 
 		template <typename T>
-		void SetFiledValue(const std::string& name, const T& value)
+		void SetFieldValue(const std::string& name, T value)
 		{
+			static_assert(sizeof(T) <= 8, "Type too large!");
+
 			SetFieldValueInternal(name, &value);
 		}
 
@@ -101,6 +139,9 @@ namespace CmHazel
 		MonoMethod* m_OnUpdateMethod = nullptr;
 
 		inline static char s_FieldValueBuffer[8];
+
+		friend class ScriptEngine;
+		friend struct ScriptFieldInstance;
 
 	};
 
@@ -123,7 +164,9 @@ namespace CmHazel
 		static Scene* GetSceneContext();
 		static Shared<ScriptInstance> GetEntityScriptInstance(UUID entityID);
 
+		static Shared<ScriptClass> GetEntityClass(const std::string& name);
 		static std::unordered_map<std::string, Shared<ScriptClass>> GetEntityClasses();
+		static ScriptFieldMap& GetScriptFieldMap(Entity entity);
 
 		static MonoImage* GetCoreAssemblyImage();
 
