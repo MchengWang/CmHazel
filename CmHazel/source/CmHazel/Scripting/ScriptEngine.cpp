@@ -351,7 +351,7 @@ namespace CmHazel
 				continue;
 
 			bool isEntity = mono_class_is_subclass_of(monoClass, entityClass, false);
-			if (isEntity)
+			if (!isEntity)
 				continue;
 
 			Shared<ScriptClass> scriptClass = CreateShared<ScriptClass>(nameSpace, className);
