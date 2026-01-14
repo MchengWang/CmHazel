@@ -2,6 +2,8 @@
 .vs
 bin
 bin-int
+Intermediates
+Binaries
 
 # files
 *.log
