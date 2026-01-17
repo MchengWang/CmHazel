@@ -39,6 +39,7 @@ namespace CmHazel
 		void OnScenePlay();
 		void OnSceneSimulate();
 		void OnSceneStop();
+		void OnScenePause();
 
 		void OnDuplicateEntity();
 
@@ -90,7 +91,7 @@ namespace CmHazel
 		ContentBrowserPanel m_ContentBrowserPanel;
 
 		// Editor resources
-		Shared<Texture2D> m_IconPlay, m_IconSimulate, m_IconStop;
+		Shared<Texture2D> m_IconPlay, m_IconPause, m_IconStep, m_IconSimulate, m_IconStop;
 	};
 
 }

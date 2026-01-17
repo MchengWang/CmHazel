@@ -185,48 +185,52 @@ namespace CmHazel
 
 	void Scene::OnUpdateRuntime(Timestep ts)
 	{
-		// Update scripts
+		if (!m_IsPaused || m_StepFrames-- > 0)
 		{
-			// c# 实体更新
-			auto view = m_Registry.view<ScriptComponent>();
-			for (auto e : view)
+			// Update scripts
 			{
-				Entity entity = { e, this };
-				ScriptEngine::OnUpdateEntity(entity, ts);
+				// C# Entity OnUpdate
+				auto view = m_Registry.view<ScriptComponent>();
+				for (auto e : view)
+				{
+					Entity entity = { e, this };
+					ScriptEngine::OnUpdateEntity(entity, ts);
+				}
+
+				m_Registry.view<NativeScriptComponent>().each([=](auto entity, auto& nsc)
+					{
+						// TODO: Move to Scene::OnScenePlay
+						if (!nsc.Instance)
+						{
+							nsc.Instance = nsc.InstantiateScript();
+							nsc.Instance->m_Entity = Entity{ entity, this };
+							nsc.Instance->OnCreate();
+						}
+
+						nsc.Instance->OnUpdate(ts);
+					});
 			}
 
-			m_Registry.view<NativeScriptComponent>().each([=](auto entity, auto& nsc)
-				{
-					// TODO: Move to Scene::OnScenePlay
-					if (!nsc.Instance)
-					{
-						nsc.Instance = nsc.InstantiateScript();
-						nsc.Instance->m_Entity = Entity{ entity, this };
-						nsc.Instance->OnCreate();
-					}
 
-					nsc.Instance->OnUpdate(ts);
-				});
-		}
-
-		// Physics
-		{
-			constexpr int subStepCount = 4;
-			b2World_Step(m_PhysicsWorld, ts, subStepCount);
-
-			// Retrieve transform from Box2D
-			auto view = m_Registry.view<Rigidbody2DComponent>();
-			for (auto e : view)
+			// Physics
 			{
-				Entity entity = { e, this };
-				auto& transform = entity.GetComponent<TransformComponent>();
-				auto& rb2d = entity.GetComponent<Rigidbody2DComponent>();
+				constexpr int subStepCount = 4;
+				b2World_Step(m_PhysicsWorld, ts, subStepCount);
 
-				b2BodyId body = rb2d.RuntimeBody;
-				const auto& tf = b2Body_GetTransform(body);
-				transform.Translation.x = tf.p.x;
-				transform.Translation.y = tf.p.y;
-				transform.Rotation.z = b2Rot_GetAngle(tf.q);
+				// Retrieve transform from Box2D
+				auto view = m_Registry.view<Rigidbody2DComponent>();
+				for (auto e : view)
+				{
+					Entity entity = { e, this };
+					auto& transform = entity.GetComponent<TransformComponent>();
+					auto& rb2d = entity.GetComponent<Rigidbody2DComponent>();
+
+					b2BodyId body = rb2d.RuntimeBody;
+					const auto& tf = b2Body_GetTransform(body);
+					transform.Translation.x = tf.p.x;
+					transform.Translation.y = tf.p.y;
+					transform.Rotation.z = b2Rot_GetAngle(tf.q);
+				}
 			}
 		}
 
@@ -236,7 +240,7 @@ namespace CmHazel
 		{
 			m_Registry.view<TransformComponent, CameraComponent>()
 				.each([&mainCamera, &cameraTransform](TransformComponent& transform, CameraComponent& camera) 
-					{
+				{
 					if (camera.Primary)
 					{
 						mainCamera = &camera.Camera;
@@ -276,24 +280,27 @@ namespace CmHazel
 
 	void Scene::OnUpdateSimulation(Timestep ts, EditorCamera& camera)
 	{
-		// Physics
+		if (!m_IsPaused || m_StepFrames-- > 0)
 		{
-			constexpr int subStepCount = 4;
-			b2World_Step(m_PhysicsWorld, ts, subStepCount);
-
-			// Retrieve transform from Box2D
-			auto view = m_Registry.view<Rigidbody2DComponent>();
-			for (auto e : view)
+			// Physics
 			{
-				Entity entity = { e, this };
-				auto& transform = entity.GetComponent<TransformComponent>();
-				auto& rb2d = entity.GetComponent<Rigidbody2DComponent>();
+				constexpr int subStepCount = 4;
+				b2World_Step(m_PhysicsWorld, ts, subStepCount);
 
-				b2BodyId body = rb2d.RuntimeBody;
-				const auto& position = b2Body_GetTransform(body);
-				transform.Translation.x = position.p.x;
-				transform.Translation.y = position.p.y;
-				transform.Rotation.z = b2Rot_GetAngle(position.q);
+				// Retrieve transform from Box2D
+				auto view = m_Registry.view<Rigidbody2DComponent>();
+				for (auto e : view)
+				{
+					Entity entity = { e, this };
+					auto& transform = entity.GetComponent<TransformComponent>();
+					auto& rb2d = entity.GetComponent<Rigidbody2DComponent>();
+
+					b2BodyId body = rb2d.RuntimeBody;
+					const auto& position = b2Body_GetTransform(body);
+					transform.Translation.x = position.p.x;
+					transform.Translation.y = position.p.y;
+					transform.Rotation.z = b2Rot_GetAngle(position.q);
+				}
 			}
 		}
 
@@ -324,6 +331,11 @@ namespace CmHazel
 			if (!cameraComponent.FixedAspectRatio)
 				cameraComponent.Camera.SetViewportSize(width, height);
 		}
+	}
+
+	void Scene::Step(int frames)
+	{
+		m_StepFrames = frames;
 	}
 
 	void Scene::DuplicateEntity(Entity entity)
