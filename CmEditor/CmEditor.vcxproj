@@ -113,7 +113,7 @@
       <PreprocessorDefinitions>MONO_STATIC;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)CmHazel\third_party\Box2D\include;$(SolutionDir)CmHazel\third_party\ImGuizmo;$(SolutionDir)CmEditor\source;$(SolutionDir)CmHazel\third_party\entt\include;$(SolutionDir)CmHazel\third_party\glm;$(SolutionDir)CmHazel\third_party;$(SolutionDir)CmHazel\source;$(SolutionDir)CmHazel\third_party\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)CmHazel\third_party\filewatch;$(SolutionDir)CmHazel\third_party\Box2D\include;$(SolutionDir)CmHazel\third_party\ImGuizmo;$(SolutionDir)CmEditor\source;$(SolutionDir)CmHazel\third_party\entt\include;$(SolutionDir)CmHazel\third_party\glm;$(SolutionDir)CmHazel\third_party;$(SolutionDir)CmHazel\source;$(SolutionDir)CmHazel\third_party\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -131,7 +131,7 @@
       <PreprocessorDefinitions>MONO_STATIC;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)CmHazel\third_party\Box2D\include;$(SolutionDir)CmHazel\third_party\ImGuizmo;$(SolutionDir)CmEditor\source;$(SolutionDir)CmHazel\third_party\entt\include;$(SolutionDir)CmHazel\third_party\glm;$(SolutionDir)CmHazel\third_party;$(SolutionDir)CmHazel\source;$(SolutionDir)CmHazel\third_party\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)CmHazel\third_party\filewatch;$(SolutionDir)CmHazel\third_party\Box2D\include;$(SolutionDir)CmHazel\third_party\ImGuizmo;$(SolutionDir)CmEditor\source;$(SolutionDir)CmHazel\third_party\entt\include;$(SolutionDir)CmHazel\third_party\glm;$(SolutionDir)CmHazel\third_party;$(SolutionDir)CmHazel\source;$(SolutionDir)CmHazel\third_party\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

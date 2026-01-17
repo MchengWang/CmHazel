@@ -8,6 +8,11 @@
 #include "mono/metadata/object.h"
 #include "mono/metadata/tabledefs.h"
 
+#include "FileWatch.hpp"
+
+#include "CmHazel/Core/Application.h"
+#include "CmHazel/Core/Timer.h"
+
 namespace CmHazel
 {
 
@@ -144,11 +149,28 @@ namespace CmHazel
 		std::unordered_map<UUID, Shared<ScriptInstance>> EntityInstances;
 		std::unordered_map<UUID, ScriptFieldMap> EntityScriptFields;
 
+		Unique<filewatch::FileWatch<std::string>> AppAssemblyFileWatcher;
+		bool AssemblyReloadPending = false;
+
 		// Runtime
 		Scene* SceneContext = nullptr;
 	};
 
 	static ScriptEngineData* s_Data = nullptr;
+
+	static void OnAppAssemblyFileSystemEvent(const std::string& path, const filewatch::Event change_type)
+	{
+		if (!s_Data->AssemblyReloadPending && change_type == filewatch::Event::modified)
+		{
+			s_Data->AssemblyReloadPending = true;
+
+			Application::Get().SubmitToMainThread([]()
+				{
+					s_Data->AppAssemblyFileWatcher.reset();
+					ScriptEngine::ReloadAssembly();
+				});
+		}
+	}
 
 	void ScriptEngine::Init()
 	{
@@ -248,6 +270,9 @@ namespace CmHazel
 		auto assembi = s_Data->AppAssemblyImage;
 
 		//Utils::PrintAssemblyTypes(s_Data->AppAssembly);
+
+		s_Data->AppAssemblyFileWatcher = CreateUnique<filewatch::FileWatch<std::string>>(filepath.string(), OnAppAssemblyFileSystemEvent);
+		s_Data->AssemblyReloadPending = false;
 	}
 
 	void ScriptEngine::ReloadAssembly()
