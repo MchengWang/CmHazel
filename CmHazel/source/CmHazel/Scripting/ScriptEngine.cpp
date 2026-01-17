@@ -165,44 +165,26 @@ namespace CmHazel
 		InitMono();
 		ScriptGlue::RegisterFunctions();
 
-		LoadAssembly("resources/Scripts/CmHazel-ScriptCore.dll");
+		bool status = LoadAssembly("resources/Scripts/CmHazel-ScriptCore.dll");
+		if (!status)
+		{
+			CM_CORE_ERROR("[ScriptEngine] Could not load CmHazel-ScriptCore assembly.");
+			return;
+		}
 
-		LoadAppAssembly("SandboxProject/Assets/Scripts/Sandbox/Binaries/Sandbox.dll");
+		status = LoadAppAssembly("SandboxProject/Assets/Scripts/Sandbox/Binaries/Sandbox.dll");
+		if (!status)
+		{
+			CM_CORE_ERROR("[ScriptEngine] Could not load app assembly.");
+			return;
+		}
+
 		LoadAssemblyClasses();
 
 		ScriptGlue::RegisterComponents();
 
 		// 检索并实例化类
 		s_Data->EntityClass = ScriptClass("CmHazel", "Entity", true);
-
-#if 0
-
-		MonoObject* instance = s_Data->EntityClass.Instantiate();
-
-		// 调用方法
-		MonoMethod* printMessageFunc = s_Data->EntityClass.GetMethod("PrintMessage", 0);
-		s_Data->EntityClass.InvokeMethod(instance, printMessageFunc);
-
-		// 调用有参数的方法
-		MonoMethod* printIntFunc = s_Data->EntityClass.GetMethod("PrintInt", 1);
-
-		int value = 5;
-		void* param = &value;
-
-		s_Data->EntityClass.InvokeMethod(instance, printIntFunc, &param);
-
-		MonoMethod* printIntsFunc = s_Data->EntityClass.GetMethod("PrintInts", 2);
-		int value2 = 508;
-		void* params[2] = { &value, &value2 };
-		s_Data->EntityClass.InvokeMethod(instance, printIntsFunc, params);
-
-		MonoString* monoString = mono_string_new(s_Data->AppDomain, "Hello World from C++!");
-		MonoMethod* printCustomMessageFunc = s_Data->EntityClass.GetMethod("PrintCustomMessage", 1);
-		void* stringParam = monoString;
-		s_Data->EntityClass.InvokeMethod(instance, printCustomMessageFunc, &stringParam);
-
-		CM_CORE_ASSERT(false);
-#endif // 0
 	}
 
 	void ScriptEngine::Shutdown()
@@ -249,32 +231,33 @@ namespace CmHazel
 		s_Data->RootDomain = nullptr;
 	}
 
-	void ScriptEngine::LoadAssembly(const std::filesystem::path& filepath)
+	bool ScriptEngine::LoadAssembly(const std::filesystem::path& filepath)
 	{
 		// 创建一个应用域
 		s_Data->AppDomain = mono_domain_create_appdomain((char*)"CmScriptRuntime", nullptr);
 		mono_domain_set(s_Data->AppDomain, true);
 
-		// 可能会移动
 		s_Data->CoreAssemblyFilepath = filepath;
 		s_Data->CoreAssembly = Utils::LoadMonoAssembly(filepath, s_Data->EnableDebugging);
+		if (s_Data->CoreAssembly == nullptr)
+			return false;
+
 		s_Data->CoreAssemblyImage = mono_assembly_get_image(s_Data->CoreAssembly);
-		// Utils::PrintAssemblyTypes(s_Data->CoreAssembly);
+		return true;
 	}
 
-	void ScriptEngine::LoadAppAssembly(const std::filesystem::path& filepath)
+	bool ScriptEngine::LoadAppAssembly(const std::filesystem::path& filepath)
 	{
-		// 可能会移动
 		s_Data->AppAssemblyFilepath = filepath;
 		s_Data->AppAssembly = Utils::LoadMonoAssembly(filepath, s_Data->EnableDebugging);
-		auto assemb = s_Data->AppAssembly;
-		s_Data->AppAssemblyImage = mono_assembly_get_image(s_Data->AppAssembly);
-		auto assembi = s_Data->AppAssemblyImage;
+		if (s_Data->AppAssembly == nullptr)
+			return false;
 
-		//Utils::PrintAssemblyTypes(s_Data->AppAssembly);
+		s_Data->AppAssemblyImage = mono_assembly_get_image(s_Data->AppAssembly);
 
 		s_Data->AppAssemblyFileWatcher = CreateUnique<filewatch::FileWatch<std::string>>(filepath.string(), OnAppAssemblyFileSystemEvent);
 		s_Data->AssemblyReloadPending = false;
+		return true;
 	}
 
 	void ScriptEngine::ReloadAssembly()
@@ -328,10 +311,16 @@ namespace CmHazel
 	void ScriptEngine::OnUpdateEntity(Entity entity, Timestep ts)
 	{
 		UUID entityUUID = entity.GetUUID();
-		CM_CORE_ASSERT(s_Data->EntityInstances.find(entityUUID) != s_Data->EntityInstances.end());
-
-		Shared<ScriptInstance> instance = s_Data->EntityInstances[entityUUID];
-		instance->InvokeOnUpdate((float)ts);
+		
+		if (s_Data->EntityInstances.find(entityUUID) != s_Data->EntityInstances.end())
+		{
+			Shared<ScriptInstance> instance = s_Data->EntityInstances[entityUUID];
+			instance->InvokeOnUpdate((float)ts);
+		}
+		else
+		{
+			CM_CORE_ERROR("Could not find ScriptInstance for entity {}", (uint64_t)entityUUID);
+		}
 	}
 
 	Scene* ScriptEngine::GetSceneContext()
