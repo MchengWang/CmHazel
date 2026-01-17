@@ -1,16 +1,16 @@
 #include "EditorLayer.h"
+#include "CmHazel/Scene/SceneSerializer.h"
+#include "CmHazel/Utils/PlatformUtils.h"
+#include "CmHazel/Math/Math.h"
+#include "CmHazel/Scripting/ScriptEngine.h"
+
 #include <imgui/imgui.h>
 
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-#include "CmHazel/Scene/SceneSerializer.h"
-
-#include "CmHazel/Utils/PlatformUtils.h"
-
 #include "ImGuizmo.h"
 
-#include "CmHazel/Math/Math.h"
 
 namespace CmHazel
 {
@@ -203,7 +203,16 @@ namespace CmHazel
 				if (ImGui::MenuItem("Save As ...", "Ctrl + Shift + S"))
 					SaveSceneAs();
 
-				if (ImGui::MenuItem("Exit")) Application::Get().Close();
+				if (ImGui::MenuItem("Exit"))
+					Application::Get().Close();
+				ImGui::EndMenu();
+			}
+
+			if (ImGui::BeginMenu("Script"))
+			{
+				if (ImGui::MenuItem("Reload Assembly", "Ctrl + R"))
+					ScriptEngine::ReloadAssembly();
+
 				ImGui::EndMenu();
 			}
 
@@ -450,8 +459,18 @@ namespace CmHazel
 			m_GizmoType = ImGuizmo::OPERATION::ROTATE;
 			break;
 		case Key::R:
-			m_GizmoType = ImGuizmo::OPERATION::SCALE;
-			break;
+		{
+			if (control)
+			{
+				ScriptEngine::ReloadAssembly();
+			}
+			else
+			{
+				if (!ImGuizmo::IsUsing())
+					m_GizmoType = ImGuizmo::OPERATION::SCALE;
+			}
+		}
+		break;
 
 		}
 	}

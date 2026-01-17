@@ -135,6 +135,9 @@ namespace CmHazel
 		MonoAssembly* AppAssembly = nullptr;
 		MonoImage* AppAssemblyImage = nullptr;
 
+		std::filesystem::path CoreAssemblyFilepath;
+		std::filesystem::path AppAssemblyFilepath;
+
 		ScriptClass EntityClass;
 
 		std::unordered_map<std::string, Shared<ScriptClass>> EntityClasses;
@@ -152,13 +155,14 @@ namespace CmHazel
 		s_Data = new ScriptEngineData();
 
 		InitMono();
+		ScriptGlue::RegisterFunctions();
+
 		LoadAssembly("resources/Scripts/CmHazel-ScriptCore.dll");
 
 		LoadAppAssembly("SandboxProject/Assets/Scripts/Sandbox/Binaries/Sandbox.dll");
 		LoadAssemblyClasses();
 
 		ScriptGlue::RegisterComponents();
-		ScriptGlue::RegisterFunctions();
 
 		// 检索并实例化类
 		s_Data->EntityClass = ScriptClass("CmHazel", "Entity", true);
@@ -212,12 +216,12 @@ namespace CmHazel
 
 	void ScriptEngine::ShutdownMono()
 	{
-		// Mono 有点难关闭，所以也许以后再处理这个问题
+		mono_domain_set(mono_get_root_domain(), false);
 
-		//mono_domain_unload(s_Data->AppDomain);
+		mono_domain_unload(s_Data->AppDomain);
 		s_Data->AppDomain = nullptr;
 
-		//mono_jit_cleanup(s_Data->RootDomain);
+		mono_jit_cleanup(s_Data->RootDomain);
 		s_Data->RootDomain = nullptr;
 	}
 
@@ -228,6 +232,7 @@ namespace CmHazel
 		mono_domain_set(s_Data->AppDomain, true);
 
 		// 可能会移动
+		s_Data->CoreAssemblyFilepath = filepath;
 		s_Data->CoreAssembly = Utils::LoadMonoAssembly(filepath);
 		s_Data->CoreAssemblyImage = mono_assembly_get_image(s_Data->CoreAssembly);
 		// Utils::PrintAssemblyTypes(s_Data->CoreAssembly);
@@ -236,12 +241,29 @@ namespace CmHazel
 	void ScriptEngine::LoadAppAssembly(const std::filesystem::path& filepath)
 	{
 		// 可能会移动
+		s_Data->AppAssemblyFilepath = filepath;
 		s_Data->AppAssembly = Utils::LoadMonoAssembly(filepath);
 		auto assemb = s_Data->AppAssembly;
 		s_Data->AppAssemblyImage = mono_assembly_get_image(s_Data->AppAssembly);
 		auto assembi = s_Data->AppAssemblyImage;
 
 		//Utils::PrintAssemblyTypes(s_Data->AppAssembly);
+	}
+
+	void ScriptEngine::ReloadAssembly()
+	{
+		mono_domain_set(mono_get_root_domain(), false);
+
+		mono_domain_unload(s_Data->AppDomain);
+
+		LoadAssembly(s_Data->CoreAssemblyFilepath);
+		LoadAppAssembly(s_Data->AppAssemblyFilepath);
+		LoadAssemblyClasses();
+
+		ScriptGlue::RegisterComponents();
+
+		// 检索并实例化类
+		s_Data->EntityClass = ScriptClass("CmHazel", "Entity", true);
 	}
 
 	void ScriptEngine::OnRuntimeStart(Scene* scene)
