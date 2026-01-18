@@ -144,6 +144,7 @@
     <ClCompile Include="source\CmHazel\Core\UUID.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\CmHazel\Physics\Physics2D.h" />
     <ClInclude Include="source\CmHazel\Project\ProjectSerializer.h" />
     <ClInclude Include="source\CmHazel\Project\Project.h" />
     <ClInclude Include="source\CmHazel\Core\FileSystem.h" />

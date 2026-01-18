@@ -26,6 +26,8 @@ namespace CmHazel
 
 		void SetDarkThemeColors();
 
+		uint32_t GetActiveWidgetID() const;
+
 	private:
 		bool m_BlockEvents = true;
 		float m_Time = 0.0f;

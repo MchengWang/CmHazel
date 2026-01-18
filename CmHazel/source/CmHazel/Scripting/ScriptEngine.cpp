@@ -17,6 +17,8 @@
 #include "CmHazel/Core/Buffer.h"
 #include "CmHazel/Core/FileSystem.h"
 
+#include "CmHazel/Project/Project.h"
+
 namespace CmHazel
 {
 
@@ -177,7 +179,8 @@ namespace CmHazel
 			return;
 		}
 
-		status = LoadAppAssembly("SandboxProject/Assets/Scripts/Sandbox/Binaries/Sandbox.dll");
+		auto scriptModulePath = Project::GetAssetDirectory() / Project::GetActive()->GetConfig().ScriptModulePath;
+		status = LoadAppAssembly(scriptModulePath);
 		if (!status)
 		{
 			CM_CORE_ERROR("[ScriptEngine] Could not load app assembly.");

@@ -350,5 +350,8 @@
     <ClInclude Include="source\CmHazel\UI\UI.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="source\CmHazel\Physics\Physics2D.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

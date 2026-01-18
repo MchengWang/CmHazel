@@ -5,6 +5,7 @@
 #include "ScriptableEntity.h"
 #include "CmHazel/Scripting/ScriptEngine.h"
 #include "CmHazel/Renderer/Renderer2D.h"
+#include "CmHazel/Physics/Physics2D.h"
 
 #include <glm/glm.hpp>
 
@@ -31,19 +32,6 @@ namespace CmHazel
 		b2Vec2 pos = b2Body_GetPosition(bodyId);
 		b2Body_SetTransform(bodyId, pos, b2MakeRot(lockedAngle));
 		b2Body_SetAngularVelocity(bodyId, 0.0f);
-	}
-
-	static b2BodyType Rigidbody2DTypeToBox2DBody(Rigidbody2DComponent::BodyType bodyType)
-	{
-		switch (bodyType)
-		{
-		case CmHazel::Rigidbody2DComponent::BodyType::Static:			return b2_staticBody;
-		case CmHazel::Rigidbody2DComponent::BodyType::Dynamic:			return b2_dynamicBody;
-		case CmHazel::Rigidbody2DComponent::BodyType::Kinematic:		return b2_kinematicBody;
-		}
-
-		CM_CORE_ASSERT(false, "Unkown body type");
-		return b2_staticBody;
 	}
 
 	Scene::Scene()
@@ -139,8 +127,8 @@ namespace CmHazel
 
 	void Scene::DestroyEntity(Entity entity)
 	{
-		m_Registry.destroy(entity);
 		m_EntityMap.erase(entity.GetUUID());
+		m_Registry.destroy(entity);
 	}
 
 	void Scene::OnRuntimeStart()
@@ -338,10 +326,13 @@ namespace CmHazel
 		m_StepFrames = frames;
 	}
 
-	void Scene::DuplicateEntity(Entity entity)
+	Entity Scene::DuplicateEntity(Entity entity)
 	{
-		Entity newEntity = CreateEntity(entity.GetName());
+		// 复制名称，因为我们将修改组件数据结构
+		std::string name = entity.GetName();
+		Entity newEntity = CreateEntity(name);
 		CopyComponentIfExists(AllComponents{}, newEntity, entity);
+		return newEntity;
 	}
 
 	Entity Scene::GetPrimaryCameraEntity()
@@ -393,7 +384,7 @@ namespace CmHazel
 			auto& rb2d = entity.GetComponent<Rigidbody2DComponent>();
 
 			b2BodyDef bodyDef = b2DefaultBodyDef();
-			bodyDef.type = Rigidbody2DTypeToBox2DBody(rb2d.Type);
+			bodyDef.type = Utils::Rigidbody2DTypeToBox2DBody(rb2d.Type);
 			bodyDef.position = { transform.Translation.x, transform.Translation.y };
 			bodyDef.rotation = b2MakeRot(transform.Rotation.z);
 
