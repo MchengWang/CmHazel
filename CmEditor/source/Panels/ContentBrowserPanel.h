@@ -16,6 +16,7 @@ namespace CmHazel
 		void OnImGuiRender();
 
 	private:
+		std::filesystem::path m_BaseDirectory;
 		std::filesystem::path m_CurrentDirectory;
 
 		Shared<Texture2D> m_DirectoryIcon;

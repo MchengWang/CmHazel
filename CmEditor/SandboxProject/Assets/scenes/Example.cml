@@ -9,7 +9,7 @@ Entities:
       Scale: [20, 20, 20]
     SpriteRendererComponent:
       Color: [0.99999, 1, 0.99999, 1]
-      TexturePath: assets\textures\Checkerboard.png
+      TexturePath: textures\Checkerboard.png
       TilingFactor: 10
   - Entity: 17154294327283940743
     TagComponent:
@@ -20,7 +20,7 @@ Entities:
       Scale: [4.41, 4.41, 4.41]
     SpriteRendererComponent:
       Color: [1, 0.99999, 0.99999, 1]
-      TexturePath: assets\textures\logo-potato.png
+      TexturePath: textures\logo-potato.png
       TilingFactor: 1
   - Entity: 3503638098362915787
     TagComponent:

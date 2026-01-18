@@ -88,6 +88,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\CmHazel\Project\ProjectSerializer.cpp" />
+    <ClCompile Include="source\CmHazel\Project\Project.cpp" />
     <ClCompile Include="source\CmHazel\Core\FileSystem.cpp" />
     <ClCompile Include="source\CmHazel\Scripting\ScriptGlue.cpp" />
     <ClCompile Include="source\CmHazel\Scripting\ScriptEngine.cpp" />
@@ -142,6 +144,8 @@
     <ClCompile Include="source\CmHazel\Core\UUID.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\CmHazel\Project\ProjectSerializer.h" />
+    <ClInclude Include="source\CmHazel\Project\Project.h" />
     <ClInclude Include="source\CmHazel\Core\FileSystem.h" />
     <ClInclude Include="source\CmHazel\Core\Buffer.h" />
     <ClInclude Include="source\CmHazel\Scripting\ScriptGlue.h" />

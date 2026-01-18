@@ -21,6 +21,8 @@
 #include "CmHazel/Scene/Entity.h"
 #include "CmHazel/Scene/Components.h"
 
+#include "CmHazel/Project/Project.h"
+
 //---------- ‰÷»æ ---------------
 #include "CmHazel/Renderer/Renderer.h"
 #include "CmHazel/Renderer/Renderer2D.h"
