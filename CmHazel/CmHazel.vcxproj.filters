@@ -347,5 +347,8 @@
     <ClInclude Include="source\CmHazel\Project\ProjectSerializer.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="source\CmHazel\UI\UI.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -48,7 +48,12 @@ namespace CmHazel
 		}
 		else
 		{
-			NewProject();
+			// NewProject();
+
+			// 如果没有打开的项目，就关闭CmEditor
+			// 这是在我们还没有新的项目路径的时候
+			if (!OpenProject())
+				Application::Get().Close();
 		}
 
 		m_EditorCamera = EditorCamera(30.0f, 1.778f, 0.1f, 1000.0f);
@@ -191,21 +196,21 @@ namespace CmHazel
 		{
 			if (ImGui::BeginMenu("File"))
 			{
-				// 关闭全屏可以让窗口移动到其他窗口的前面，
-				// 目前如果没有更细的窗口深度 / Z轴控制，我们无法逆转。
-				// ImGui：：MenuItem（“Fullscreen”，NULL，opt_fullscreen_persistant）;
+				if (ImGui::MenuItem("Open Project...", "Ctrl + O"))
+					OpenProject();
 
-				if (ImGui::MenuItem("New", "Ctrl + N"))
+				ImGui::Separator();
+
+				if (ImGui::MenuItem("New Scene", "Ctrl + N"))
 					NewScene();
 
-				if (ImGui::MenuItem("Open...", "Ctrl + O"))
-					OpenScene();
-
-				if (ImGui::MenuItem("Save", "Ctrl + S"))
+				if (ImGui::MenuItem("Save Scene", "Ctrl + S"))
 					SaveScene();
 
-				if (ImGui::MenuItem("Save As ...", "Ctrl + Shift + S"))
+				if (ImGui::MenuItem("Save Scene As ...", "Ctrl + Shift + S"))
 					SaveSceneAs();
+
+				ImGui::Separator();
 
 				if (ImGui::MenuItem("Exit"))
 					Application::Get().Close();
@@ -462,7 +467,7 @@ namespace CmHazel
 		case Key::O:
 		{
 			if (control)
-				OpenScene();
+				OpenProject();
 
 			break;
 		}
@@ -587,6 +592,16 @@ namespace CmHazel
 			OpenScene(startScenePath);
 			m_ContentBrowserPanel = CreateUnique<ContentBrowserPanel>();
 		}
+	}
+
+	bool EditorLayer::OpenProject()
+	{
+		std::string filepath = FileDialogs::OpenFile("CmHazel Project (*.mproj)\0*.mproj\0");
+		if (filepath.empty())
+			return false;
+
+		OpenProject(filepath);
+		return true;
 	}
 
 	void EditorLayer::SaveProject()

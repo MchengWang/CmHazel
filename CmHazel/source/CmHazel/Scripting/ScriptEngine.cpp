@@ -136,7 +136,12 @@ namespace CmHazel
 		Unique<filewatch::FileWatch<std::string>> AppAssemblyFileWatcher;
 		bool AssemblyReloadPending = false;
 
+#ifdef CM_DEBUG
 		bool EnableDebugging = true;
+#else
+		bool EnableDebugging = false;
+#endif // CM_DEBUG
+
 
 		// Runtime
 		Scene* SceneContext = nullptr;
