@@ -7,12 +7,12 @@
 namespace CmHazel
 {
 
-	Shared<Texture2D> Texture2D::Create(uint32_t width, uint32_t height)
+	Shared<Texture2D> Texture2D::Create(const TextureSpecification& specification)
 	{
 		switch (Renderer::GetAPI())
 		{
 		case RendererAPI::API::None: CM_CORE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
-		case RendererAPI::API::OpenGL: return CreateShared<OpenGLTexture2D>(width, height);
+		case RendererAPI::API::OpenGL: return CreateShared<OpenGLTexture2D>(specification);
 		}
 
 		CM_CORE_ASSERT(false, "Unkown RendererAPI!");
