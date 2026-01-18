@@ -359,5 +359,8 @@
     <ClInclude Include="source\CmHazel\Renderer\Font.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="source\CmHazel\Renderer\MSDFData.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

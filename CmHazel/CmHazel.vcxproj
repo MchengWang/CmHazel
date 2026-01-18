@@ -151,6 +151,7 @@
     <ClInclude Include="source\CmHazel\Project\Project.h" />
     <ClInclude Include="source\CmHazel\Core\FileSystem.h" />
     <ClInclude Include="source\CmHazel\Core\Buffer.h" />
+    <ClInclude Include="source\CmHazel\Renderer\MSDFData.h" />
     <ClInclude Include="source\CmHazel\Scripting\ScriptGlue.h" />
     <ClInclude Include="source\CmHazel\Scripting\ScriptEngine.h" />
     <ClInclude Include="source\CmHazel\UI\UI.h" />
