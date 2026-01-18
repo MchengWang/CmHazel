@@ -58,7 +58,7 @@
       <PreprocessorDefinitions>CM_DEBUG;GLFW_INCLUDE_NONE;_CRT_SECURE_NO_WARNINGS;YAML_CPP_STATIC_DEFINE;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)CmHazel\third_party\filewatch;$(SolutionDir)CmHazel\third_party\mono\include;$(SolutionDir)CmHazel\third_party\Box2D\include;$(SolutionDir)CmHazel\third_party\ImGuizmo;$(SolutionDir)CmHazel\third_party\yaml-cpp\include;$(SolutionDir)CmHazel\third_party\entt\include;$(SolutionDir)CmHazel\third_party\stb_image;$(SolutionDir)CmHazel\third_party\glm;$(SolutionDir)CmHazel\third_party\imgui;$(SolutionDir)CmHazel\third_party\glad\include;$(SolutionDir)CmHazel\third_party\glfw\include;$(SolutionDir)CmHazel\third_party\spdlog\include;$(SolutionDir)CmHazel\source;C:\Program Files %28x86%29\VulkanSDK\1.4.335.0\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)CmHazel\third_party\msdf-atlas-gen\msdf-atlas-gen;$(SolutionDir)CmHazel\third_party\msdf-atlas-gen\msdfgen;$(SolutionDir)CmHazel\third_party\filewatch;$(SolutionDir)CmHazel\third_party\mono\include;$(SolutionDir)CmHazel\third_party\Box2D\include;$(SolutionDir)CmHazel\third_party\ImGuizmo;$(SolutionDir)CmHazel\third_party\yaml-cpp\include;$(SolutionDir)CmHazel\third_party\entt\include;$(SolutionDir)CmHazel\third_party\stb_image;$(SolutionDir)CmHazel\third_party\glm;$(SolutionDir)CmHazel\third_party\imgui;$(SolutionDir)CmHazel\third_party\glad\include;$(SolutionDir)CmHazel\third_party\glfw\include;$(SolutionDir)CmHazel\third_party\spdlog\include;$(SolutionDir)CmHazel\source;C:\Program Files %28x86%29\VulkanSDK\1.4.335.0\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>cmzpch.h</PrecompiledHeaderFile>
     </ClCompile>
@@ -77,7 +77,7 @@
       <PreprocessorDefinitions>CM_DEBUG;GLFW_INCLUDE_NONE;_CRT_SECURE_NO_WARNINGS;YAML_CPP_STATIC_DEFINE;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)CmHazel\third_party\filewatch;$(SolutionDir)CmHazel\third_party\mono\include;$(SolutionDir)CmHazel\third_party\Box2D\include;$(SolutionDir)CmHazel\third_party\ImGuizmo;$(SolutionDir)CmHazel\third_party\yaml-cpp\include;$(SolutionDir)CmHazel\third_party\entt\include;$(SolutionDir)CmHazel\third_party\stb_image;$(SolutionDir)CmHazel\third_party\glm;$(SolutionDir)CmHazel\third_party\imgui;$(SolutionDir)CmHazel\third_party\glad\include;$(SolutionDir)CmHazel\third_party\glfw\include;$(SolutionDir)CmHazel\third_party\spdlog\include;$(SolutionDir)CmHazel\source;C:\Program Files %28x86%29\VulkanSDK\1.4.335.0\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)CmHazel\third_party\msdf-atlas-gen\msdf-atlas-gen;$(SolutionDir)CmHazel\third_party\msdf-atlas-gen\msdfgen;$(SolutionDir)CmHazel\third_party\filewatch;$(SolutionDir)CmHazel\third_party\mono\include;$(SolutionDir)CmHazel\third_party\Box2D\include;$(SolutionDir)CmHazel\third_party\ImGuizmo;$(SolutionDir)CmHazel\third_party\yaml-cpp\include;$(SolutionDir)CmHazel\third_party\entt\include;$(SolutionDir)CmHazel\third_party\stb_image;$(SolutionDir)CmHazel\third_party\glm;$(SolutionDir)CmHazel\third_party\imgui;$(SolutionDir)CmHazel\third_party\glad\include;$(SolutionDir)CmHazel\third_party\glfw\include;$(SolutionDir)CmHazel\third_party\spdlog\include;$(SolutionDir)CmHazel\source;C:\Program Files %28x86%29\VulkanSDK\1.4.335.0\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>cmzpch.h</PrecompiledHeaderFile>
     </ClCompile>
@@ -88,6 +88,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\CmHazel\Renderer\Font.cpp" />
     <ClCompile Include="source\CmHazel\Project\ProjectSerializer.cpp" />
     <ClCompile Include="source\CmHazel\Project\Project.cpp" />
     <ClCompile Include="source\CmHazel\Core\FileSystem.cpp" />
@@ -144,6 +145,7 @@
     <ClCompile Include="source\CmHazel\Core\UUID.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\CmHazel\Renderer\Font.h" />
     <ClInclude Include="source\CmHazel\Physics\Physics2D.h" />
     <ClInclude Include="source\CmHazel\Project\ProjectSerializer.h" />
     <ClInclude Include="source\CmHazel\Project\Project.h" />
@@ -223,6 +225,9 @@
     </ProjectReference>
     <ProjectReference Include="..\ImGui\ImGui.vcxproj">
       <Project>{e033a4aa-c221-4c4d-92c7-1bc39bbfff46}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\msdf-atlas-gen\msdf-atlas-gen.vcxproj">
+      <Project>{9b2a7698-f431-4277-b250-f66fcd4ebd6b}</Project>
     </ProjectReference>
     <ProjectReference Include="..\yaml-cpp\yaml-cpp.vcxproj">
       <Project>{b5e933d5-11d6-48e2-94d2-8f2c2809feb8}</Project>

@@ -1,0 +1,443 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\ft2build.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\freetype.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\ftadvanc.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\ftbbox.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\ftbdf.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\ftbitmap.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\ftbzip2.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\ftcache.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\ftchapters.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\ftcid.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\ftcolor.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\ftdriver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\fterrdef.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\fterrors.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\ftfntfmt.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\ftgasp.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\ftglyph.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\ftgxval.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\ftgzip.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\ftimage.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\ftincrem.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\ftlcdfil.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\ftlist.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\ftlogging.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\ftlzw.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\ftmac.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\ftmm.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\ftmodapi.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\ftmoderr.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\ftotval.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\ftoutln.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\ftparams.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\ftpfr.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\ftrender.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\ftsizes.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\ftsnames.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\ftstroke.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\ftsynth.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\ftsystem.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\fttrigon.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\fttypes.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\ftwinfnt.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\t1tables.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\ttnameid.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\tttables.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\tttags.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\config\ftconfig.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\config\ftheader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\config\ftmodule.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\config\ftoption.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\config\ftstdlib.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\config\integer-types.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\config\mac-support.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\config\public-macros.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\internal\services\svbdf.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\internal\services\svcfftl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\internal\services\svcid.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\internal\services\svfntfmt.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\internal\services\svgldict.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\internal\services\svgxval.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\internal\services\svkern.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\internal\services\svmetric.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\internal\services\svmm.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\internal\services\svotval.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\internal\services\svpfr.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\internal\services\svpostnm.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\internal\services\svprop.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\internal\services\svpscmap.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\internal\services\svpsinfo.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\internal\services\svsfnt.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\internal\services\svttcmap.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\internal\services\svtteng.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\internal\services\svttglyf.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\internal\services\svwinfnt.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\internal\autohint.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\internal\cffotypes.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\internal\cfftypes.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\internal\compiler-macros.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\internal\ftcalc.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\internal\ftdebug.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\internal\ftdrv.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\internal\ftgloadr.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\internal\fthash.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\internal\ftmemory.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\internal\ftobjs.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\internal\ftpsprop.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\internal\ftrfork.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\internal\ftserv.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\internal\ftstream.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\internal\fttrace.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\internal\ftvalid.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\internal\psaux.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\internal\pshints.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\internal\sfnt.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\internal\t1types.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\internal\tttypes.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\include\freetype\internal\wofftypes.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="freetype.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\src\autofit\autofit.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\src\base\ftbase.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\src\base\ftbbox.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\src\base\ftbdf.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\src\base\ftbitmap.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\src\base\ftcid.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\src\base\ftdebug.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\src\base\ftfstype.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\src\base\ftgasp.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\src\base\ftglyph.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\src\base\ftgxval.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\src\base\ftinit.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\src\base\ftmm.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\src\base\ftotval.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\src\base\ftpatent.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\src\base\ftpfr.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\src\base\ftstroke.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\src\base\ftsynth.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\src\base\ftsystem.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\src\base\fttype1.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\src\base\ftwinfnt.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\src\bdf\bdf.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\src\bzip2\ftbzip2.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\src\cache\ftccache.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\src\cff\cff.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\src\cid\type1cid.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\src\gzip\ftgzip.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\src\lzw\ftlzw.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\src\pcf\pcf.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\src\pfr\pfr.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\src\psaux\psaux.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\src\pshinter\pshinter.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\src\psnames\psnames.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\src\raster\raster.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\src\sdf\sdf.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\src\sfnt\sfnt.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\src\smooth\smooth.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\src\truetype\truetype.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\src\type1\type1.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\src\type42\type42.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdfgen\freetype\src\winfonts\winfnt.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

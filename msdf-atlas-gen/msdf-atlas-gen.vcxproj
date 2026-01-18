@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>18.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{9b2a7698-f431-4277-b250-f66fcd4ebd6b}</ProjectGuid>
+    <RootNamespace>msdfatlasgen</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)</OutDir>
+    <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)</OutDir>
+    <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>$(SolutionDir)CmHazel\third_party\msdf-atlas-gen\msdfgen\include;$(SolutionDir)CmHazel\third_party\msdf-atlas-gen;$(SolutionDir)CmHazel\third_party\msdf-atlas-gen\msdfgen</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>$(SolutionDir)CmHazel\third_party\msdf-atlas-gen\msdfgen\include;$(SolutionDir)CmHazel\third_party\msdf-atlas-gen;$(SolutionDir)CmHazel\third_party\msdf-atlas-gen\msdfgen</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdf-atlas-gen\AtlasGenerator.h" />
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdf-atlas-gen\AtlasStorage.h" />
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdf-atlas-gen\bitmap-blit.h" />
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdf-atlas-gen\BitmapAtlasStorage.h" />
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdf-atlas-gen\BitmapAtlasStorage.hpp" />
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdf-atlas-gen\Charset.h" />
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdf-atlas-gen\csv-export.h" />
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdf-atlas-gen\DynamicAtlas.h" />
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdf-atlas-gen\DynamicAtlas.hpp" />
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdf-atlas-gen\FontGeometry.h" />
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdf-atlas-gen\glyph-generators.h" />
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdf-atlas-gen\GlyphBox.h" />
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdf-atlas-gen\GlyphGeometry.h" />
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdf-atlas-gen\image-encode.h" />
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdf-atlas-gen\image-save.h" />
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdf-atlas-gen\image-save.hpp" />
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdf-atlas-gen\ImmediateAtlasGenerator.h" />
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdf-atlas-gen\ImmediateAtlasGenerator.hpp" />
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdf-atlas-gen\json-export.h" />
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdf-atlas-gen\msdf-atlas-gen.h" />
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdf-atlas-gen\rectangle-packing.h" />
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdf-atlas-gen\rectangle-packing.hpp" />
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdf-atlas-gen\Rectangle.h" />
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdf-atlas-gen\RectanglePacker.h" />
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdf-atlas-gen\Remap.h" />
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdf-atlas-gen\shadron-preview-generator.h" />
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdf-atlas-gen\size-selectors.h" />
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdf-atlas-gen\TightAtlasPacker.h" />
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdf-atlas-gen\types.h" />
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdf-atlas-gen\utf8.h" />
+    <ClInclude Include="..\CmHazel\third_party\msdf-atlas-gen\msdf-atlas-gen\Workload.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdf-atlas-gen\bitmap-blit.cpp" />
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdf-atlas-gen\charset-parser.cpp" />
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdf-atlas-gen\Charset.cpp" />
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdf-atlas-gen\csv-export.cpp" />
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdf-atlas-gen\FontGeometry.cpp" />
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdf-atlas-gen\glyph-generators.cpp" />
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdf-atlas-gen\GlyphGeometry.cpp" />
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdf-atlas-gen\image-encode.cpp" />
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdf-atlas-gen\json-export.cpp" />
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdf-atlas-gen\main.cpp" />
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdf-atlas-gen\RectanglePacker.cpp" />
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdf-atlas-gen\shadron-preview-generator.cpp" />
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdf-atlas-gen\size-selectors.cpp" />
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdf-atlas-gen\TightAtlasPacker.cpp" />
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdf-atlas-gen\utf8.cpp" />
+    <ClCompile Include="..\CmHazel\third_party\msdf-atlas-gen\msdf-atlas-gen\Workload.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\msdfgen\msdfgen.vcxproj">
+      <Project>{aaa60185-853c-41fc-acad-414d3c754c28}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

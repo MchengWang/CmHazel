@@ -19,3 +19,9 @@
 [submodule "CmHazel/third_party/Box2D"]
 	path = CmHazel/third_party/Box2D
 	url = https://github.com/erincatto/box2d
+[submodule "CmHazel/third_party/freetype"]
+	path = CmHazel/third_party/freetype
+	url = https://github.com/freetype/freetype
+[submodule "CmHazel/third_party/msdf-atlas-gen"]
+	path = CmHazel/third_party/msdf-atlas-gen
+	url = https://github.com/TheCherno/msdf-atlas-gen

@@ -3,6 +3,7 @@
 #include "CmHazel/Utils/PlatformUtils.h"
 #include "CmHazel/Math/Math.h"
 #include "CmHazel/Scripting/ScriptEngine.h"
+#include "CmHazel/Renderer/Font.h"
 
 #include <imgui/imgui.h>
 
@@ -18,6 +19,7 @@ namespace CmHazel
 	EditorLayer::EditorLayer()
 		: Layer("EditorLayer"), m_CameraController(1280.0f / 720.0f), m_SquareColor({ 0.2f, 0.3f, 0.8f, 1.0f })
 	{
+		Font font("assets/fonts/OpenSans/OpenSans-Regular.ttf");
 	}
 
 	void EditorLayer::OnAttach()

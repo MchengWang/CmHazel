@@ -9,9 +9,13 @@
   </Folder>
   <Folder Name="/deps/">
     <Project Path="Box2D/Box2D.vcxproj" Id="d5992161-945b-404a-85af-ae38864f016b" />
+    <Project Path="freetype/freetype.vcxproj" Id="fe246be3-121d-4c72-8616-b3045ba82647" />
     <Project Path="GLAD/GLAD.vcxproj" Id="b3b0b5f2-a2d8-4db3-9578-c7255f57acc2" />
     <Project Path="GLFW/GLFW.vcxproj" Id="d35b7e44-ebaa-4905-ae58-84c904169a58" />
     <Project Path="ImGui/ImGui.vcxproj" Id="e033a4aa-c221-4c4d-92c7-1bc39bbfff46" />
+    <Project Path="msdf-atlas-gen/msdf-atlas-gen.vcxproj" Id="9b2a7698-f431-4277-b250-f66fcd4ebd6b" />
+    <Project Path="msdfgen/msdfgen.vcxproj" Id="aaa60185-853c-41fc-acad-414d3c754c28" />
+    <Project Path="tinyxml2/tinyxml2.vcxproj" Id="71273451-ac63-43c6-9665-9bbb000de127" />
     <Project Path="yaml-cpp/yaml-cpp.vcxproj" Id="b5e933d5-11d6-48e2-94d2-8f2c2809feb8" />
   </Folder>
   <Folder Name="/misc/">
