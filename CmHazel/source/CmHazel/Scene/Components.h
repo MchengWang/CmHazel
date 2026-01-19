@@ -3,6 +3,7 @@
 #include "SceneCamera.h"
 #include "CmHazel/Core/UUID.h"
 #include "CmHazel/Renderer/Texture.h"
+#include "CmHazel/Renderer/Font.h"
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -170,6 +171,15 @@ namespace CmHazel
 		CircleCollider2DComponent(const CircleCollider2DComponent&) = default;
 	};
 
+	struct TextComponent
+	{
+		std::string TextString;
+		Shared<Font> FontAsset = Font::GetDefault();
+		glm::vec4 Color{ 1.0f };
+		float Kerning = 0.0f;
+		float LineSpacing = 0.0f;
+	};
+
 	template <typename... Component>
 	struct ComponentGroup
 	{
@@ -179,6 +189,6 @@ namespace CmHazel
 		ComponentGroup<TransformComponent, SpriteRendererComponent,
 		CircleRendererComponent, CameraComponent, ScriptComponent,
 		NativeScriptComponent, Rigidbody2DComponent, BoxCollider2DComponent,
-		CircleCollider2DComponent>;
+		CircleCollider2DComponent, TextComponent>;
 
 }

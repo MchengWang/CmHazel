@@ -4,6 +4,7 @@ bin
 bin-int
 Intermediates
 Binaries
+cache
 
 # files
 *.log

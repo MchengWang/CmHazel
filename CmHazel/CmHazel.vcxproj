@@ -140,6 +140,10 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="third_party\imgui\misc\cpp\imgui_stdlib.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="third_party\stb_image\stb_image.cpp" />
     <ClCompile Include="source\CmHazel\Renderer\UniformBuffer.cpp" />
     <ClCompile Include="source\CmHazel\Core\UUID.cpp" />
@@ -210,6 +214,7 @@
     <ClInclude Include="source\CmHazel\Renderer\VertexArray.h" />
     <ClInclude Include="source\CmHazel\Renderer\Texture.h" />
     <ClInclude Include="third_party\ImGuizmo\ImGuizmo.h" />
+    <ClInclude Include="third_party\imgui\misc\cpp\imgui_stdlib.h" />
     <ClInclude Include="third_party\stb_image\stb_image.h" />
     <ClInclude Include="source\CmHazel\Renderer\UniformBuffer.h" />
     <ClInclude Include="source\CmHazel\Core\UUID.h" />
@@ -233,6 +238,12 @@
     <ProjectReference Include="..\yaml-cpp\yaml-cpp.vcxproj">
       <Project>{b5e933d5-11d6-48e2-94d2-8f2c2809feb8}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="third_party\imgui\misc\debuggers\imgui.natvis" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="third_party\imgui\misc\debuggers\imgui.natstepfilter" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

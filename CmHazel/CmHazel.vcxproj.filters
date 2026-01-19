@@ -156,6 +156,9 @@
     <ClCompile Include="source\CmHazel\Renderer\Font.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="third_party\imgui\misc\cpp\imgui_stdlib.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\CmHazel\Core\Application.h">
@@ -362,5 +365,14 @@
     <ClInclude Include="source\CmHazel\Renderer\MSDFData.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="third_party\imgui\misc\cpp\imgui_stdlib.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="third_party\imgui\misc\debuggers\imgui.natvis" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="third_party\imgui\misc\debuggers\imgui.natstepfilter" />
   </ItemGroup>
 </Project>
