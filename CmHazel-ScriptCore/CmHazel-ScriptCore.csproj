@@ -46,6 +46,7 @@
     <Compile Include="source\CmHazel\Scene\Entity.cs" />
     <Compile Include="source\CmHazel\Vector3.cs" />
     <Compile Include="source\CmHazel\Vector2.cs" />
+    <Compile Include="source\CmHazel\Vector4.cs" />
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup />
